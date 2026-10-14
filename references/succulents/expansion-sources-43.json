@@ -1,0 +1,44 @@
+{
+  "revision": 43,
+  "species": "fenestraria",
+  "title": "五十铃玉",
+  "morphology": "haworthiaType",
+  "taxonomyNote": "依用户指定归游戏十二卷型；植物学分类为番杏科Fenestraria，游戏形态不等同科属。",
+  "botanicalName": "Fenestraria rhopalophylla",
+  "source": "https://www.rhs.org.uk/plants/328319/fenestraria-rhopalophylla-subsp-rhopalophylla/details",
+  "photoSource": "https://rootedinparadisess.com/products/fenestraria-rhopalophylla-baby-toes",
+  "photoReferenceUrl": "https://rootedinparadisess.com/cdn/shop/files/20230505_140907.jpg?v=1717889491",
+  "appearance": "直立短棒状厚叶，略扁圆的叶顶透光窗；五期增加叶片大小与数量，成熟为紧密叶丛，无木质高茎。",
+  "asset": "FenestrariaAtlas",
+  "propagation": "免费小苗，共享每日5次；五个时期均不可拆分，沿用十二卷型成长与价格。",
+  "y": 2.0,
+  "yNote": "资料支持慢生，相对游戏初值，可由设置覆盖。",
+  "additionalArtworkCorrections": [
+    {
+      "species": "thousandBuddha",
+      "source": "https://tropiflora.com/products/xsedeveria-harry-butterfield",
+      "appearance": "按用户要求成年后形成密生厚叶的长柱，壮年继续增高，老桩单条弯垂、群生多枝弯垂；不画成茎顶莲座。",
+      "replacedFrames": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "preserved": "叶片、叶插小芽、幼年及所有时间/价格/拆分参数"
+    },
+    {
+      "species": "whiteMoon",
+      "photoSource": "https://newshop.busionline.com/store/goodsdetail/sid/517000/gid/5777847",
+      "photoReferenceUrl": "https://source.shop.busionline.com/2022-06-30_62bd84b3e1181.jpg",
+      "appearance": "按用户指定品相，幼年起厚叶向内包拢成紧凑圆包子；老桩单头短木质茎、群生侧斜小包子。",
+      "replacedFrames": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "preserved": "叶片、叶插小芽及所有时间/价格/拆分参数"
+    }
+  ]
+}

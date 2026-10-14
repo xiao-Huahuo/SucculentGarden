@@ -16,6 +16,7 @@ enum SucculentSpecies: String, Codable, CaseIterable, Identifiable, Sendable {
     case smallCactusBall, fairyCastle, goldFinger, whiteBird, nineTailFox, moneyStack
     case deerAntler, bearPaw, broadMother, tubeMother, narrowMother
     case cheese, topsyTurvy, tangyuan
+    case fenestraria
 
     var id: String { rawValue }
     var morphology: SucculentMorphology {

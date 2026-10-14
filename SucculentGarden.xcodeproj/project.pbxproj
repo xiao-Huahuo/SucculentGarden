@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00D55B227F60F1BC889540E5 /* FenestrariaAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3D05923BDD820A0F2FB7E1 /* FenestrariaAtlasFrames.swift */; };
 		0B5E2AED3150CAC8DDA4CDC3 /* MuyuStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F139BE7BFBD253C39BFFF0F /* MuyuStore.swift */; };
 		0CBB98032A16CA8269AD8876 /* SucculentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F5E64908046D27A9FE35D /* SucculentStore.swift */; };
 		0EF6EED6E4533D5E04D0738D /* SucculentExpansionSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5CFA6850C0BDBD9D5C3F6 /* SucculentExpansionSize.swift */; };
@@ -40,6 +41,7 @@
 		4186669B6E5659A944515EA1 /* GardenGrowthMultipliers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90AEEEC5AC0CDEB590A4BB9 /* GardenGrowthMultipliers.swift */; };
 		428E45F7F5B7654A563AC709 /* GardenInventoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B249883BA082B68F5631E8 /* GardenInventoryCard.swift */; };
 		43F0EF4F9F245BD095F3CE97 /* SucculentArtworkLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF08C8A3230CABB48E8A595 /* SucculentArtworkLayout.swift */; };
+		4659A9ADC79B3129A3689BFA /* FenestrariaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56178F8DC349011CDA2DDA7D /* FenestrariaTests.swift */; };
 		47CF2A31737BB7E71C31A7D9 /* SucculentArtworkSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F99D4836AFDE599B66B81C /* SucculentArtworkSize.swift */; };
 		4808FCB61C11826AFA21DE6A /* ArtworkImageDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7791A858025B3CA10930EAA4 /* ArtworkImageDecoder.swift */; };
 		49017603BA08EFC66802E449 /* SucculentSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF307713E7F84E23D960E6C6 /* SucculentSpecies.swift */; };
@@ -75,9 +77,11 @@
 		7B956EB40120C221B7DC7AFC /* GuanyinTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BE8D3E79F9EE7EBB15C61E /* GuanyinTypeAtlasFrames.swift */; };
 		7CE39F4642EDCA1C050C4B71 /* MuyuTapIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5B0A2551F010C42EA7B9DB /* MuyuTapIntent.swift */; };
 		7D623C71553FD8CCFB960A04 /* ArtworkImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B6E14C4E7A58E6C3B7953C /* ArtworkImageCacheTests.swift */; };
+		8073984C6C9364532F555075 /* Revision43AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1229622E3FB8E83A4DAC56 /* Revision43AtlasFrames.swift */; };
 		81D2C60A247440A07E2217F5 /* Revision37AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69C2594CA9D1C534BCF44BB /* Revision37AtlasFrames.swift */; };
 		845077AF44A8D5069502AD29 /* SucculentAtlasLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7166269493EBFDAA91DB80B /* SucculentAtlasLayout.swift */; };
 		88F03ED6F17E9F0212FCF5B9 /* ProverbCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603411F50BB850AC73732DC7 /* ProverbCatalog.swift */; };
+		8BC52CB22382B67077525241 /* Revision43AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1229622E3FB8E83A4DAC56 /* Revision43AtlasFrames.swift */; };
 		8DB8953688318D08D82F66EC /* SucculentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3F6C7E9A754F406341898 /* SucculentTests.swift */; };
 		8E4F792E803E14A69FC6C44A /* SucculentArtworkSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F99D4836AFDE599B66B81C /* SucculentArtworkSize.swift */; };
 		8FA0BD491E736099BE83FC6E /* MuyuProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039AC800A163505EB5FDB506 /* MuyuProgress.swift */; };
@@ -85,6 +89,7 @@
 		902D72910E247E808FF5E8B0 /* SucculentArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227221A7C64604EF911D6762 /* SucculentArtwork.swift */; };
 		91A745C7BF95D42FA0B3E6CA /* GardenStagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B3869DF72CD18B9EAF629D /* GardenStagePicker.swift */; };
 		929B8986AE5868259649CFAD /* CactusTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9644F3CE7DA104F79234DAE /* CactusTypeAtlasFrames.swift */; };
+		935CAA4A433143B70582AAB1 /* Revision43AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1229622E3FB8E83A4DAC56 /* Revision43AtlasFrames.swift */; };
 		93B2D9607C18B621A243AB23 /* Revision29AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBC95BD6FA377E3BD4D298D /* Revision29AtlasFrames.swift */; };
 		9460F1EF49263202F81F0EC3 /* SucculentArtworkLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF08C8A3230CABB48E8A595 /* SucculentArtworkLayout.swift */; };
 		9819D0EBABD5599CF775004C /* GardenInventoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7A67EB82FF8314D53912B /* GardenInventoryViews.swift */; };
@@ -109,6 +114,7 @@
 		B469A58C624CDD8FE88EBA2E /* GardenNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693DDA980FE5278D0ADF2AE1 /* GardenNotice.swift */; };
 		B556E69D430C524EECF6C8DC /* MuyuTimelineSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA92D7C4747193E4FE92B0A /* MuyuTimelineSchedule.swift */; };
 		B5848D7D456BC38FAC8AE238 /* ConophytumTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52048B9930D2E78A67E1156 /* ConophytumTypeAtlasFrames.swift */; };
+		B6A7EC503E2545EF2975A8BA /* FenestrariaAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3D05923BDD820A0F2FB7E1 /* FenestrariaAtlasFrames.swift */; };
 		B87046A12E43716122EDA8DE /* Revision29AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBC95BD6FA377E3BD4D298D /* Revision29AtlasFrames.swift */; };
 		B9ACEF653B0A32437750D8CF /* GardenMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DD8F84B6282FC385762986 /* GardenMainView.swift */; };
 		BA641C37474D3ACBE2D0E400 /* GardenNoticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153CD4C42DC289E1F642FB8 /* GardenNoticeTests.swift */; };
@@ -143,6 +149,7 @@
 		E4FF8A099939A65B37434010 /* ConophytumTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52048B9930D2E78A67E1156 /* ConophytumTypeAtlasFrames.swift */; };
 		E5B837A044FC033E04327366 /* GardenDragItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF269B6A0A6AA96F805C741 /* GardenDragItem.swift */; };
 		E6BBC6935887589549A1EAAE /* MuyuTapIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5B0A2551F010C42EA7B9DB /* MuyuTapIntent.swift */; };
+		E6FF217F3FEDA2CA098BF7B3 /* FenestrariaAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3D05923BDD820A0F2FB7E1 /* FenestrariaAtlasFrames.swift */; };
 		E75D9B07CC96B479E7B54C55 /* NewMorphologyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA9EF2D28A6D0A89FA80BE6 /* NewMorphologyTests.swift */; };
 		E7E9DC10C0F6D5F6F70FA513 /* GardenNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693DDA980FE5278D0ADF2AE1 /* GardenNotice.swift */; };
 		EA9104926BDAB2CED67800BB /* MoneyStackTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1E3DB512E415DC64259CE /* MoneyStackTypeAtlasFrames.swift */; };
@@ -208,6 +215,7 @@
 		4AF1CF77F023DB5972256FE2 /* 多肉花园.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "多肉花园.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		520DAF26CBA203A36EEC08B1 /* SucculentGardenWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucculentGardenWidgets.swift; sourceTree = "<group>"; };
 		54F99D4836AFDE599B66B81C /* SucculentArtworkSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucculentArtworkSize.swift; sourceTree = "<group>"; };
+		56178F8DC349011CDA2DDA7D /* FenestrariaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenestrariaTests.swift; sourceTree = "<group>"; };
 		5DD15639AA4A91DD59888F83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		603411F50BB850AC73732DC7 /* ProverbCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProverbCatalog.swift; sourceTree = "<group>"; };
 		6115E4E363840A6ACFE43299 /* StonecropTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StonecropTests.swift; sourceTree = "<group>"; };
@@ -221,6 +229,7 @@
 		78A348A88DCC1627F67CEFD0 /* ArtworkImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkImageCache.swift; sourceTree = "<group>"; };
 		7A7F5E64908046D27A9FE35D /* SucculentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucculentStore.swift; sourceTree = "<group>"; };
 		7E15854739E598AAA2307213 /* CollectionPlacementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPlacementTests.swift; sourceTree = "<group>"; };
+		7F1229622E3FB8E83A4DAC56 /* Revision43AtlasFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revision43AtlasFrames.swift; sourceTree = "<group>"; };
 		8175591252C38923C063BD4C /* WidgetArtworkCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetArtworkCache.swift; sourceTree = "<group>"; };
 		862E45AB4D39E1C45E20D0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86E4DA3233AC1D46398E4444 /* YuzhuiTypeAtlasFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YuzhuiTypeAtlasFrames.swift; sourceTree = "<group>"; };
@@ -261,6 +270,7 @@
 		E6D5CFA6850C0BDBD9D5C3F6 /* SucculentExpansionSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucculentExpansionSize.swift; sourceTree = "<group>"; };
 		E76F81AC1F4CE5DBC8A2D6EE /* LittleComponentWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LittleComponentWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5B0A2551F010C42EA7B9DB /* MuyuTapIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuyuTapIntent.swift; sourceTree = "<group>"; };
+		EC3D05923BDD820A0F2FB7E1 /* FenestrariaAtlasFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FenestrariaAtlasFrames.swift; sourceTree = "<group>"; };
 		ECC74BC32758F161172E682F /* StonecropTypeAtlasFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StonecropTypeAtlasFrames.swift; sourceTree = "<group>"; };
 		EFBFE3978A3A351DF27DA4BD /* GardenSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenSettingsView.swift; sourceTree = "<group>"; };
 		F7166269493EBFDAA91DB80B /* SucculentAtlasLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucculentAtlasLayout.swift; sourceTree = "<group>"; };
@@ -315,6 +325,7 @@
 				7E15854739E598AAA2307213 /* CollectionPlacementTests.swift */,
 				BD22252BEF99D107F48CB963 /* DisassemblyTests.swift */,
 				DDD9ABBD70FC361EBC8B46FF /* ExpansionMechanismTests.swift */,
+				56178F8DC349011CDA2DDA7D /* FenestrariaTests.swift */,
 				8E7718431E40650018F9C0AB /* GardenNavigationTests.swift */,
 				3153CD4C42DC289E1F642FB8 /* GardenNoticeTests.swift */,
 				AEE4EE3AEF3B0062792043DA /* GardenStageFilterTests.swift */,
@@ -402,6 +413,7 @@
 				A9644F3CE7DA104F79234DAE /* CactusTypeAtlasFrames.swift */,
 				D52048B9930D2E78A67E1156 /* ConophytumTypeAtlasFrames.swift */,
 				BCD2F33972D6987F6DE79723 /* CrassulaceaeTypeAtlasFrames.swift */,
+				EC3D05923BDD820A0F2FB7E1 /* FenestrariaAtlasFrames.swift */,
 				16BE8D3E79F9EE7EBB15C61E /* GuanyinTypeAtlasFrames.swift */,
 				A6C110741CFFCCB145684565 /* HaworthiaTypeAtlasFrames.swift */,
 				18D1E3DB512E415DC64259CE /* MoneyStackTypeAtlasFrames.swift */,
@@ -410,6 +422,7 @@
 				FB752D7E4E8D7C8A87699E9D /* Revision30AtlasFrames.swift */,
 				B69C2594CA9D1C534BCF44BB /* Revision37AtlasFrames.swift */,
 				3FD82589A35BFBA1AC6CE594 /* Revision40AtlasFrames.swift */,
+				7F1229622E3FB8E83A4DAC56 /* Revision43AtlasFrames.swift */,
 				ECC74BC32758F161172E682F /* StonecropTypeAtlasFrames.swift */,
 				86E4DA3233AC1D46398E4444 /* YuzhuiTypeAtlasFrames.swift */,
 			);
@@ -587,6 +600,8 @@
 				A6C0FD53BEE15D81D797A2EB /* CrassulaceaeTypeAtlasFrames.swift in Sources */,
 				27F1DB4E0970CDC4760B4C18 /* DisassemblyTests.swift in Sources */,
 				5B3082D26932EDD0F943B2D3 /* ExpansionMechanismTests.swift in Sources */,
+				E6FF217F3FEDA2CA098BF7B3 /* FenestrariaAtlasFrames.swift in Sources */,
+				4659A9ADC79B3129A3689BFA /* FenestrariaTests.swift in Sources */,
 				34E3352DA5D2B5ADCE4997ED /* GardenGrowthMultipliers.swift in Sources */,
 				69D01D1A8E91DC08EC060C31 /* GardenGrowthTime.swift in Sources */,
 				CC27EFC5D67AE8C079582C3B /* GardenModel.swift in Sources */,
@@ -614,6 +629,7 @@
 				71748B2AEFA9A282B7805CA6 /* Revision30AtlasFrames.swift in Sources */,
 				B037687D69CC13D805A77ECC /* Revision37AtlasFrames.swift in Sources */,
 				28F57D35D60D45EA1E7E0808 /* Revision40AtlasFrames.swift in Sources */,
+				8BC52CB22382B67077525241 /* Revision43AtlasFrames.swift in Sources */,
 				15091A6A5A00DA02F48F2C82 /* StonecropTests.swift in Sources */,
 				5FA1DF6D9298005BC31F5451 /* StonecropTypeAtlasFrames.swift in Sources */,
 				43F0EF4F9F245BD095F3CE97 /* SucculentArtworkLayout.swift in Sources */,
@@ -644,6 +660,7 @@
 				3B244A935E4B453BB4E772F5 /* ConophytumTypeAtlasFrames.swift in Sources */,
 				A4CA3D31B3531372FEB7CF6D /* ContentView.swift in Sources */,
 				605186188118A10CD8A1EBC1 /* CrassulaceaeTypeAtlasFrames.swift in Sources */,
+				B6A7EC503E2545EF2975A8BA /* FenestrariaAtlasFrames.swift in Sources */,
 				E5B837A044FC033E04327366 /* GardenDragItem.swift in Sources */,
 				4CA99CAC83AE9F826702CDAB /* GardenGrowthMultipliers.swift in Sources */,
 				C6353FEC1FE276C8372B2D00 /* GardenGrowthTime.swift in Sources */,
@@ -671,6 +688,7 @@
 				6F85C77B27E7B6DF148A78F4 /* Revision30AtlasFrames.swift in Sources */,
 				13D6FE238EE6AF96BA9547C7 /* Revision37AtlasFrames.swift in Sources */,
 				F337881632BE004BFE3D446C /* Revision40AtlasFrames.swift in Sources */,
+				935CAA4A433143B70582AAB1 /* Revision43AtlasFrames.swift in Sources */,
 				C863B22CD274A81AB9A14DEC /* StonecropTypeAtlasFrames.swift in Sources */,
 				7ADBBE0344C317FE6837458C /* SucculentArtwork.swift in Sources */,
 				B12879C5D3F07BF972F68178 /* SucculentArtworkLayout.swift in Sources */,
@@ -696,6 +714,7 @@
 				9B46E227EE88A066C3981C98 /* CactusTypeAtlasFrames.swift in Sources */,
 				B5848D7D456BC38FAC8AE238 /* ConophytumTypeAtlasFrames.swift in Sources */,
 				FECD43328A310F0CE6C8F76E /* CrassulaceaeTypeAtlasFrames.swift in Sources */,
+				00D55B227F60F1BC889540E5 /* FenestrariaAtlasFrames.swift in Sources */,
 				4186669B6E5659A944515EA1 /* GardenGrowthMultipliers.swift in Sources */,
 				36CEC5D2BFC5BE44762AD207 /* GardenGrowthTime.swift in Sources */,
 				5BA022A1811DB4343A011710 /* GardenInventoryCard.swift in Sources */,
@@ -717,6 +736,7 @@
 				9A3AFD394F880520E83A516E /* Revision30AtlasFrames.swift in Sources */,
 				81D2C60A247440A07E2217F5 /* Revision37AtlasFrames.swift in Sources */,
 				C76536873E2CC0DB15FE0396 /* Revision40AtlasFrames.swift in Sources */,
+				8073984C6C9364532F555075 /* Revision43AtlasFrames.swift in Sources */,
 				244A480ABBD398388F0E57CA /* StonecropTypeAtlasFrames.swift in Sources */,
 				902D72910E247E808FF5E8B0 /* SucculentArtwork.swift in Sources */,
 				9460F1EF49263202F81F0EC3 /* SucculentArtworkLayout.swift in Sources */,
@@ -838,7 +858,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				DEVELOPMENT_TEAM = GU3HYVNR96;
@@ -908,7 +928,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				DEVELOPMENT_TEAM = GU3HYVNR96;

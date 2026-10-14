@@ -4,9 +4,20 @@ import Foundation
 enum SucculentExpansionSize {
     static func centimeters(species: SucculentSpecies, stage: SucculentStage, isMaterial: Bool) -> CGSize {
         let type = species.morphology
+        if species == .fenestraria {
+            // 叶片约3cm高；随成长增加叶量与丛宽，不套用大型莲座的高度。
+            let sizes: [(CGFloat, CGFloat)] = [(0.9, 0.9), (1.8, 1.6), (2.8, 2.5), (4, 3), (4.8, 3.2)]
+            let size = sizes[isMaterial ? 0 : species.stages.firstIndex(of: stage)!]
+            return CGSize(width: size.0, height: size.1)
+        }
         if species == .zebraHaworthia {
             let sizes: [(CGFloat, CGFloat)] = [(0.6, 0.9), (1.3, 1.8), (2.8, 3.6), (3.6, 4.8), (3.8, 5.2)]
             let size = sizes[isMaterial ? 0 : species.stages.firstIndex(of: stage)!]
+            return CGSize(width: size.0, height: size.1)
+        }
+        if species == .thousandBuddha && !isMaterial {
+            let sizes: [(CGFloat, CGFloat)] = [(1.5, 1.5), (2.2, 3), (2.6, 5), (3, 7.4), (6, 9), (7, 10)]
+            let size = sizes[species.stages.firstIndex(of: stage)!]
             return CGSize(width: size.0, height: size.1)
         }
         if isMaterial {

@@ -4,6 +4,20 @@ import Testing
 
 struct ArtworkSizeTests {
     @Test
+    func hangingBuddhaTailsExtendBelowTheirPlantingPointAndKeepTheirRootsOnSoil() {
+        for stage in [SucculentStage.oldStem, .cluster] {
+            let layout = SucculentArtworkLayout.assets[SucculentSpecies.thousandBuddha.assetName(stage: stage)]!
+            let frame = CGSize(width: 78, height: 93)
+            let position = layout.placement(in: frame, planted: true)
+            let anchor = layout.plantingAnchorY!
+            #expect(layout.bounds.maxY > anchor)
+            #expect(abs(anchor * position.scale + position.offset.height - 70) < 0.001)
+            #expect(layout.bounds.maxY * position.scale + position.offset.height > 70)
+            #expect(layout.bounds.maxY * position.scale + position.offset.height <= frame.height)
+        }
+    }
+
+    @Test
     func miniatureShootsAreAboutOneThirdOfPreviousWidgetSizeAndStayRooted() {
         for species in [SucculentSpecies.goldenStonecrop, .snowStonecrop, .jixingMeiren] {
             let layout = SucculentArtworkLayout.assets[species.assetName(stage: .grassSprout)]!

@@ -64,5 +64,6 @@ enum SucculentExpansionCatalog {
         .cheese: .init(title: "奶酪", morphology: .crassulaceaeType, timeMultiplier: 1),
         .topsyTurvy: .init(title: "特玉莲", morphology: .crassulaceaeType, timeMultiplier: 0.85),
         .tangyuan: .init(title: "汤圆", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .fenestraria: .init(title: "五十铃玉", morphology: .haworthiaType, timeMultiplier: 2),
     ]
 }

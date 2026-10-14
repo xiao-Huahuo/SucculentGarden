@@ -26,6 +26,10 @@
     {
       "url": "https://kmweb.moa.gov.tw/theme_data.php?id=499&theme=plant_illustration",
       "evidence": "特玉莲反叶石莲；图鉴记为生长较快，仅作为0.85游戏相对等待初值，不是实测成熟年限"
+    },
+    {
+      "url": "https://www.rhs.org.uk/plants/328319/fenestraria-rhopalophylla-subsp-rhopalophylla/details",
+      "evidence": "直立棒状叶约3cm、叶顶透光窗、成熟时间5–10年；仅用作慢生游戏相对时间初值，不等于逐期实测年限"
     }
   ],
   "defaults": [
@@ -136,6 +140,12 @@
       "name": "汤圆",
       "y": 1.0,
       "basis": "用户选定粉白淡绿球形叶品相；商用名称并非统一科学物种，缺乏实测对比，沿基准1.00"
+    },
+    {
+      "species": "fenestraria",
+      "name": "五十铃玉",
+      "y": 2.0,
+      "basis": "RHS成熟时间5–10年支持慢生；沿十二卷型同级2.00游戏相对初值，不能据此预测自然成长年限"
     }
   ],
   "expansionCatalog": "references/succulents/expansion-catalog-28.json",
