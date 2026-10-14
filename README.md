@@ -24,7 +24,7 @@ XcodeGen、Apple Development 签名身份和 App Group 配置。
 
 请完成工程生成、Release 构建、签名验证、安装、Widget 登记和运行检查。
 把应用安装到 ~/Applications/多肉花园.app，保留已有存档、Bundle ID、
-Widget kind 和用户设置；升级时只停止本项目的相关进程。
+Widget kind 和用户设置；升级时按需要重启相关进程或系统服务，并核对恢复情况。
 原路径升级应刷新正式应用登记，不要先注销正在使用的正式应用，
 否则系统可能把已放在桌面的组件当作卸载而移除。
 
