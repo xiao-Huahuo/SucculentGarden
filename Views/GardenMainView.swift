@@ -1,4 +1,4 @@
-// 访达式侧栏、工具栏与图标区域；下方种植区使用桌面组件同一份植株视图与数据。
+// 访达式侧栏、工具栏与图标区域；右下角种植区使用桌面组件同一份植株视图与数据。
 import SwiftUI
 
 struct GardenMainView: View {
@@ -28,22 +28,25 @@ struct GardenMainView: View {
         } detail: {
             if let garden = model.garden {
                 TimelineView(.periodic(from: .now, by: 1)) { context in
-                    VStack(spacing: 0) {
-                        GeometryReader { geometry in
-                            HStack(spacing: 0) {
-                                if model.section == .shop || model.section == .collection {
-                                    morphologySidebar
-                                }
-                                ScrollView {
-                                    sectionContent(garden: garden, date: context.date,
-                                                   availableHeight: max(0, geometry.size.height - 48))
-                                        .frame(maxWidth: .infinity, alignment: .topLeading)
-                                        .padding(24)
-                                }
+                    GeometryReader { geometry in
+                        HStack(spacing: 0) {
+                            if model.section == .shop || model.section == .collection {
+                                morphologySidebar
+                            }
+                            ScrollView {
+                                sectionContent(garden: garden, date: context.date,
+                                               availableHeight: max(0, geometry.size.height - 48))
+                                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                                    .padding(24)
+                                    // 浮层不占整行；末尾内容仍可滚到花盆上方完整查看。
+                                    .padding(.bottom, GardenPlantingTray.scrollClearance)
                             }
                         }
-                        .frame(maxHeight: .infinity)
-                        GardenPlantingTray(model: model, garden: garden, date: context.date)
+                        .overlay(alignment: .bottomTrailing) {
+                            GardenPlantingTray(model: model, garden: garden, date: context.date)
+                                .frame(width: min(GardenPlantingTray.width, geometry.size.width - 40))
+                                .padding(20)
+                        }
                     }
                 }
                 .navigationTitle(model.section.rawValue)

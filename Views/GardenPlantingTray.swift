@@ -5,19 +5,21 @@ struct GardenPlantingTray: View {
     let model: GardenModel
     let garden: SucculentGarden
     let date: Date
+    static let width: CGFloat = 360
+    static let scrollClearance: CGFloat = 240
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("桌面花盆").font(.headline)
+                Text("桌面花盆").font(.caption.weight(.medium))
                 Spacer()
-                Text("正在设置花盆 \(model.selectedSlot + 1)")
+                Text("花盆 \(model.selectedSlot + 1)")
                     .font(.caption).foregroundStyle(.secondary)
             }
-            HStack(spacing: 16) {
+            HStack(spacing: 10) {
                 ForEach(0..<3, id: \.self) { slot in
                     slotContent(slot)
-                        .padding(10)
+                        .padding(6)
                         .frame(maxWidth: .infinity)
                         .contentShape(Rectangle())
                         .onTapGesture { model.selectedSlot = slot }
@@ -25,7 +27,10 @@ struct GardenPlantingTray: View {
                             Button {
                                 model.openSlot(slot)
                             } label: {
-                                Image(systemName: "arrow.up.right").frame(width: 22, height: 22)
+                                Image(systemName: "arrow.up.right")
+                                    .font(.system(size: 11, weight: .medium))
+                                    .frame(width: 22, height: 22)
+                                    .background(.quaternary, in: Circle())
                             }
                             .buttonStyle(.plain)
                             .padding(5)
@@ -54,23 +59,18 @@ struct GardenPlantingTray: View {
                         .accessibilityIdentifier("garden.slot.\(slot)")
                 }
             }
-            HStack {
-                Text("拖入繁殖材料开始种植，拖动多肉可换盆。")
-                Spacer()
-                Text("成长 \(garden.growthRate.formatted())×")
-            }
-            .font(.caption).foregroundStyle(.secondary)
         }
-        .padding(16)
+        .padding(12)
+        .glassEffect(.regular, in: .rect(cornerRadius: 24))
     }
 
     @ViewBuilder private func slotContent(_ slot: Int) -> some View {
         if let plant = garden.plant(in: slot) {
-            SucculentSlotContent(plant: plant, date: date, rate: garden.effectiveRate(for: plant.species), artSize: 96, showsCountdown: true)
+            SucculentSlotContent(plant: plant, date: date, rate: garden.effectiveRate(for: plant.species), artSize: 78, showsCountdown: true, showsPlantName: true)
                 .contentShape(Rectangle())
                 .draggable(GardenDragItem(kind: .plant, id: plant.id))
         } else {
-            SucculentSlotContent(plant: nil, date: date, rate: garden.growthRate, artSize: 96)
+            SucculentSlotContent(plant: nil, date: date, rate: garden.growthRate, artSize: 78)
         }
     }
 }

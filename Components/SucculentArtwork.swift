@@ -91,6 +91,7 @@ struct SucculentSlotContent: View {
     var artSize: CGFloat = 80
     var isWidget = false
     var showsCountdown = false
+    var showsPlantName = false
 
     private var stage: SucculentStage? { plant?.stage(at: date, rate: rate) }
 
@@ -115,16 +116,16 @@ struct SucculentSlotContent: View {
 
             Text(label)
                 .font(.system(size: 11, weight: .medium))
-                .lineLimit(isWidget ? 2 : 1)
+                .lineLimit(isWidget || showsPlantName ? 2 : 1)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.85)
                 .foregroundStyle(stage == nil ? .secondary : .primary)
             if showsCountdown, let plant {
                 if let seconds = GardenGrowthTime.remaining(for: plant, at: date, rate: rate) {
-                    Text("进阶还需 \(GardenGrowthTime.text(seconds))")
+                    Text("还需 \(GardenGrowthTime.text(seconds))")
                         .font(.system(size: 10)).monospacedDigit()
                         .foregroundStyle(.secondary)
-                        .lineLimit(1).minimumScaleFactor(0.8)
+                        .lineLimit(2).multilineTextAlignment(.center).minimumScaleFactor(0.8)
                 } else {
                     Text("已到最终阶段").font(.system(size: 10)).foregroundStyle(.secondary)
                 }
@@ -135,7 +136,7 @@ struct SucculentSlotContent: View {
 
     private var label: String {
         guard let stage, let plant else { return "空花盆" }
-        guard isWidget else { return plant.species.stageTitle(for: stage) }
+        guard isWidget || showsPlantName else { return plant.species.stageTitle(for: stage) }
         let title = stage == .adult ? "成年" : stage == .prime ? "壮年" : plant.species.stageTitle(for: stage)
         return "\(plant.species.title)（\(title)）"
     }

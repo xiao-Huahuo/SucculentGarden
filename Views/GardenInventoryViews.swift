@@ -85,11 +85,11 @@ struct GardenCollectionView: View {
         VStack(alignment: .leading, spacing: 18) {
             if garden.plants.isEmpty {
                 ContentUnavailableView("收藏里还没有多肉", systemImage: "leaf",
-                                       description: Text("购买一株多肉，或把繁殖材料拖到下方花盆开始种植。"))
+                                       description: Text("购买一株多肉，或把繁殖材料拖到右下角花盆开始种植。"))
                     .frame(maxWidth: .infinity, minHeight: availableHeight)
             } else if garden.unplacedPlants.isEmpty {
                 ContentUnavailableView("多肉已放入花盆", systemImage: "leaf",
-                                       description: Text("可拖动下方多肉换盆，或在花盆菜单中移回收藏。"))
+                                       description: Text("可拖动右下角多肉换盆，或在花盆菜单中移回收藏。"))
                     .frame(maxWidth: .infinity, minHeight: availableHeight)
             } else if matches.isEmpty {
                 if model.search.isEmpty, model.collectionStageIndex != nil {
@@ -184,7 +184,7 @@ struct GardenLeavesView: View {
         VStack(alignment: .leading, spacing: 22) {
             if garden.leaves.isEmpty {
                 ContentUnavailableView("没有待种植的繁殖材料", systemImage: "tray",
-                                       description: Text("前往商店免费领取繁殖材料，再拖到下方花盆开始种植。"))
+                                       description: Text("前往商店免费领取繁殖材料，再拖到右下角花盆开始种植。"))
                     .frame(maxWidth: .infinity, minHeight: availableHeight)
             } else {
                 LazyVGrid(columns: GardenInventoryLayout.columns, alignment: .leading, spacing: GardenInventoryLayout.spacing) {
