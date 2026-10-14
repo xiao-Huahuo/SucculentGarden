@@ -25,6 +25,7 @@
 		27F1DB4E0970CDC4760B4C18 /* DisassemblyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22252BEF99D107F48CB963 /* DisassemblyTests.swift */; };
 		28BF8C27B7EAC919CC4494A1 /* MotherOfThousandsTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2534C35C2EB7BD19C354BF99 /* MotherOfThousandsTypeAtlasFrames.swift */; };
 		28E568979633F3A09258B03A /* MuyuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE4DB383BBFCBF7C8A4E8D /* MuyuTests.swift */; };
+		28F57D35D60D45EA1E7E0808 /* Revision40AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD82589A35BFBA1AC6CE594 /* Revision40AtlasFrames.swift */; };
 		34E3352DA5D2B5ADCE4997ED /* GardenGrowthMultipliers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90AEEEC5AC0CDEB590A4BB9 /* GardenGrowthMultipliers.swift */; };
 		34E49974A8032A45ED0BDF34 /* GardenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD61954E00BC0648E1FA0779 /* GardenModel.swift */; };
 		36CEC5D2BFC5BE44762AD207 /* GardenGrowthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AACD6BABEC58DDEE3F073C /* GardenGrowthTime.swift */; };
@@ -115,6 +116,7 @@
 		C5DBC8F0A58628C53D74F3AB /* MotherOfThousandsTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2534C35C2EB7BD19C354BF99 /* MotherOfThousandsTypeAtlasFrames.swift */; };
 		C6353FEC1FE276C8372B2D00 /* GardenGrowthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AACD6BABEC58DDEE3F073C /* GardenGrowthTime.swift */; };
 		C7391D697FCE482395412CCD /* ProverbCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603411F50BB850AC73732DC7 /* ProverbCatalog.swift */; };
+		C76536873E2CC0DB15FE0396 /* Revision40AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD82589A35BFBA1AC6CE594 /* Revision40AtlasFrames.swift */; };
 		C863B22CD274A81AB9A14DEC /* StonecropTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC74BC32758F161172E682F /* StonecropTypeAtlasFrames.swift */; };
 		C88C00FAD1E4B9BACB7A0DDC /* Revision29AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBC95BD6FA377E3BD4D298D /* Revision29AtlasFrames.swift */; };
 		C8F4EADE8CCC8D065545E96F /* GardenSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBFE3978A3A351DF27DA4BD /* GardenSettingsView.swift */; };
@@ -139,6 +141,7 @@
 		EC1D53F85613AA526DD60D22 /* GrowthMultiplierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CD87B955DAD44B8CAA62AB /* GrowthMultiplierTests.swift */; };
 		ED295231219F90A29DE782F3 /* SucculentGardenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974078AAA77F017C0DE0C8D7 /* SucculentGardenWidget.swift */; };
 		EFB9C01FA7A51856B9923E7A /* SucculentExpansionSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5CFA6850C0BDBD9D5C3F6 /* SucculentExpansionSize.swift */; };
+		F337881632BE004BFE3D446C /* Revision40AtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD82589A35BFBA1AC6CE594 /* Revision40AtlasFrames.swift */; };
 		F87F3A941D9A4242A687ECB2 /* YuzhuiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD8F8CE8210AA232FF02D04 /* YuzhuiTests.swift */; };
 		FCB3B24371B7FC04D3A3F834 /* GardenRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D72C3FB7D57AD9363D3F6 /* GardenRoute.swift */; };
 		FCD0BAFB33F0917B2BE58CCA /* GrowthDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFCE0C3237AF098CDABE20B /* GrowthDisplayTests.swift */; };
@@ -188,6 +191,7 @@
 		30F85854FEFBBEE786DAC248 /* SucculentGarden.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SucculentGarden.entitlements; sourceTree = "<group>"; };
 		3ED33BB0F19B0F2FCC381098 /* SucculentGarden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucculentGarden.swift; sourceTree = "<group>"; };
 		3EF08C8A3230CABB48E8A595 /* SucculentArtworkLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucculentArtworkLayout.swift; sourceTree = "<group>"; };
+		3FD82589A35BFBA1AC6CE594 /* Revision40AtlasFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revision40AtlasFrames.swift; sourceTree = "<group>"; };
 		47E9475886AABC07368851F8 /* MuyuSphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuyuSphere.swift; sourceTree = "<group>"; };
 		48B3869DF72CD18B9EAF629D /* GardenStagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenStagePicker.swift; sourceTree = "<group>"; };
 		4A34D92F1CB568FE13E18B4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -386,6 +390,7 @@
 				8FBC95BD6FA377E3BD4D298D /* Revision29AtlasFrames.swift */,
 				FB752D7E4E8D7C8A87699E9D /* Revision30AtlasFrames.swift */,
 				B69C2594CA9D1C534BCF44BB /* Revision37AtlasFrames.swift */,
+				3FD82589A35BFBA1AC6CE594 /* Revision40AtlasFrames.swift */,
 				ECC74BC32758F161172E682F /* StonecropTypeAtlasFrames.swift */,
 				86E4DA3233AC1D46398E4444 /* YuzhuiTypeAtlasFrames.swift */,
 			);
@@ -585,6 +590,7 @@
 				93B2D9607C18B621A243AB23 /* Revision29AtlasFrames.swift in Sources */,
 				71748B2AEFA9A282B7805CA6 /* Revision30AtlasFrames.swift in Sources */,
 				B037687D69CC13D805A77ECC /* Revision37AtlasFrames.swift in Sources */,
+				28F57D35D60D45EA1E7E0808 /* Revision40AtlasFrames.swift in Sources */,
 				15091A6A5A00DA02F48F2C82 /* StonecropTests.swift in Sources */,
 				5FA1DF6D9298005BC31F5451 /* StonecropTypeAtlasFrames.swift in Sources */,
 				43F0EF4F9F245BD095F3CE97 /* SucculentArtworkLayout.swift in Sources */,
@@ -638,6 +644,7 @@
 				C88C00FAD1E4B9BACB7A0DDC /* Revision29AtlasFrames.swift in Sources */,
 				6F85C77B27E7B6DF148A78F4 /* Revision30AtlasFrames.swift in Sources */,
 				13D6FE238EE6AF96BA9547C7 /* Revision37AtlasFrames.swift in Sources */,
+				F337881632BE004BFE3D446C /* Revision40AtlasFrames.swift in Sources */,
 				C863B22CD274A81AB9A14DEC /* StonecropTypeAtlasFrames.swift in Sources */,
 				7ADBBE0344C317FE6837458C /* SucculentArtwork.swift in Sources */,
 				B12879C5D3F07BF972F68178 /* SucculentArtworkLayout.swift in Sources */,
@@ -681,6 +688,7 @@
 				B87046A12E43716122EDA8DE /* Revision29AtlasFrames.swift in Sources */,
 				9A3AFD394F880520E83A516E /* Revision30AtlasFrames.swift in Sources */,
 				81D2C60A247440A07E2217F5 /* Revision37AtlasFrames.swift in Sources */,
+				C76536873E2CC0DB15FE0396 /* Revision40AtlasFrames.swift in Sources */,
 				244A480ABBD398388F0E57CA /* StonecropTypeAtlasFrames.swift in Sources */,
 				902D72910E247E808FF5E8B0 /* SucculentArtwork.swift in Sources */,
 				9460F1EF49263202F81F0EC3 /* SucculentArtworkLayout.swift in Sources */,
@@ -802,7 +810,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				DEVELOPMENT_TEAM = GU3HYVNR96;
@@ -872,7 +880,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				DEVELOPMENT_TEAM = GU3HYVNR96;

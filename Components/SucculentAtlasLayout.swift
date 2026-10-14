@@ -22,6 +22,7 @@ enum SucculentAtlasLayout {
         result.merge(Revision29AtlasFrames.frames, uniquingKeysWith: { _, new in new })
         result.merge(Revision30AtlasFrames.frames, uniquingKeysWith: { _, new in new })
         result.merge(Revision37AtlasFrames.frames, uniquingKeysWith: { _, new in new })
+        result.merge(Revision40AtlasFrames.frames, uniquingKeysWith: { _, new in new })
         return result
     }()
 }

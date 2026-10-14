@@ -29,5 +29,15 @@
       "source": "https://wenda.huabaike.com/zwyh/88956.html",
       "taxonomyNote": "视觉贸易品种；不虚构确定杂交谱系。"
     }
-  ]
+  ],
+  "clusterArtworkRevision40": {
+    "species": [
+      "cheese",
+      "topsyTurvy",
+      "tangyuan"
+    ],
+    "asset": "RosetteClusters40Atlas",
+    "userConfirmed": "这版朝向合适",
+    "correction": "群生为紧凑大小头，侧芽斜出和侧视、前后遮挡，茎短且隐藏；其他六帧每种原图保留"
+  }
 }
