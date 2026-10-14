@@ -22,6 +22,10 @@
     {
       "url": "https://www.syngentaflowers.com/ams/sites/g/files/kgtney2381/files/media/document/2025/05/19/sf-16827-potted-plants-catalog-digital-300dpi-2023-06-19.pdf",
       "evidence": "Sedum adolphii Fire Storm / Pachyphytum hookeri /部分Sedeveria的Average说明；不是全部用户品种的直接数据"
+    },
+    {
+      "url": "https://kmweb.moa.gov.tw/theme_data.php?id=499&theme=plant_illustration",
+      "evidence": "特玉莲反叶石莲；图鉴记为生长较快，仅作为0.85游戏相对等待初值，不是实测成熟年限"
     }
   ],
   "defaults": [
@@ -114,6 +118,24 @@
       "name": "生石花",
       "y": 3,
       "basis": "SANBI播种苗接近一年才可移栽；映射为游戏中的慢生相对时间估计"
+    },
+    {
+      "species": "cheese",
+      "name": "奶酪",
+      "y": 1.0,
+      "basis": "用户选定奶黄短圆卵形的商用品相；缺乏可靠品系逐期年限，沿桃蛋基准1.00"
+    },
+    {
+      "species": "topsyTurvy",
+      "name": "特玉莲",
+      "y": 0.85,
+      "basis": "农业图鉴生长较快的相对线索；0.85是可覆盖的游戏估计"
+    },
+    {
+      "species": "tangyuan",
+      "name": "汤圆",
+      "y": 1.0,
+      "basis": "用户选定粉白淡绿球形叶品相；商用名称并非统一科学物种，缺乏实测对比，沿基准1.00"
     }
   ],
   "expansionCatalog": "references/succulents/expansion-catalog-28.json",

@@ -15,6 +15,7 @@ enum SucculentSpecies: String, Codable, CaseIterable, Identifiable, Sendable {
     case sakuraCrystal, zebraHaworthia, jadeFan, crystalRetusa, moonRetusa, fortuneHand
     case smallCactusBall, fairyCastle, goldFinger, whiteBird, nineTailFox, moneyStack
     case deerAntler, bearPaw, broadMother, tubeMother, narrowMother
+    case cheese, topsyTurvy, tangyuan
 
     var id: String { rawValue }
     var morphology: SucculentMorphology {
@@ -39,13 +40,15 @@ enum SucculentSpecies: String, Codable, CaseIterable, Identifiable, Sendable {
         default: usesStemCutting ? "枝条" : "叶片"
         }
     }
-    var propagationQuantity: String {
+    var propagationQuantity: String { propagationQuantity(count: 1) }
+
+    func propagationQuantity(count: Int) -> String {
         switch morphology {
-        case .guanyinType, .haworthiaType: "1株"
-        case .conophytumType: "1粒"
-        case .cactusType: "1块"
-        case .motherOfThousandsType: "1芽"
-        default: usesStemCutting ? "1枝" : "1片"
+        case .guanyinType, .haworthiaType: "\(count)株"
+        case .conophytumType: "\(count)粒"
+        case .cactusType: "\(count)块"
+        case .motherOfThousandsType: "\(count)芽"
+        default: usesStemCutting ? "\(count)枝" : "\(count)片"
         }
     }
 

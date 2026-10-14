@@ -9,7 +9,7 @@ struct GardenStageFilterTests {
         let model = GardenModel()
         #expect(model.stageTitles(for: .shop) == ["1", "2", "3", "4", "5", "6"])
         model.shopStageIndex = 5
-        #expect(model.shopSpecies.count == 33)
+        #expect(model.shopSpecies.count == 36)
         #expect(model.shopSpecies.allSatisfy { $0.stages.count == 6 && model.shopStage(for: $0) == $0.stages[5] })
         model.shopMorphology = .moneyStackType
         #expect(model.shopStageIndex == nil)

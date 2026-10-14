@@ -61,5 +61,8 @@ enum SucculentExpansionCatalog {
         .broadMother: .init(title: "宽叶不死鸟", morphology: .motherOfThousandsType, timeMultiplier: 0.75),
         .tubeMother: .init(title: "棒叶不死鸟", morphology: .motherOfThousandsType, timeMultiplier: 0.75),
         .narrowMother: .init(title: "窄叶不死鸟", morphology: .motherOfThousandsType, timeMultiplier: 0.75),
+        .cheese: .init(title: "奶酪", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .topsyTurvy: .init(title: "特玉莲", morphology: .crassulaceaeType, timeMultiplier: 0.85),
+        .tangyuan: .init(title: "汤圆", morphology: .crassulaceaeType, timeMultiplier: 1),
     ]
 }

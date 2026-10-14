@@ -88,6 +88,14 @@ struct SucculentLeaf: Codable, Identifiable, Equatable, Sendable {
     private enum CodingKeys: String, CodingKey { case id, claimedAt, species }
 }
 
+// 仅合并展示；每份材料仍保留原ID，拖放只消耗第一份。
+struct SucculentLeafStack: Identifiable, Sendable {
+    let species: SucculentSpecies
+    let firstLeafID: UUID
+    var count: Int
+    var id: SucculentSpecies { species }
+}
+
 struct SucculentPlant: Codable, Identifiable, Equatable, Sendable {
     let id: UUID
     let acquiredAt: Date
@@ -170,6 +178,20 @@ struct SucculentGarden: Codable, Equatable, Sendable {
     }
     var claimDate: Date?
     var claimedToday = 0
+
+    var leafStacks: [SucculentLeafStack] {
+        var stacks: [SucculentLeafStack] = []
+        var indices: [SucculentSpecies: Int] = [:]
+        for leaf in leaves {
+            if let index = indices[leaf.species] {
+                stacks[index].count += 1
+            } else {
+                indices[leaf.species] = stacks.count
+                stacks.append(SucculentLeafStack(species: leaf.species, firstLeafID: leaf.id, count: 1))
+            }
+        }
+        return stacks
+    }
 
     var unplacedPlants: [SucculentPlant] {
         let placed = Set(slots.compactMap { $0 })

@@ -33,8 +33,10 @@ struct GardenShopView: View {
         let price = species.purchasePrice(for: stage)
         return GardenInventoryCard(typeMultiplier: garden.growthMultipliers.x(for: species.morphology),
                                    timeMultiplier: garden.growthMultipliers.y(for: species)) {
-            SucculentArtwork(stage: stage, species: species, isLeaf: price == nil)
-                .frame(width: GardenInventoryLayout.imageWidth, height: GardenInventoryLayout.imageHeight)
+            SucculentArtwork(stage: stage, species: species, isLeaf: price == nil,
+                             pointsPerCentimeter: GardenInventoryLayout.pointsPerCentimeter)
+                .frame(width: GardenInventoryLayout.imageWidth,
+                       height: GardenInventoryLayout.imageHeight(species: species, stage: stage, isMaterial: price == nil))
             Text(species.title).font(.headline).lineLimit(1).minimumScaleFactor(0.85)
             Picker("生长时期", selection: Binding(
                 get: { model.shopStage(for: species) },
@@ -115,8 +117,10 @@ struct GardenCollectionView: View {
         let index = (garden.plants.firstIndex(where: { $0.id == plant.id }) ?? 0) + 1
         return GardenInventoryCard(typeMultiplier: garden.growthMultipliers.x(for: plant.species.morphology),
                                    timeMultiplier: garden.growthMultipliers.y(for: plant.species)) {
-            SucculentArtwork(stage: stage, species: plant.species)
-                .frame(width: GardenInventoryLayout.imageWidth, height: GardenInventoryLayout.imageHeight)
+            SucculentArtwork(stage: stage, species: plant.species,
+                             pointsPerCentimeter: GardenInventoryLayout.pointsPerCentimeter)
+                .frame(width: GardenInventoryLayout.imageWidth,
+                       height: GardenInventoryLayout.imageHeight(species: plant.species, stage: stage, isMaterial: false))
                 .draggable(GardenDragItem(kind: .plant, id: plant.id))
             Text("\(plant.species.title) \(index)").font(.headline).lineLimit(1).minimumScaleFactor(0.85)
             Text(plant.species.stageTitle(for: stage)).font(.caption).foregroundStyle(.secondary)
@@ -184,19 +188,21 @@ struct GardenLeavesView: View {
                     .frame(maxWidth: .infinity, minHeight: availableHeight)
             } else {
                 LazyVGrid(columns: GardenInventoryLayout.columns, alignment: .leading, spacing: GardenInventoryLayout.spacing) {
-                    ForEach(Array(garden.leaves.enumerated()), id: \.element.id) { index, leaf in
-                        GardenInventoryCard(typeMultiplier: garden.growthMultipliers.x(for: leaf.species.morphology),
-                                            timeMultiplier: garden.growthMultipliers.y(for: leaf.species)) {
-                            SucculentArtwork(stage: nil, species: leaf.species, isLeaf: true)
-                                .frame(width: GardenInventoryLayout.imageWidth, height: GardenInventoryLayout.imageHeight)
-                            Text("\(leaf.species.title)\(leaf.species.propagationTitle)")
+                    ForEach(garden.leafStacks) { stack in
+                        GardenInventoryCard(typeMultiplier: garden.growthMultipliers.x(for: stack.species.morphology),
+                                            timeMultiplier: garden.growthMultipliers.y(for: stack.species)) {
+                            SucculentArtwork(stage: nil, species: stack.species, isLeaf: true,
+                                             pointsPerCentimeter: GardenInventoryLayout.pointsPerCentimeter)
+                                .frame(width: GardenInventoryLayout.imageWidth,
+                                       height: GardenInventoryLayout.imageHeight(species: stack.species, stage: stack.species.initialStage, isMaterial: true))
+                            Text("\(stack.species.title)\(stack.species.propagationTitle)")
                                 .font(.headline).lineLimit(1).minimumScaleFactor(0.85)
-                            Text(leaf.species.propagationQuantity)
+                            Text(stack.species.propagationQuantity(count: stack.count))
                                 .font(.caption).foregroundStyle(.secondary)
                         }
                         .contentShape(Rectangle())
-                        .draggable(GardenDragItem(kind: .leaf, id: leaf.id))
-                        .accessibilityLabel("拖动\(leaf.species.title)\(leaf.species.propagationTitle) \(index + 1) 到花盆")
+                        .draggable(GardenDragItem(kind: .leaf, id: stack.firstLeafID))
+                        .accessibilityLabel("拖动\(stack.species.title)\(stack.species.propagationTitle)，共\(stack.species.propagationQuantity(count: stack.count))；拖动一份到花盆")
                     }
                 }
                 .disabled(model.isBusy)

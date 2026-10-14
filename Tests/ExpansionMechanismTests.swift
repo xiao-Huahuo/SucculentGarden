@@ -7,10 +7,11 @@ struct ExpansionMechanismTests {
     private let date = Date(timeIntervalSince1970: 1_800_000_000)
 
     @Test
-    func catalogContainsAllFiftyThreeAdditionsAndKeepsWhiteMoonUnique() {
-        #expect(SucculentExpansionCatalog.entries.count == 53)
-        #expect(SucculentSpecies.allCases.count == 68)
+    func catalogContainsAllAdditionsAndKeepsExistingVarietiesUnique() {
+        #expect(SucculentExpansionCatalog.entries.count == 56)
+        #expect(SucculentSpecies.allCases.count == 71)
         #expect(SucculentSpecies.allCases.filter { $0.title == "白月影" }.count == 1)
+        #expect(SucculentSpecies.allCases.filter { $0.title == "千佛手" }.count == 1)
         #expect(SucculentSpecies.jadeFan.title == "玉扇")
         #expect(SucculentSpecies.cobwebHouseleek.title == "蛛丝卷绢")
         #expect(SucculentSpecies.allCases.filter { $0.morphology == .haworthiaType }.count == 12)

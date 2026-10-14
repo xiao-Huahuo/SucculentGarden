@@ -39,7 +39,7 @@ struct GardenNavigationTests {
         model.selectedSlot = 2
         model.shopStages[.whiteMoon] = .cluster
         let saved = model.garden
-        #expect(SucculentSpecies.allCases.filter { $0.morphology == .crassulaceaeType }.count == 30)
+        #expect(SucculentSpecies.allCases.filter { $0.morphology == .crassulaceaeType }.count == 33)
         #expect(SucculentMorphology.allCases.map(\.title) == ["景天科型", "万年草型", "玉坠型", "观音莲型", "肉锥型", "十二卷型", "仙人掌型", "钱串型", "不死鸟型"])
         model.shopMorphology = .stonecropType
         #expect(model.shopSpecies == [.goldenStonecrop, .snowStonecrop, .jixingMeiren, .blueChalk, .ballPine])
@@ -49,7 +49,7 @@ struct GardenNavigationTests {
         model.shopMorphology = .yuzhuiType
         #expect(model.shopSpecies == [.yuzhui, .fireFestival, .gollumJade])
         model.shopMorphology = .crassulaceaeType
-        #expect(model.shopSpecies.count == 30)
+        #expect(model.shopSpecies.count == 33)
         #expect(!model.shopSpecies.contains(.goldenStonecrop))
         model.search = "白月影"
         #expect(model.shopSpecies == [.whiteMoon])

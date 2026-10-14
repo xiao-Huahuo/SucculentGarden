@@ -1,0 +1,33 @@
+{
+  "revision": 37,
+  "selection": "User chose the first image-generation batch; original PNG bytes kept.",
+  "existingSpeciesReused": "thousandBuddha",
+  "species": [
+    {
+      "id": "cheese",
+      "title": "奶酪",
+      "morphology": "crassulaceaeType",
+      "appearance": "用户确认：奶黄偏橙、短圆卵形叶带小尖",
+      "source": "https://www.drlmeng.com/nailao.html",
+      "taxonomyNote": "商用品系存在命名争议，采用用户确认的视觉形态，不断言唯一物种。"
+    },
+    {
+      "id": "topsyTurvy",
+      "title": "特玉莲",
+      "morphology": "crassulaceaeType",
+      "botanicalName": "Echeveria runyonii 'Topsy Turvy'",
+      "source": "https://kmweb.moa.gov.tw/theme_data.php?id=499&theme=plant_illustration",
+      "photoSource": "https://www.wplantas.com.br/suculenta-topsy-turvy",
+      "photoReferenceUrl": "https://cdn.awsli.com.br/800x800/2429/2429322/produto/161379463/img_20230908_124244-jz2v7pyt6z.jpg",
+      "appearance": "灰蓝白粉、厚匙形叶沿中轴反折，叶缘向背面反卷，尖端向株心反翘。"
+    },
+    {
+      "id": "tangyuan",
+      "title": "汤圆",
+      "morphology": "crassulaceaeType",
+      "appearance": "用户确认：粉白淡绿、近球形小圆叶",
+      "source": "https://wenda.huabaike.com/zwyh/88956.html",
+      "taxonomyNote": "视觉贸易品种；不虚构确定杂交谱系。"
+    }
+  ]
+}
