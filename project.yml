@@ -8,7 +8,7 @@ settings:
   base:
     SWIFT_VERSION: "6.0"
     MARKETING_VERSION: "1.9"
-    CURRENT_PROJECT_VERSION: "32"
+    CURRENT_PROJECT_VERSION: "35"
     DEVELOPMENT_LANGUAGE: zh-Hans
     CODE_SIGN_STYLE: Manual
     CODE_SIGN_IDENTITY: "Apple Development"
@@ -34,11 +34,13 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: local.littlecomponent.app
         PRODUCT_NAME: 多肉花园
         PRODUCT_MODULE_NAME: SucculentGarden
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     info:
       path: App/Info.plist
       properties:
-        CFBundleDisplayName: SucculentGarden
-        CFBundleName: SucculentGarden
+        # macOS compares the unlocalized name with the on-disk bundle name before localizing it.
+        CFBundleDisplayName: $(PRODUCT_NAME)
+        CFBundleName: $(PRODUCT_NAME)
         CFBundleLocalizations: [zh-Hans]
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)
@@ -76,13 +78,14 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: local.littlecomponent.app.widget
         PRODUCT_NAME: LittleComponentWidget
         PRODUCT_MODULE_NAME: SucculentGardenWidgets
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         APPLICATION_EXTENSION_API_ONLY: YES
         SKIP_INSTALL: YES
     info:
       path: Widgets/Info.plist
       properties:
-        CFBundleDisplayName: SucculentGarden
-        CFBundleName: SucculentGarden
+        CFBundleDisplayName: $(PRODUCT_NAME)
+        CFBundleName: $(PRODUCT_NAME)
         CFBundleLocalizations: [zh-Hans]
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)

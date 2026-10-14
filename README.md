@@ -25,6 +25,8 @@ XcodeGen、Apple Development 签名身份和 App Group 配置。
 请完成工程生成、Release 构建、签名验证、安装、Widget 登记和运行检查。
 把应用安装到 ~/Applications/多肉花园.app，保留已有存档、Bundle ID、
 Widget kind 和用户设置；升级时只停止本项目的相关进程。
+原路径升级应刷新正式应用登记，不要先注销正在使用的正式应用，
+否则系统可能把已放在桌面的组件当作卸载而移除。
 
 首次在另一台 Mac 配置签名时，请统一使用我的 Team 和可用的 App Group，
 同步 project.yml 与 Services/SucculentStore.swift 中的 groupID。
