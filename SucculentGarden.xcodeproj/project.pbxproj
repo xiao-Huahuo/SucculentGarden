@@ -14,6 +14,7 @@
 		116163576BC02D21F178E183 /* HaworthiaSingleStemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34DEE746CC0765A08C1B490 /* HaworthiaSingleStemTests.swift */; };
 		15091A6A5A00DA02F48F2C82 /* StonecropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6115E4E363840A6ACFE43299 /* StonecropTests.swift */; };
 		16DB51E92927763D61BA98C9 /* SucculentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F5E64908046D27A9FE35D /* SucculentStore.swift */; };
+		18B544E8C534BFBCB84117B4 /* SucculentGarden.icns in Resources */ = {isa = PBXBuildFile; fileRef = C605E3FE6EC89FBC8A78A9ED /* SucculentGarden.icns */; };
 		199BC57BBDDEF1AD11D1EC48 /* MuyuWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E2E21513AB9485F01498EB /* MuyuWidgetView.swift */; };
 		1A4E2EDDAF49290A591E9008 /* HaworthiaTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C110741CFFCCB145684565 /* HaworthiaTypeAtlasFrames.swift */; };
 		1E58E2670335CD2BC1FA9E08 /* SucculentAtlasLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7166269493EBFDAA91DB80B /* SucculentAtlasLayout.swift */; };
@@ -106,6 +107,7 @@
 		BDDBBEEAA5A7717E09D3FE55 /* ArtworkImageDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7791A858025B3CA10930EAA4 /* ArtworkImageDecoder.swift */; };
 		BDEC47B6BFFB53E8D6100042 /* SucculentExpansionCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231581680832517FB0DE5971 /* SucculentExpansionCatalog.swift */; };
 		BF113605F4332F59064445CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 862E45AB4D39E1C45E20D0A3 /* Assets.xcassets */; };
+		C084089F2CDBFB97EA77D048 /* SucculentGarden.icns in Resources */ = {isa = PBXBuildFile; fileRef = C605E3FE6EC89FBC8A78A9ED /* SucculentGarden.icns */; };
 		C5DBC8F0A58628C53D74F3AB /* MotherOfThousandsTypeAtlasFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2534C35C2EB7BD19C354BF99 /* MotherOfThousandsTypeAtlasFrames.swift */; };
 		C6353FEC1FE276C8372B2D00 /* GardenGrowthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AACD6BABEC58DDEE3F073C /* GardenGrowthTime.swift */; };
 		C7391D697FCE482395412CCD /* ProverbCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603411F50BB850AC73732DC7 /* ProverbCatalog.swift */; };
@@ -224,6 +226,7 @@
 		C2FA503FE526E7DB77682D7D /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C34DEE746CC0765A08C1B490 /* HaworthiaSingleStemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaworthiaSingleStemTests.swift; sourceTree = "<group>"; };
 		C3CD87B955DAD44B8CAA62AB /* GrowthMultiplierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthMultiplierTests.swift; sourceTree = "<group>"; };
+		C605E3FE6EC89FBC8A78A9ED /* SucculentGarden.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SucculentGarden.icns; sourceTree = "<group>"; };
 		C90AEEEC5AC0CDEB590A4BB9 /* GardenGrowthMultipliers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenGrowthMultipliers.swift; sourceTree = "<group>"; };
 		CAA7A67EB82FF8314D53912B /* GardenInventoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenInventoryViews.swift; sourceTree = "<group>"; };
 		CDFCE0C3237AF098CDABE20B /* GrowthDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthDisplayTests.swift; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 			children = (
 				862E45AB4D39E1C45E20D0A3 /* Assets.xcassets */,
 				05020BD2B84AB9E9ECAEB84F /* proverbs.json */,
+				C605E3FE6EC89FBC8A78A9ED /* SucculentGarden.icns */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -511,6 +515,7 @@
 			files = (
 				BF113605F4332F59064445CC /* Assets.xcassets in Resources */,
 				3D9DC785AC879A6B4A0E433C /* InfoPlist.strings in Resources */,
+				C084089F2CDBFB97EA77D048 /* SucculentGarden.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +533,7 @@
 			files = (
 				9D68DCCBB3E6C1A843651A7A /* Assets.xcassets in Resources */,
 				A0591BE1FDD52EA35ADD81B1 /* InfoPlist.strings in Resources */,
+				18B544E8C534BFBCB84117B4 /* SucculentGarden.icns in Resources */,
 				4AC609F1E20B82D28CDC4190 /* proverbs.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,7 +700,7 @@
 		0293B632BEE7597EDD88A7CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = App/SucculentGarden.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -712,7 +718,7 @@
 		0F8045F4D265FA7C84ED4A32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = App/SucculentGarden.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -731,7 +737,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = Widgets/SucculentGardenWidgets.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
@@ -784,7 +790,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				DEVELOPMENT_TEAM = GU3HYVNR96;
@@ -854,7 +860,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_LANGUAGE = "zh-Hans";
 				DEVELOPMENT_TEAM = GU3HYVNR96;
@@ -917,7 +923,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = Widgets/SucculentGardenWidgets.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;

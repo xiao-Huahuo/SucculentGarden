@@ -8,7 +8,7 @@ settings:
   base:
     SWIFT_VERSION: "6.0"
     MARKETING_VERSION: "1.9"
-    CURRENT_PROJECT_VERSION: "35"
+    CURRENT_PROJECT_VERSION: "36"
     DEVELOPMENT_LANGUAGE: zh-Hans
     CODE_SIGN_STYLE: Manual
     CODE_SIGN_IDENTITY: "Apple Development"
@@ -29,18 +29,22 @@ targets:
       - Widgets/MuyuTapIntent.swift
       - path: Resources/Assets.xcassets
         buildPhase: resources
+      - path: Resources/SucculentGarden.icns
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: local.littlecomponent.app
         PRODUCT_NAME: 多肉花园
         PRODUCT_MODULE_NAME: SucculentGarden
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
     info:
       path: App/Info.plist
       properties:
         # macOS compares the unlocalized name with the on-disk bundle name before localizing it.
         CFBundleDisplayName: $(PRODUCT_NAME)
         CFBundleName: $(PRODUCT_NAME)
+        # Ship every ICNS size for clients that do not read the compiled asset catalog.
+        CFBundleIconFile: SucculentGarden.icns
         CFBundleLocalizations: [zh-Hans]
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)
@@ -78,7 +82,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: local.littlecomponent.app.widget
         PRODUCT_NAME: LittleComponentWidget
         PRODUCT_MODULE_NAME: SucculentGardenWidgets
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
         APPLICATION_EXTENSION_API_ONLY: YES
         SKIP_INSTALL: YES
     info:
@@ -86,6 +90,7 @@ targets:
       properties:
         CFBundleDisplayName: $(PRODUCT_NAME)
         CFBundleName: $(PRODUCT_NAME)
+        CFBundleIconFile: SucculentGarden.icns
         CFBundleLocalizations: [zh-Hans]
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleShortVersionString: $(MARKETING_VERSION)
