@@ -1,0 +1,426 @@
+[
+  {
+    "id": "qiuli",
+    "title": "秋丽",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Graptosedum Francesco Baldi",
+    "y": 0.85,
+    "appearance": "Loose pale grey-green rosettes with long narrow pointed fleshy leaves, faint peach blush, gradually branching stems"
+  },
+  {
+    "id": "tiya",
+    "title": "蒂亚",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedeveria Letizia",
+    "y": 1,
+    "appearance": "Compact glossy green spoon-pointed leaves, vivid scarlet-red leaf margins and tips, short branching rosettes"
+  },
+  {
+    "id": "blueStoneLotus",
+    "title": "蓝石莲",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria peacockii",
+    "y": 1.25,
+    "appearance": "Broad flattened powder-blue spoon leaves, low symmetrical layered rosette, subtle pink-purple outer edges"
+  },
+  {
+    "id": "blueJilian",
+    "title": "蓝姬莲",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria minima horticultural blue form",
+    "y": 1.25,
+    "appearance": "Small tightly packed blue-grey rosettes with many tiny pointed narrow leaves and fine rose-red tips"
+  },
+  {
+    "id": "otome",
+    "title": "乙女心",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedum pachyphyllum",
+    "y": 1,
+    "appearance": "Upright short stalks bearing plump elongated club-shaped jade-green leaves, blunt pink-red ends, no flat lotus petals"
+  },
+  {
+    "id": "jellyBean",
+    "title": "虹之玉",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedum rubrotinctum",
+    "y": 1,
+    "appearance": "Upright branching stems with short very round jelly-bean leaves, green bases and cherry-red rounded tops"
+  },
+  {
+    "id": "thousandBuddha",
+    "title": "千佛手",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedeveria horticultural form",
+    "y": 1,
+    "appearance": "Long tapered plump banana-like light green to yellow leaves packed into small upright pointed clusters"
+  },
+  {
+    "id": "mingyue",
+    "title": "铭月",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedum adolphii",
+    "y": 1,
+    "appearance": "Golden yellow-orange pointed thick leaves in open rosettes on short upright stems"
+  },
+  {
+    "id": "orion",
+    "title": "猎户座",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria Orion",
+    "y": 1.25,
+    "appearance": "Symmetrical broad spoon-leaf rosettes, silvery blue-purple leaves with distinct pastel pink-purple tips"
+  },
+  {
+    "id": "markus",
+    "title": "马库斯",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedeveria Markus",
+    "y": 1,
+    "appearance": "Small compact olive-green rosettes, pointed thick spoon leaves with warm orange-red tips, short branching stems"
+  },
+  {
+    "id": "ellen",
+    "title": "艾伦",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Pachyveria horticultural form",
+    "y": 1.25,
+    "appearance": "Very plump rounded blue-green to lavender-pink egg-shaped leaves in a compact loose rosette"
+  },
+  {
+    "id": "laul",
+    "title": "劳尔",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedum clavatum",
+    "y": 1,
+    "appearance": "Powdered blue-green short club-shaped oval thick leaves, compact branching clusters with tiny orange-red tips"
+  },
+  {
+    "id": "iceJade",
+    "title": "冰玉",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria horticultural form",
+    "y": 1.25,
+    "appearance": "Plump broad rounded pale jade-green leaves with a softly luminous smooth waxy surface and delicate pink tips"
+  },
+  {
+    "id": "chocolateBrick",
+    "title": "巧克力方砖",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria Melaco",
+    "y": 1.25,
+    "appearance": "Compact rosettes of broad spoon-shaped glossy chocolate-brown leaves, dark burgundy edges, green young center"
+  },
+  {
+    "id": "peachPride",
+    "title": "碧桃",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria Peach Pride",
+    "y": 1.25,
+    "appearance": "Broad rounded spoon-shaped yellow-green leaves with peach-orange margins, loose full rosettes"
+  },
+  {
+    "id": "ebony",
+    "title": "乌木",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria agavoides Ebony",
+    "y": 1.25,
+    "appearance": "Firm pointed triangular green succulent leaves, striking near-black burgundy border and tip, tight agave-like rosette"
+  },
+  {
+    "id": "blueElf",
+    "title": "蓝精灵",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Sedeveria Blue Elf",
+    "y": 1,
+    "appearance": "Small blue-green powdery pointed oval rosettes on short slender upright branching stems, coral red tips"
+  },
+  {
+    "id": "waterPeach",
+    "title": "水蜜桃",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria Momotarou horticultural form",
+    "y": 1.25,
+    "appearance": "Dense broad pointed pale mint rosette leaves with soft peach-pink broad tip areas, clearly thick leaf planes"
+  },
+  {
+    "id": "onslow",
+    "title": "昂斯诺",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria Onslow",
+    "y": 1.25,
+    "appearance": "Compact yellow-green spoon leaves, broad rounded ends, orange-pink edges, a dense cabbage-like low rosette"
+  },
+  {
+    "id": "blueApple",
+    "title": "蓝苹果",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Echeveria horticultural form",
+    "y": 1.25,
+    "appearance": "Small short-leaf compact blue-green rosette, round oval leaf bodies with abruptly pointed red ends"
+  },
+  {
+    "id": "paleSnow",
+    "title": "淡雪",
+    "morphology": "crassulaceaeType",
+    "botanicalReference": "Graptosedum horticultural form",
+    "y": 0.85,
+    "appearance": "Loose rosettes of pale cream-grey elongated pointed thick leaves with gentle peach-pink tips, branching stems"
+  },
+  {
+    "id": "blueChalk",
+    "title": "蓝松",
+    "morphology": "stonecropType",
+    "botanicalReference": "Curio repens",
+    "y": 1,
+    "appearance": "Upright thin pale silver-blue cylindrical finger-like succulent leaves in tufts; many slim blue rods, no round beads"
+  },
+  {
+    "id": "ballPine",
+    "title": "球松",
+    "morphology": "stonecropType",
+    "botanicalReference": "Sedum multiceps",
+    "y": 1,
+    "appearance": "Tiny green dense pine-like heads of narrow needle-shaped fleshy leaves on short branching stems; miniature shrub shape"
+  },
+  {
+    "id": "fireFestival",
+    "title": "火祭",
+    "morphology": "yuzhuiType",
+    "botanicalReference": "Crassula capitella",
+    "y": 1,
+    "appearance": "UPRIGHT red succulent with triangular pointed thick leaves in opposite stacked pairs along vertical branching stems, green inner leaves, bright scarlet upper leaves"
+  },
+  {
+    "id": "gollumJade",
+    "title": "吸财树",
+    "morphology": "yuzhuiType",
+    "botanicalReference": "Crassula ovata Gollum",
+    "y": 1.5,
+    "appearance": "UPRIGHT miniature jade shrub with plump green tubular trumpet leaves, concave cup-like red-tinted ends, short stout branched woody base in late stages"
+  },
+  {
+    "id": "mountainRose",
+    "title": "山地玫瑰",
+    "morphology": "guanyinType",
+    "botanicalReference": "Aeonium former Greenovia",
+    "y": 1.5,
+    "appearance": "Dense green rose-bud-shaped rosette of many rounded spoon leaves curved inward, like a partially closed rose; short basal offsets, not red-tipped spiky leaves"
+  },
+  {
+    "id": "cobwebHouseleek",
+    "title": "蛛丝卷绢",
+    "morphology": "guanyinType",
+    "botanicalReference": "Sempervivum arachnoideum",
+    "y": 1,
+    "appearance": "Compact pointed green rosettes tinged red, fine white cobweb threads distinctly spanning leaf tips and covering the small central crown"
+  },
+  {
+    "id": "maughanii",
+    "title": "毛汉尼",
+    "morphology": "conophytumType",
+    "botanicalReference": "Conophytum maughanii",
+    "y": 3,
+    "appearance": "Single short rounded globose or truncated living-stone body, smooth translucent green-ochre to wine-red top, tiny central fissure, no strongly branched brown Lithops patterns"
+  },
+  {
+    "id": "splitRock",
+    "title": "帝玉",
+    "morphology": "conophytumType",
+    "botanicalReference": "Pleiospilos nelii",
+    "y": 2.5,
+    "appearance": "One stout pair of broad grey-green opposite rock-like leaves with flattened rounded tops, deep central cleft and tiny dark speckles; low green living stone"
+  },
+  {
+    "id": "grassJade",
+    "title": "草玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Many narrow pointed green fleshy leaves, small translucent windowed tips with fine dark green vertical veins, delicate thin leaf-tip hairs"
+  },
+  {
+    "id": "iceLantern",
+    "title": "冰灯玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Large rounded inflated clear pale green leaf tips, wide smooth highly translucent windows, bright restrained glassy highlights, dense low rosette"
+  },
+  {
+    "id": "blackSkinJade",
+    "title": "黑肌玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Very dark green to smoky brown-purple fleshy leaf bodies with clear smoky translucent rounded windows and pale fine veins"
+  },
+  {
+    "id": "redLineJade",
+    "title": "赤线玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Clear green rounded fleshy leaf windows with distinctive fine red-burgundy longitudinal lines, not solid red leaves"
+  },
+  {
+    "id": "blueMirrorJade",
+    "title": "蓝镜玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Broad round pale blue-green leaves, very wide mirror-like transparent windows with delicate dark blue-green veins"
+  },
+  {
+    "id": "whiteLotusJade",
+    "title": "白莲花玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Pale whitish mint-green pointed thick leaves forming a low lotus-like rosette; translucent triangular windows with fine grey-green veins"
+  },
+  {
+    "id": "goldenJade",
+    "title": "黄金玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Golden lime-yellow fleshy leaf bodies with some green streaks and clear pale yellow-green rounded windows; luminous yellow-green rosette"
+  },
+  {
+    "id": "sakuraCrystal",
+    "title": "樱水晶玉露",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Longer narrow pale green translucent leaves ending in fine pointed tips, fine window veins and very subtle pink blush; crystal-like spiky rosette"
+  },
+  {
+    "id": "zebraHaworthia",
+    "title": "条纹十二卷",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Firm upright pointed DARK GREEN opaque triangular leaves, conspicuous raised WHITE HORIZONTAL stripes on outer surfaces; no false glassy windows"
+  },
+  {
+    "id": "jadeFan",
+    "title": "玉扇",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Very thick rectangular-topped succulent leaves arranged in TWO OPPOSING ROWS forming a fan, flat translucent truncated tops with pale reticulated window lines; NOT a circular rosette"
+  },
+  {
+    "id": "crystalRetusa",
+    "title": "水晶寿",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Broad thick triangular green leaves with flat translucent triangular top windows, distinct thin vein lines, a low star-like rosette"
+  },
+  {
+    "id": "moonRetusa",
+    "title": "月影寿",
+    "morphology": "haworthiaType",
+    "botanicalReference": "Haworthia/Haworthiopsis horticultural form",
+    "y": 2,
+    "appearance": "Wide pale cream-mint triangular thick leaves, softly translucent triangular windows, faint grey-green veins, broad low rosette"
+  },
+  {
+    "id": "fortuneHand",
+    "title": "招财手",
+    "morphology": "cactusType",
+    "botanicalReference": "Opuntia microdasys horticultural hand form",
+    "y": 1.75,
+    "appearance": "Green flat oval cactus pads growing upright and branching like raised hands, evenly spaced little white-gold glochid tufts on visible areoles"
+  },
+  {
+    "id": "smallCactusBall",
+    "title": "小仙人球",
+    "morphology": "cactusType",
+    "botanicalReference": "Echinopsis eyriesii visual reference",
+    "y": 1.75,
+    "appearance": "Small GREEN round globular cactus with 10 to 14 clear vertical ribs and evenly spaced pale short starburst spines on areoles, no leaf rosette"
+  },
+  {
+    "id": "fairyCastle",
+    "title": "万重山",
+    "morphology": "cactusType",
+    "botanicalReference": "Acanthocereus tetragonus Fairy Castle",
+    "y": 1.75,
+    "appearance": "Cluster of different-height upright green five-ribbed columnar cactus towers like a miniature castle, small pale areoles and short tidy spines"
+  },
+  {
+    "id": "goldFinger",
+    "title": "金手指",
+    "morphology": "cactusType",
+    "botanicalReference": "Mammillaria elongata",
+    "y": 1.75,
+    "appearance": "Several small upright finger-like green cactus columns thickly covered in orderly fine gold-yellow radial spines; clear individual cylinders"
+  },
+  {
+    "id": "whiteBird",
+    "title": "白鸟",
+    "morphology": "cactusType",
+    "botanicalReference": "Mammillaria plumosa",
+    "y": 1.75,
+    "appearance": "Compact small round cactus balls densely covered in delicate WHITE FEATHERY radial spines, soft feather-like texture over a green globular body, no cotton blobs"
+  },
+  {
+    "id": "nineTailFox",
+    "title": "九尾狐",
+    "morphology": "cactusType",
+    "botanicalReference": "Cleistocactus colademononis",
+    "y": 1.75,
+    "appearance": "Long slender cylindrical cactus stems covered in fine LONG WHITE SOFT HAIRS, older stems arch downward in a few separate furry tails; never nine animal tails"
+  },
+  {
+    "id": "moneyStack",
+    "title": "钱串",
+    "morphology": "moneyStackType",
+    "botanicalReference": "Crassula marnieriana",
+    "y": 1,
+    "appearance": "Opposite paired thick triangular mint-green leaves tightly STACKED around slender upright stems, square coin-like pagoda chains with fine pink edges"
+  },
+  {
+    "id": "deerAntler",
+    "title": "鹿角海棠",
+    "morphology": "moneyStackType",
+    "botanicalReference": "Delosperma lehmannii",
+    "y": 1.25,
+    "appearance": "Upright branching stems with paired fleshy triangular blue-green leaves that diverge like short deer antlers, no round bead strings"
+  },
+  {
+    "id": "bearPaw",
+    "title": "熊童子",
+    "morphology": "moneyStackType",
+    "botanicalReference": "Cotyledon tomentosa",
+    "y": 2,
+    "appearance": "Upright branching small shrub, plump fat green bear-paw leaves covered in very fine white hairs, each leaf end has 3 to 7 dark reddish-brown claw teeth"
+  },
+  {
+    "id": "broadMother",
+    "title": "宽叶不死鸟",
+    "morphology": "motherOfThousandsType",
+    "botanicalReference": "Kalanchoe daigremontiana",
+    "y": 0.75,
+    "appearance": "Upright succulent with broad fleshy triangular green leaves, scalloped notched leaf edges; from adult stage many tiny rooted green plantlets along BOTH leaf margins"
+  },
+  {
+    "id": "tubeMother",
+    "title": "棒叶不死鸟",
+    "morphology": "motherOfThousandsType",
+    "botanicalReference": "Kalanchoe delagoensis",
+    "y": 0.75,
+    "appearance": "Upright succulent with narrow cylindrical mottled green-brown fleshy leaves in whorls; from adult stage clusters of tiny green plantlets AT LEAF ENDS, not all along the cylindrical sides"
+  },
+  {
+    "id": "narrowMother",
+    "title": "窄叶不死鸟",
+    "morphology": "motherOfThousandsType",
+    "botanicalReference": "Kalanchoe houghtonii",
+    "y": 0.75,
+    "appearance": "Upright branching succulent with long narrow lanceolate mottled green fleshy leaves, from adult stage many tiny plantlets along serrated leaf MARGINS, narrower than broad-leaf form"
+  }
+]

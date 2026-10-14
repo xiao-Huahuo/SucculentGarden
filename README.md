@@ -1,0 +1,163 @@
+# SucculentGarden · 多肉花园
+
+把会长大的多肉养在 Mac 桌面上。电脑负责长肉，你负责欣赏，以及别把零钱花光。
+
+这里有 **68 个品种、9 种形态**。从一片叶、一根枝或一颗种子开始，慢慢养成一盆；也可以在商店直接买个大户。暂时不用浇水、不用补光——现实里的多肉已经够考验人类了，桌面这盆先放你一马。
+
+顺便附赠一个木鱼球：点一下，功德 +1，福缘随机 +1～3。多肉在长，功德也在长，工作进度请自行负责。
+
+## 快速入手：让 Codex 当园丁
+
+先准备一台 **macOS 26 或以上**的 Mac，安装完整 Xcode，首次打开完成必要的许可与组件安装。只有 Command Line Tools 还不足以构建这个 Widget 工程。
+
+打开 Codex 的本地任务，把**仓库链接或本地文件夹路径**填进下面的提示词，直接发给它：
+
+```text
+请把 SucculentGarden 部署到这台 Mac。
+
+仓库地址：git@github.com:xiao-Huahuo/SucculentGarden.git
+（如已下载到本地，也可改为该文件夹的完整路径。）
+
+如果给的是 URL，请先克隆到本地；如果给的是路径，直接使用该目录。
+先阅读 AGENTS.md / CLAUDE.md 和开发规范.md，再检查 Xcode、macOS SDK、
+XcodeGen、Apple Development 签名身份和 App Group 配置。
+
+请完成工程生成、Release 构建、签名验证、安装、Widget 登记和运行检查。
+把应用安装到 ~/Applications/多肉花园.app，保留已有存档、Bundle ID、
+Widget kind 和用户设置；升级时只停止本项目的相关进程。
+
+首次在另一台 Mac 配置签名时，请统一使用我的 Team 和可用的 App Group，
+同步 project.yml 与 Services/SucculentStore.swift 中的 groupID。
+不要把作者的 Team ID 当成我的签名身份。
+
+能自行完成的步骤请继续做；确需我登录 Apple 账号、授权钥匙串，
+或工具无法操作“编辑小组件”时，再告诉我最短的操作步骤。
+最后报告安装位置、验证结果和仍需我确认的项目。
+```
+
+一句话版也行：**“仓库在这里，读完开发规范，帮我构建并部署到 Mac 桌面，保留原数据。”**
+
+Codex 可以检查环境、改签名配置、编译、安装和核对数据。本人账号登录、验证码、必要的系统授权，以及工具碰不到的桌面入口，仍可能需要你点几下。园丁可以代劳，Apple 账号还是你的。
+
+仓库：[xiao-Huahuo/SucculentGarden](https://github.com/xiao-Huahuo/SucculentGarden)。已下载源码时，也可直接把本地目录交给 Codex，不必重复克隆。
+
+## 快速入手：自己动手
+
+### 1. 拿到工程，打开 Xcode
+
+下载或克隆 [源码](https://github.com/xiao-Huahuo/SucculentGarden)，进入项目根目录。安装 [XcodeGen](https://github.com/yonaskolb/XcodeGen#installing)，用于从 `project.yml` 生成工程；已有 Homebrew 的话：
+
+```bash
+brew install xcodegen
+xcodegen generate
+open LittleComponent.xcodeproj
+```
+
+当前最低系统为 macOS 26，需要能提供 macOS 26 SDK 的完整 Xcode。本机使用 Xcode 27 验证。
+
+### 2. 给花园办一张身份证
+
+仓库自带的是作者的签名配置。**首次在自己的 Mac 上构建**，需要先准备 Apple Development 签名身份，并统一修改：
+
+| 位置 | 要改的内容 |
+| --- | --- |
+| `project.yml` | `DEVELOPMENT_TEAM` 换成自己的 Team ID |
+| `project.yml` 的两个 target | App Group 都换成自己可用的同一个组 |
+| `Services/SucculentStore.swift` | `groupID` 与上面的 App Group 完全一致 |
+
+木鱼和花园存储共用这一个 `groupID`。在 Xcode 的 **Signing & Capabilities** 中核对主应用和扩展都选了正确 Team、同一个 App Group；如需登录或创建证书，在 Xcode 设置的 Apple Accounts 中完成。
+
+修改 `project.yml` 后再运行 `xcodegen generate`。只在生成的 Xcode 工程里改设置，下次重新生成可能会把它盖掉——园丁记性很好，生成器的记性更好。
+
+已有安装升级时沿用原 Team、共享组和标识，别给同一盆肉换一个存档地址。
+
+### 3. 构建并安装
+
+在项目根目录执行：
+
+```bash
+xcodebuild -project LittleComponent.xcodeproj \
+  -scheme LittleComponent \
+  -configuration Release \
+  -destination 'platform=macOS' \
+  -derivedDataPath build/DerivedData build
+```
+
+成功后，应用位于：
+
+```text
+build/DerivedData/Build/Products/Release/多肉花园.app
+```
+
+把完整 `.app` 复制到 `~/Applications/多肉花园.app`，打开一次，再添加桌面组件。升级已有安装时先退出旧主应用，替换整包；如果桌面仍显示旧图，可让 Codex检查是否仍驻留旧扩展或加载了开发副本。
+
+`.app` 就是应用；DMG 是它的搬家纸箱。本项目目前提供本机开发签名安装，下载一份源码不等于已经完成公证分发。
+
+### 4. 把花园搬到桌面
+
+桌面空白处右键 → **编辑小组件** → **SucculentGarden**，选择：
+
+- **多肉花园**：小号一盆，中号三盆。小号可以配置显示哪个花盆。
+- **木鱼球**：点图标敲一下，时钟、功德、福缘和每日箴言一起待在桌面。
+
+多肉下方显示“名称（阶段）”；每盆右上角的箭头会打开主页面对应花盆。摆在哪里你说了算，电脑右上角并没有更好的风水加成。
+
+如果刚更新后编辑面板还显示旧名字，先关闭再打开面板；仍旧不对时检查实际安装副本与系统登记，不必急着删除存档或重启整台 Mac。
+
+## 开始养肉
+
+1. **先领材料。** 商店切到初始阶段，领取叶片、枝条、小苗、种子或芽块。所有品种共享每天 **5 次**免费额度，初始零钱 **$10**。
+2. **再种进盆。** 到“我的叶片”，把材料拖到主页面下方的空花盆；种下才创建新植株。桌面 Widget 展示同一份盆位数据，拖放在主页面完成。
+3. **等它长大。** 关闭应用后仍按经过的自然时间计算成长。底部花盆有实时进阶倒计时；设置能调全局成长速度，也能分别调类型乘数 x 和品种乘数 y。
+4. **管理收藏。** 入盆的植株从“我的多肉”移出，拖到另一盆会移动而不会复制。卡片右上角或右键菜单可以放入花盆、出售，以及在允许的时期拆分繁殖。
+
+钱不够就先养，养大再卖；这次是虚拟零钱，盆再多也不会挤占阳台。
+
+商店与“我的多肉”都有形态和阶段筛选。选形态时显示对应的时期名；不选形态时显示 **1～6**，选第6期会隐藏没有第6期的品种。商店统一切换商品时期，收藏按植株的实际阶段筛选。
+
+## 花园规则，简明版
+
+| 形态 | 品种数 | 繁殖材料与阶段 |
+| --- | --- | --- |
+| 景天科型 | 30 | 叶片；叶插小芽、幼年、成年、壮年、老桩、群生 |
+| 万年草型 | 5 | 枝条；小草/小苗、群生、草丛/丛生、爆盆 |
+| 玉坠型 | 3 | 叶片；叶插小芽加后续四期，玉坠小草还可免费领取到收藏 |
+| 观音莲型 | 3 | 小苗；小苗、幼年、成年、群生、老桩 |
+| 肉锥型 | 3 | 种子；种子、萌芽、幼年、成年、老桩 |
+| 十二卷型 | 12 | 小苗；小苗、幼年、成年、壮年、老桩 |
+| 仙人掌型 | 6 | 芽块；芽块、幼年、成年、群生、爆盆 |
+| 钱串型 | 3 | 枝条；小苗、幼年、成年、老桩、多头 |
+| 不死鸟型 | 3 | 小芽；小芽、幼年、成年、壮年、老桩、群生 |
+
+这些是游戏里的**形态分类**，不是植物学考试的标准答案。
+
+- x、y 乘的是时间：实际进阶间隔 = 基础间隔 × x × y ÷ 全局成长倍率。x/y 越大，长得越慢；它们不会偷偷把售价翻倍。
+- 拆分消耗原植株，返还同种材料，不占每日免费领取次数。不同形态与时期的可拆数量不同；生石花和十种软玉露/寿不能拆，玉扇、条纹十二卷保留末期分苗。
+- 不死鸟成年后可以“摘芽”：保留母株，每株冷却24小时，不占商店领取额度。直接领取小芽仍占每天5次。
+- 图标按成长时期绘制，群生、单头老桩、木质枝、透光窗和细毛各有各的讲究。熊童子不是绿手套，玉扇也不是绿色莲花。
+
+## 数据与开发
+
+存档保存在本机 App Group 的应用支持目录：花园用 `SucculentGarden/garden.json`，木鱼用 `MuyuBall/progress.json`。植株、盆位、材料、钱包和倍率原子保存；升级有格式迁移，不会把你养了几天的肉当成一次性预览。
+
+工程与 scheme 暂时仍叫 `LittleComponent`，编辑小组件里的品牌名是 `SucculentGarden`，安装文件和主界面保留“多肉花园”。工程的旧名字是工牌，不是展示牌。
+
+- `project.yml`：构建、签名与名称的配置来源。
+- `App/`、`Views/`、`Components/`：主应用与共用界面。
+- `Models/`、`Services/`：规则、成长与存储。
+- `Widgets/`：桌面时间线与交互。
+- `Resources/`：透明图集、花盆与100句箴言。
+- `Tests/`：77项隔离测试，不拿用户的花盆做实验。
+
+需要跑测试时：
+
+```bash
+xcodebuild -project LittleComponent.xcodeproj \
+  -scheme LittleComponent \
+  -destination 'platform=macOS' \
+  -derivedDataPath build/DerivedData test
+```
+
+当前68品种与157个编译图像资源都在应用里。主界面按需加载图片，窗口/Widget的图片缓存预算分别是16/8 MiB；这只是图片缓存，不是整个进程的减肥保证书。
+
+完整规则演进、迁移与验收范围见 [变更记录](docs/change_history/README.md)，开发约定见 [开发规范](开发规范.md)。素材提示词与来源记录在 `output/succulents/`；ChatGPT 图标权利归 OpenAI，参见 [官方品牌说明](https://openai.com/brand/)。

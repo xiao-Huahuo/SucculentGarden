@@ -1,0 +1,65 @@
+// 新品种的稳定ID与展示参数；默认y是园艺资料映射的游戏相对时间，不是实测自然年限。
+import Foundation
+
+enum SucculentExpansionCatalog {
+    struct Entry: Sendable {
+        let title: String
+        let morphology: SucculentMorphology
+        let timeMultiplier: Double
+    }
+    static let entries: [SucculentSpecies: Entry] = [
+        .qiuli: .init(title: "秋丽", morphology: .crassulaceaeType, timeMultiplier: 0.85),
+        .tiya: .init(title: "蒂亚", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .blueStoneLotus: .init(title: "蓝石莲", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .blueJilian: .init(title: "蓝姬莲", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .otome: .init(title: "乙女心", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .jellyBean: .init(title: "虹之玉", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .thousandBuddha: .init(title: "千佛手", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .mingyue: .init(title: "铭月", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .orion: .init(title: "猎户座", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .markus: .init(title: "马库斯", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .ellen: .init(title: "艾伦", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .laul: .init(title: "劳尔", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .iceJade: .init(title: "冰玉", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .chocolateBrick: .init(title: "巧克力方砖", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .peachPride: .init(title: "碧桃", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .ebony: .init(title: "乌木", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .blueElf: .init(title: "蓝精灵", morphology: .crassulaceaeType, timeMultiplier: 1),
+        .waterPeach: .init(title: "水蜜桃", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .onslow: .init(title: "昂斯诺", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .blueApple: .init(title: "蓝苹果", morphology: .crassulaceaeType, timeMultiplier: 1.25),
+        .paleSnow: .init(title: "淡雪", morphology: .crassulaceaeType, timeMultiplier: 0.85),
+        .blueChalk: .init(title: "蓝松", morphology: .stonecropType, timeMultiplier: 1),
+        .ballPine: .init(title: "球松", morphology: .stonecropType, timeMultiplier: 1),
+        .fireFestival: .init(title: "火祭", morphology: .yuzhuiType, timeMultiplier: 1),
+        .gollumJade: .init(title: "吸财树", morphology: .yuzhuiType, timeMultiplier: 1.5),
+        .mountainRose: .init(title: "山地玫瑰", morphology: .guanyinType, timeMultiplier: 1.5),
+        .cobwebHouseleek: .init(title: "蛛丝卷绢", morphology: .guanyinType, timeMultiplier: 1),
+        .maughanii: .init(title: "毛汉尼", morphology: .conophytumType, timeMultiplier: 3),
+        .splitRock: .init(title: "帝玉", morphology: .conophytumType, timeMultiplier: 2.5),
+        .grassJade: .init(title: "草玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .iceLantern: .init(title: "冰灯玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .blackSkinJade: .init(title: "黑肌玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .redLineJade: .init(title: "赤线玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .blueMirrorJade: .init(title: "蓝镜玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .whiteLotusJade: .init(title: "白莲花玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .goldenJade: .init(title: "黄金玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .sakuraCrystal: .init(title: "樱水晶玉露", morphology: .haworthiaType, timeMultiplier: 2),
+        .zebraHaworthia: .init(title: "条纹十二卷", morphology: .haworthiaType, timeMultiplier: 2),
+        .jadeFan: .init(title: "玉扇", morphology: .haworthiaType, timeMultiplier: 2),
+        .crystalRetusa: .init(title: "水晶寿", morphology: .haworthiaType, timeMultiplier: 2),
+        .moonRetusa: .init(title: "月影寿", morphology: .haworthiaType, timeMultiplier: 2),
+        .fortuneHand: .init(title: "招财手", morphology: .cactusType, timeMultiplier: 1.75),
+        .smallCactusBall: .init(title: "小仙人球", morphology: .cactusType, timeMultiplier: 1.75),
+        .fairyCastle: .init(title: "万重山", morphology: .cactusType, timeMultiplier: 1.75),
+        .goldFinger: .init(title: "金手指", morphology: .cactusType, timeMultiplier: 1.75),
+        .whiteBird: .init(title: "白鸟", morphology: .cactusType, timeMultiplier: 1.75),
+        .nineTailFox: .init(title: "九尾狐", morphology: .cactusType, timeMultiplier: 1.75),
+        .moneyStack: .init(title: "钱串", morphology: .moneyStackType, timeMultiplier: 1),
+        .deerAntler: .init(title: "鹿角海棠", morphology: .moneyStackType, timeMultiplier: 1.25),
+        .bearPaw: .init(title: "熊童子", morphology: .moneyStackType, timeMultiplier: 2),
+        .broadMother: .init(title: "宽叶不死鸟", morphology: .motherOfThousandsType, timeMultiplier: 0.75),
+        .tubeMother: .init(title: "棒叶不死鸟", morphology: .motherOfThousandsType, timeMultiplier: 0.75),
+        .narrowMother: .init(title: "窄叶不死鸟", morphology: .motherOfThousandsType, timeMultiplier: 0.75),
+    ]
+}

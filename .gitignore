@@ -1,0 +1,21 @@
+.DS_Store
+/build/
+**/xcuserdata/
+*.xcuserstate
+
+# 本机构建、工作记录与素材生成过程；正式运行素材已在Resources中。
+/output/
+/TASK_STATE.md
+/.codex/
+/.claude/
+/references/succulents/user29-images/
+*.p12
+*.mobileprovision
+
+# Finder文件夹图标与Xcode个人工作区。
+Icon?
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+# 原始参考照片仅用于本机绘图；仓库保留来源JSON和正式运行图集。
+/references/succulents/*.jpg
+/references/succulents/*.png

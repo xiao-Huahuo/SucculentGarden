@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "LittleComponent: Generate Project",
+      "type": "process",
+      "command": "xcodegen",
+      "args": ["generate"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "LittleComponent: Build",
+      "type": "process",
+      "command": "xcodebuild",
+      "args": [
+        "-project", "${workspaceFolder}/LittleComponent.xcodeproj",
+        "-scheme", "LittleComponent",
+        "-configuration", "Debug",
+        "-destination", "platform=macOS",
+        "-derivedDataPath", "${workspaceFolder}/build",
+        "-jobs", "1",
+        "build"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "LittleComponent: Run",
+      "type": "process",
+      "command": "open",
+      "args": ["-n", "${workspaceFolder}/build/Build/Products/Debug/多肉花园.app"],
+      "dependsOn": "LittleComponent: Build",
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    }
+  ]
+}

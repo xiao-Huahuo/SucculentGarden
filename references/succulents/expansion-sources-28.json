@@ -1,0 +1,40 @@
+{
+  "scope": "形态与参考名称用于绘图，品种y是可调游戏估计；不把阶段日数当作自然成熟实测时间",
+  "sources": [
+    {
+      "scope": "十二卷软叶窗与慢生初值",
+      "url": "https://www.rhs.org.uk/plants/155369/haworthia-cooperi/details",
+      "basis": "低矮肉质叶有三角或圆形透明叶端，记录慢生与5–10年成熟；游戏y2是保守映射，不是测定天数"
+    },
+    {
+      "scope": "玉扇形态",
+      "url": "https://pza.sanbi.org/Haworthia-truncata-var-truncata",
+      "basis": "肉叶两列对生、截平叶端；本玩法依用户不用叶插，只在末期分小头"
+    },
+    {
+      "scope": "不死鸟宽叶与棒叶小芽分布",
+      "url": "https://plants.ces.ncsu.edu/plants/kalanchoe-daigremontiana/",
+      "basis": "宽叶沿叶缘产生小芽"
+    },
+    {
+      "scope": "棒叶不死鸟",
+      "url": "https://plants.ces.ncsu.edu/plants/kalanchoe-delagoensis/",
+      "basis": "细长亚圆柱叶，末端齿部形成小芽；图只成年及之后带芽是游戏约定"
+    },
+    {
+      "scope": "熊童子绒毛与爪齿",
+      "url": "https://www.nparks.gov.sg/florafaunaweb/flora/8/4/8489",
+      "basis": "厚绒毛、多齿端肉叶；枝条玩法按用户钱串型统一"
+    },
+    {
+      "scope": "猎户座颜色/叶型",
+      "url": "https://www.rhs.org.uk/plants/342404/echeveria-orion/details",
+      "basis": "匙形、银绿至紫粉色莲座"
+    },
+    {
+      "scope": "毛汉尼透明体",
+      "url": "https://biodiversityadvisor.sanbi.org/search/detail/7b39946d-3f8b-4d8d-aebb-7769b08463a7",
+      "basis": "近球状融合肉叶体、至少局部透明、绿赭红色；图不得复制生石花分叉斑纹"
+    }
+  ]
+}

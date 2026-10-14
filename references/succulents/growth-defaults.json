@@ -1,0 +1,128 @@
+{
+  "baseline": "黄丽 y=1.00；相对等待时间，不是每天增速，也不是植物自然成熟年限",
+  "formula": "基础间隔 * x * y / globalGrowthRate",
+  "scope": "公开资料中的快慢与部分年限用于保守初值；生长受季节环境影响，没有统一品种逐期时间；允许用户覆盖，价格不变",
+  "sources": [
+    {
+      "url": "https://plants.ces.ncsu.edu/plants/echeveria/common-name/echeveria/",
+      "evidence": "Growth Rate: Slow；拟石莲花属资料，仅用于相关园艺品种的属级保守估计"
+    },
+    {
+      "url": "https://pza.sanbi.org/lithops",
+      "evidence": "播种苗不到一年可移栽；长期生长、年度叶片更新和细小种子"
+    },
+    {
+      "url": "https://plants.ces.ncsu.edu/plants/sedum-morganianum/",
+      "evidence": "Growth Rate: Medium；同属玉坠的参考，圆叶玉坠品种并无统一逐期实测时间"
+    },
+    {
+      "url": "https://www.rhs.org.uk/plants/sempervivum/growing-guide",
+      "evidence": "匍匐茎产生小莲座，可分小苗繁殖；观音莲保持1.00基准"
+    },
+    {
+      "url": "https://www.syngentaflowers.com/ams/sites/g/files/kgtney2381/files/media/document/2025/05/19/sf-16827-potted-plants-catalog-digital-300dpi-2023-06-19.pdf",
+      "evidence": "Sedum adolphii Fire Storm / Pachyphytum hookeri /部分Sedeveria的Average说明；不是全部用户品种的直接数据"
+    }
+  ],
+  "defaults": [
+    {
+      "species": "huangli",
+      "name": "黄丽",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "taodan",
+      "name": "桃蛋",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "chihuahua",
+      "name": "吉娃娃",
+      "y": 1.25,
+      "basis": "NC State拟石莲花属慢生资料；属级线索，非该园艺品种的实测倍率"
+    },
+    {
+      "species": "orangeMonroe",
+      "name": "橙梦露",
+      "y": 1.25,
+      "basis": "NC State拟石莲花属慢生资料；属级线索，非该园艺品种的实测倍率"
+    },
+    {
+      "species": "blueBird",
+      "name": "蓝鸟",
+      "y": 1.25,
+      "basis": "NC State拟石莲花属慢生资料；属级线索，非该园艺品种的实测倍率"
+    },
+    {
+      "species": "ruby",
+      "name": "红宝石",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "jilongyue",
+      "name": "姬胧月",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "babyFinger",
+      "name": "婴儿手指",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "whiteMoon",
+      "name": "白月影",
+      "y": 1.25,
+      "basis": "NC State拟石莲花属慢生资料；属级线索，非该园艺品种的实测倍率"
+    },
+    {
+      "species": "goldenStonecrop",
+      "name": "黄金万年草",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "snowStonecrop",
+      "name": "薄雪万年草",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "jixingMeiren",
+      "name": "姬星美人",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "yuzhui",
+      "name": "玉坠",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "guanyin",
+      "name": "观音莲",
+      "y": 1.0,
+      "basis": "1.00基准；资料仅支持中速或不足以可靠比较园艺品种，未编造逐期天数"
+    },
+    {
+      "species": "lithops",
+      "name": "生石花",
+      "y": 3,
+      "basis": "SANBI播种苗接近一年才可移栽；映射为游戏中的慢生相对时间估计"
+    }
+  ],
+  "expansionCatalog": "references/succulents/expansion-catalog-28.json",
+  "expansionSources": "references/succulents/expansion-sources-28.json",
+  "newTypeDefaults": {
+    "haworthiaType": 1.5,
+    "cactusType": 1.25,
+    "moneyStackType": 0.75,
+    "motherOfThousandsType": 0.5
+  },
+  "newTypeBasis": "按用户允许另设的游戏等待乘数；y结合已有公开生长特性作相对初值。无统一园艺品种逐期实测时间，不能把这些小数当测量比值。"
+}
