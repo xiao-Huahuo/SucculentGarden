@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1430"
-   wasCreatedForAppExtension = "YES"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B13F1EC0B511B85D94379FB2"
-               BuildableName = "LittleComponent.app"
-               BlueprintName = "LittleComponent"
-               ReferencedContainer = "container:LittleComponent.xcodeproj">
+               BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+               BuildableName = "多肉花园.app"
+               BlueprintName = "SucculentGarden"
+               ReferencedContainer = "container:SucculentGarden.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,10 +29,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9F671A7DF311B0C4D619FF0D"
+               BlueprintIdentifier = "6D6FE579E8E9985B6466BFEE"
                BuildableName = "LittleComponentWidget.appex"
-               BlueprintName = "LittleComponentWidget"
-               ReferencedContainer = "container:LittleComponent.xcodeproj">
+               BlueprintName = "SucculentGardenWidgets"
+               ReferencedContainer = "container:SucculentGarden.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,10 +46,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F671A7DF311B0C4D619FF0D"
-            BuildableName = "LittleComponentWidget.appex"
-            BlueprintName = "LittleComponentWidget"
-            ReferencedContainer = "container:LittleComponent.xcodeproj">
+            BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+            BuildableName = "多肉花园.app"
+            BlueprintName = "SucculentGarden"
+            ReferencedContainer = "container:SucculentGarden.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -58,8 +57,8 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       askForAppToLaunch = "YES"
       useCustomWorkingDirectory = "NO"
@@ -68,16 +67,15 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F671A7DF311B0C4D619FF0D"
-            BuildableName = "LittleComponentWidget.appex"
-            BlueprintName = "LittleComponentWidget"
-            ReferencedContainer = "container:LittleComponent.xcodeproj">
+            BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+            BuildableName = "多肉花园.app"
+            BlueprintName = "SucculentGarden"
+            ReferencedContainer = "container:SucculentGarden.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <CommandLineArguments>
       </CommandLineArguments>
       <EnvironmentVariables>
@@ -104,16 +102,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F671A7DF311B0C4D619FF0D"
-            BuildableName = "LittleComponentWidget.appex"
-            BlueprintName = "LittleComponentWidget"
-            ReferencedContainer = "container:LittleComponent.xcodeproj">
+            BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+            BuildableName = "多肉花园.app"
+            BlueprintName = "SucculentGarden"
+            ReferencedContainer = "container:SucculentGarden.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

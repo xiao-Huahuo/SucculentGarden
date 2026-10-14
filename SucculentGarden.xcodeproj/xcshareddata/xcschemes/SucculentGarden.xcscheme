@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B13F1EC0B511B85D94379FB2"
-               BuildableName = "LittleComponent.app"
-               BlueprintName = "LittleComponent"
-               ReferencedContainer = "container:LittleComponent.xcodeproj">
+               BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+               BuildableName = "多肉花园.app"
+               BlueprintName = "SucculentGarden"
+               ReferencedContainer = "container:SucculentGarden.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B13F1EC0B511B85D94379FB2"
-            BuildableName = "LittleComponent.app"
-            BlueprintName = "LittleComponent"
-            ReferencedContainer = "container:LittleComponent.xcodeproj">
+            BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+            BuildableName = "多肉花园.app"
+            BlueprintName = "SucculentGarden"
+            ReferencedContainer = "container:SucculentGarden.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -44,10 +44,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C9C438B0A9A901EE5586C78D"
+               BlueprintIdentifier = "C8FCEE695B75D2D92D819EFC"
                BuildableName = "MuyuTests.xctest"
                BlueprintName = "MuyuTests"
-               ReferencedContainer = "container:LittleComponent.xcodeproj">
+               ReferencedContainer = "container:SucculentGarden.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,10 +68,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B13F1EC0B511B85D94379FB2"
-            BuildableName = "LittleComponent.app"
-            BlueprintName = "LittleComponent"
-            ReferencedContainer = "container:LittleComponent.xcodeproj">
+            BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+            BuildableName = "多肉花园.app"
+            BlueprintName = "SucculentGarden"
+            ReferencedContainer = "container:SucculentGarden.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -87,10 +87,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B13F1EC0B511B85D94379FB2"
-            BuildableName = "LittleComponent.app"
-            BlueprintName = "LittleComponent"
-            ReferencedContainer = "container:LittleComponent.xcodeproj">
+            BlueprintIdentifier = "AA1E2769768D17A1BD3EC835"
+            BuildableName = "多肉花园.app"
+            BlueprintName = "SucculentGarden"
+            ReferencedContainer = "container:SucculentGarden.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

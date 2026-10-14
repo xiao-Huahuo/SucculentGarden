@@ -4,7 +4,7 @@ import WidgetKit
 import AppKit
 
 @main
-struct LittleComponentApp: App {
+struct SucculentGardenApp: App {
     @State private var gardenModel = GardenModel()
     @Environment(\.scenePhase) private var scenePhase
     init() {

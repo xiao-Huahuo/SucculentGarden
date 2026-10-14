@@ -50,7 +50,7 @@ Codex 可以检查环境、改签名配置、编译、安装和核对数据。�
 ```bash
 brew install xcodegen
 xcodegen generate
-open LittleComponent.xcodeproj
+open SucculentGarden.xcodeproj
 ```
 
 当前最低系统为 macOS 26，需要能提供 macOS 26 SDK 的完整 Xcode。本机使用 Xcode 27 验证。
@@ -76,8 +76,8 @@ open LittleComponent.xcodeproj
 在项目根目录执行：
 
 ```bash
-xcodebuild -project LittleComponent.xcodeproj \
-  -scheme LittleComponent \
+xcodebuild -project SucculentGarden.xcodeproj \
+  -scheme SucculentGarden \
   -configuration Release \
   -destination 'platform=macOS' \
   -derivedDataPath build/DerivedData build
@@ -140,7 +140,7 @@ build/DerivedData/Build/Products/Release/多肉花园.app
 
 存档保存在本机 App Group 的应用支持目录：花园用 `SucculentGarden/garden.json`，木鱼用 `MuyuBall/progress.json`。植株、盆位、材料、钱包和倍率原子保存；升级有格式迁移，不会把你养了几天的肉当成一次性预览。
 
-工程与 scheme 暂时仍叫 `LittleComponent`，编辑小组件里的品牌名是 `SucculentGarden`，安装文件和主界面保留“多肉花园”。工程的旧名字是工牌，不是展示牌。
+工程、主 target、模块和 scheme 都叫 `SucculentGarden`，扩展 target 为 `SucculentGardenWidgets`。安装文件和中文主界面仍叫“多肉花园”；旧组件的内部 kind 与运行路径作为兼容标识保留，老花盆不用搬家。
 
 - `project.yml`：构建、签名与名称的配置来源。
 - `App/`、`Views/`、`Components/`：主应用与共用界面。
@@ -152,8 +152,8 @@ build/DerivedData/Build/Products/Release/多肉花园.app
 需要跑测试时：
 
 ```bash
-xcodebuild -project LittleComponent.xcodeproj \
-  -scheme LittleComponent \
+xcodebuild -project SucculentGarden.xcodeproj \
+  -scheme SucculentGarden \
   -destination 'platform=macOS' \
   -derivedDataPath build/DerivedData test
 ```

@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "LittleComponent: Generate Project",
+      "label": "SucculentGarden: Generate Project",
       "type": "process",
       "command": "xcodegen",
       "args": ["generate"],
@@ -10,12 +10,12 @@
       "problemMatcher": []
     },
     {
-      "label": "LittleComponent: Build",
+      "label": "SucculentGarden: Build",
       "type": "process",
       "command": "xcodebuild",
       "args": [
-        "-project", "${workspaceFolder}/LittleComponent.xcodeproj",
-        "-scheme", "LittleComponent",
+        "-project", "${workspaceFolder}/SucculentGarden.xcodeproj",
+        "-scheme", "SucculentGarden",
         "-configuration", "Debug",
         "-destination", "platform=macOS",
         "-derivedDataPath", "${workspaceFolder}/build",
@@ -27,11 +27,11 @@
       "problemMatcher": "$gcc"
     },
     {
-      "label": "LittleComponent: Run",
+      "label": "SucculentGarden: Run",
       "type": "process",
       "command": "open",
       "args": ["-n", "${workspaceFolder}/build/Build/Products/Debug/多肉花园.app"],
-      "dependsOn": "LittleComponent: Build",
+      "dependsOn": "SucculentGarden: Build",
       "dependsOrder": "sequence",
       "problemMatcher": []
     }

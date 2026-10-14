@@ -74,7 +74,7 @@ private struct WidgetReply<Value>: @unchecked Sendable {
 }
 
 @main
-struct LittleComponentWidgetBundle: WidgetBundle {
+struct SucculentGardenWidgetBundle: WidgetBundle {
     var body: some Widget {
         MuyuBallWidget()
         SucculentGardenWidget()
