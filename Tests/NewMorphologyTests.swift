@@ -12,7 +12,8 @@ struct NewMorphologyTests {
         defer { try? FileManager.default.removeItem(at: directory) }
         let url = directory.appendingPathComponent("garden.json")
         let store = SucculentStore(fileURL: url)
-        _ = try await store.buy(stage: .juvenile, in: 0, at: date)
+        let bought = try await store.buy(stage: .juvenile, at: date)
+        _ = try await store.assign(plantID: try #require(bought.plants.last).id, to: 0)
         let existing = try #require((try await store.read()).plant(in: 0))
         for species in [SucculentSpecies.guanyin, .lithops, .huangli, .snowStonecrop, .yuzhui] {
             let state = try await store.claimLeaf(species: species, at: date)
@@ -69,7 +70,7 @@ struct NewMorphologyTests {
                 try bytes.write(to: url)
                 let store = SucculentStore(fileURL: url)
                 await #expect(throws: GardenError.self) { try await store.disassemble(plantID: plant.id, at: date) }
-                await #expect(throws: GardenError.self) { try await store.buy(stage: species.initialStage, species: species, in: 0, at: date) }
+                await #expect(throws: GardenError.self) { try await store.buy(stage: species.initialStage, species: species, at: date) }
                 #expect(try Data(contentsOf: url) == bytes)
             }
         }

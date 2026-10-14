@@ -27,7 +27,10 @@ struct GardenSettingsView: View {
                     }
                     HStack(spacing: 8) {
                         ForEach([1.0, 10.0, 100.0, 1000.0], id: \.self) { value in
-                            Button("\(Int(value))×") { Task { await model.changeRate(value) } }
+                            Button("\(Int(value))×") {
+                                rate = value
+                                Task { await model.changeRate(value) }
+                            }
                                 .disabled(model.isBusy)
                         }
                     }
@@ -141,10 +144,13 @@ private struct GardenMultiplierControls: View {
     private func apply(isType: Bool, reset: Bool) {
         guard var multipliers = model.garden?.growthMultipliers else { return }
         if isType {
+            if reset { x = morphology.defaultTimeMultiplier }
             multipliers.morphology[morphology.rawValue] = reset ? nil : x
         } else {
+            if reset { y = species.defaultTimeMultiplier }
             multipliers.species[species.rawValue] = reset ? nil : y
         }
-        Task { await model.changeMultipliers(multipliers) }
+        let message = reset ? "\(isType ? "类型" : "植物")时间乘数已恢复默认" : "\(isType ? "类型" : "植物")时间乘数已保存，成长间隔已更新"
+        Task { await model.changeMultipliers(multipliers, message: message) }
     }
 }

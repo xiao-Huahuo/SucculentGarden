@@ -72,9 +72,9 @@ struct StonecropTests {
             for plant in try await store.read().plants { _ = try await store.sell(plantID: plant.id, at: later) }
             let before = try Data(contentsOf: url)
             for stage in [SucculentStage.grassSprout, .sprout, .juvenile, .cluster] {
-                await #expect(throws: GardenError.self) { try await store.buy(stage: stage, species: species, in: 0, at: later) }
+                await #expect(throws: GardenError.self) { try await store.buy(stage: stage, species: species, at: later) }
             }
-            await #expect(throws: GardenError.self) { try await store.buy(stage: .grassCluster, in: 0, at: later) }
+            await #expect(throws: GardenError.self) { try await store.buy(stage: .grassCluster, at: later) }
             #expect(try Data(contentsOf: url) == before)
             let twig = try #require((try await store.claimLeaf(species: species, at: later)).leaves.last)
             let small = try await store.sow(leafID: twig.id, in: 0, at: later)
@@ -84,8 +84,8 @@ struct StonecropTests {
             var previous = soldSmall
             let prices: [(SucculentStage, Int, Int)] = [(.grassCluster, 3, 2), (.grassClump, 10, 5), (.grassOverflow, 20, 10)]
             for (stage, buy, sell) in prices {
-                let bought = try await store.buy(stage: stage, species: species, in: 0, at: later)
-                let plant = try #require(bought.plant(in: 0))
+                let bought = try await store.buy(stage: stage, species: species, at: later)
+                let plant = try #require(bought.plants.last)
                 #expect(bought.money == previous.money - buy && plant.stage(at: later, rate: 1) == stage)
                 let sold = try await store.sell(plantID: plant.id, at: later)
                 #expect(sold.money == bought.money + sell && sold.plants.isEmpty)

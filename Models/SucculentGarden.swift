@@ -198,6 +198,14 @@ struct SucculentGarden: Codable, Equatable, Sendable {
         return plants.filter { !placed.contains($0.id) }
     }
 
+    var collectionPlants: [SucculentPlant] {
+        slots.indices.compactMap { plant(in: $0) } + unplacedPlants
+    }
+
+    func slot(containing plantID: UUID) -> Int? {
+        slots.firstIndex { $0 == plantID }
+    }
+
     func plant(in slot: Int) -> SucculentPlant? {
         guard slots.indices.contains(slot), let id = slots[slot] else { return nil }
         return plants.first { $0.id == id }

@@ -36,8 +36,8 @@ struct SucculentSpeciesTests {
         for species in SucculentSpecies.allCases where species.morphology != .yuzhuiType {
             let url = directory.appendingPathComponent("\(species.rawValue).json")
             let store = SucculentStore(fileURL: url)
-            let bought = try await store.buy(stage: species.stages[1], species: species, in: 0, at: date)
-            let plant = try #require(bought.plant(in: 0))
+            let bought = try await store.buy(stage: species.stages[1], species: species, at: date)
+            let plant = try #require(bought.plants.last)
             #expect(plant.species == species && bought.money == 7)
             let moved = try await store.assign(plantID: plant.id, to: 2)
             #expect(moved.slots == [nil, nil, plant.id])
@@ -81,7 +81,7 @@ struct SucculentSpeciesTests {
         let url = directory.appendingPathComponent("garden.json")
         let store = SucculentStore(fileURL: url)
         _ = try await store.claimLeaf(at: date)
-        var previous = try await store.buy(stage: .juvenile, in: 1, at: date)
+        var previous = try await store.buy(stage: .juvenile, at: date)
         previous.version = 2
         var object = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(previous)) as? [String: Any])
         for key in ["leaves", "plants"] {

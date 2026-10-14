@@ -1,22 +1,23 @@
 // 主页面真正的拖放接收区；与 Widget 共用植株内容，保存成功后才显示新苗。
 import SwiftUI
+import OSLog
 
 struct GardenPlantingTray: View {
     let model: GardenModel
     let garden: SucculentGarden
     let date: Date
-    static let width: CGFloat = 360
-    static let scrollClearance: CGFloat = 240
+    @State private var targetedSlot: Int?
+    private let logger = Logger(subsystem: "local.littlecomponent.app", category: "GardenDrop")
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: GardenPlantingLayout.spacing) {
             HStack {
                 Text("桌面花盆").font(.caption.weight(.medium))
                 Spacer()
                 Text("花盆 \(model.selectedSlot + 1)")
                     .font(.caption).foregroundStyle(.secondary)
             }
-            HStack(spacing: 10) {
+            HStack(spacing: GardenPlantingLayout.spacing) {
                 ForEach(0..<3, id: \.self) { slot in
                     slotContent(slot)
                         .padding(6)
@@ -37,18 +38,9 @@ struct GardenPlantingTray: View {
                             .help("选择花盆 \(slot + 1) 的多肉")
                             .accessibilityLabel("选择花盆 \(slot + 1) 的多肉")
                         }
-                        .dropDestination(for: GardenDragItem.self) { items, _ in
-                            guard !model.isBusy, let item = items.first else { return false }
-                            switch item.kind {
-                            case .leaf:
-                                guard garden.leaves.contains(where: { $0.id == item.id }) else { return false }
-                                Task { await model.sow(item.id, in: slot) }
-                            case .plant:
-                                guard garden.plants.contains(where: { $0.id == item.id }) else { return false }
-                                Task { await model.assign(item.id, to: slot) }
-                            }
-                            model.selectedSlot = slot
-                            return true
+                        .background {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(targetedSlot == slot ? Color.accentColor.opacity(0.12) : .clear)
                         }
                         .contextMenu {
                             Button("选择多肉") { model.openSlot(slot) }
@@ -60,8 +52,31 @@ struct GardenPlantingTray: View {
                 }
             }
         }
-        .padding(12)
+        .padding(GardenPlantingLayout.padding)
         .glassEffect(.regular, in: .rect(cornerRadius: 24))
+        // 在玻璃合成层外注册整个浮层的接收区，再按实际落点选择三盆之一。
+        .dropDestination(for: GardenDragItem.self, isEnabled: !model.isBusy) { items, session in
+            guard let item = items.first,
+                  let slot = GardenPlantingLayout.slot(at: session.location.x, width: session.size.width),
+                  let current = model.garden else { return }
+            let owned = item.kind == .leaf ? current.leaves.contains { $0.id == item.id } : current.plants.contains { $0.id == item.id }
+            guard owned else { return }
+            logger.info("接收花盆拖放：花盆\(slot + 1)，类型\(item.kind.rawValue, privacy: .public)")
+            model.selectedSlot = slot
+            Task {
+                switch item.kind {
+                case .leaf: await model.sow(item.id, in: slot)
+                case .plant: await model.assign(item.id, to: slot)
+                }
+            }
+        }
+        .onDropSessionUpdated { session in
+            switch session.phase {
+            case .entering, .active:
+                targetedSlot = GardenPlantingLayout.slot(at: session.location.x, width: session.size.width)
+            default: targetedSlot = nil
+            }
+        }
     }
 
     @ViewBuilder private func slotContent(_ slot: Int) -> some View {

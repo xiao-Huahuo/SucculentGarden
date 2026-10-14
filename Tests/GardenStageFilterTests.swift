@@ -56,7 +56,7 @@ struct GardenStageFilterTests {
         model.collectionStageIndex = 5
         #expect(model.collectionPlants(in: garden, at: date).map(\.species) == [.huangli, .broadMother])
         model.collectionMorphology = .moneyStackType
-        #expect(model.collectionStageIndex == nil && model.collectionPlants(in: garden, at: date).isEmpty)
+        #expect(model.collectionStageIndex == nil && model.collectionPlants(in: garden, at: date).map(\.species) == [.moneyStack])
         garden.slots[0] = nil
         model.collectionStageIndex = 4
         #expect(model.collectionPlants(in: garden, at: date).map(\.species) == [.moneyStack])

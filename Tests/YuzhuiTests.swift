@@ -25,7 +25,7 @@ struct YuzhuiTests {
             if index > 0 { #expect(plant.stage(at: boundary.addingTimeInterval(-1), rate: 1) == SucculentSpecies.yuzhui.stages[index - 1]) }
         }
         #expect(plant.transitionDates(after: date, rate: 1) == [1.0, 2, 5, 10].map { date.addingTimeInterval($0 * day) })
-        let free = try await store.buy(stage: .grassSprout, species: .yuzhui, in: 1, at: date)
+        let free = try await store.buy(stage: .grassSprout, species: .yuzhui, at: date)
         #expect(free.money == 10 && free.claimedToday == 2)
         let received = try #require(free.unplacedPlants.last)
         #expect(free.slots == planted.slots && received.stage(at: date, rate: 1) == .grassSprout)
@@ -40,16 +40,16 @@ struct YuzhuiTests {
         let url = directory.appendingPathComponent("garden.json")
         let store = SucculentStore(fileURL: url)
         _ = try await store.claimLeaf(species: .yuzhui, at: date)
-        _ = try await store.buy(stage: .grassSprout, species: .yuzhui, in: 0, at: date)
+        _ = try await store.buy(stage: .grassSprout, species: .yuzhui, at: date)
         _ = try await store.claimLeaf(species: .snowStonecrop, at: date)
         _ = try await store.claimLeaf(at: date)
-        let fifth = try await store.buy(stage: .grassSprout, species: .yuzhui, in: 1, at: date)
+        let fifth = try await store.buy(stage: .grassSprout, species: .yuzhui, at: date)
         #expect(fifth.claimedToday == 5 && fifth.money == 10)
         let bytes = try Data(contentsOf: url)
-        await #expect(throws: GardenError.self) { try await store.buy(stage: .grassSprout, species: .yuzhui, in: 2, at: date) }
+        await #expect(throws: GardenError.self) { try await store.buy(stage: .grassSprout, species: .yuzhui, at: date) }
         await #expect(throws: GardenError.self) { try await store.claimLeaf(species: .yuzhui, at: date) }
         #expect(try Data(contentsOf: url) == bytes)
-        let nextDay = try await store.buy(stage: .grassSprout, species: .yuzhui, in: 2, at: date.addingTimeInterval(day))
+        let nextDay = try await store.buy(stage: .grassSprout, species: .yuzhui, at: date.addingTimeInterval(day))
         #expect(nextDay.claimedToday == 1 && nextDay.plants.count == 3 && nextDay.money == 10)
     }
 
@@ -58,9 +58,12 @@ struct YuzhuiTests {
         let directory = try temporaryDirectory()
         defer { try? FileManager.default.removeItem(at: directory) }
         let store = SucculentStore(fileURL: directory.appendingPathComponent("garden.json"))
-        for slot in 0..<3 { _ = try await store.buy(stage: .juvenile, in: slot, at: date) }
+        for slot in 0..<3 {
+            let bought = try await store.buy(stage: .juvenile, at: date)
+            _ = try await store.assign(plantID: try #require(bought.plants.last).id, to: slot)
+        }
         let before = try await store.read()
-        let received = try await store.buy(stage: .grassSprout, species: .yuzhui, in: 1, at: date)
+        let received = try await store.buy(stage: .grassSprout, species: .yuzhui, at: date)
         #expect(received.slots == before.slots)
         #expect(received.money == before.money && received.claimedToday == before.claimedToday + 1)
         #expect(received.unplacedPlants.count == 1 && received.unplacedPlants.first?.species == .yuzhui)
@@ -114,8 +117,8 @@ struct YuzhuiTests {
         let store = SucculentStore(fileURL: url)
         for (stage, buy, sell) in [(SucculentStage.grassCluster, 3, 2), (.grassClump, 10, 5), (.grassOverflow, 20, 10)] {
             let before = try await store.read()
-            let bought = try await store.buy(stage: stage, species: .yuzhui, in: 0, at: date)
-            let plant = try #require(bought.plant(in: 0))
+            let bought = try await store.buy(stage: stage, species: .yuzhui, at: date)
+            let plant = try #require(bought.plants.last)
             #expect(bought.money == before.money - buy && plant.stage(at: date, rate: 1) == stage)
             let sold = try await store.sell(plantID: plant.id, at: date)
             #expect(sold.money == bought.money + sell && sold.claimedToday == 0)
@@ -125,7 +128,7 @@ struct YuzhuiTests {
         let seed = try await store.sow(leafID: leaf.id, in: 0, at: date)
         let seedID = try #require(seed.plant(in: 0)).id
         #expect((try await store.sell(plantID: seedID, at: date)).money == seed.money + 1)
-        let free = try await store.buy(stage: .grassSprout, species: .yuzhui, in: 0, at: date)
+        let free = try await store.buy(stage: .grassSprout, species: .yuzhui, at: date)
         let freeID = try #require(free.unplacedPlants.last).id
         #expect((try await store.sell(plantID: freeID, at: date)).money == free.money + 1)
     }

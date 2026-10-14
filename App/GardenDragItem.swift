@@ -14,5 +14,5 @@ struct GardenDragItem: Codable, Transferable {
 }
 
 extension UTType {
-    static let gardenItem = UTType(exportedAs: "local.littlecomponent.garden.item")
+    static let gardenItem = UTType(exportedAs: "local.littlecomponent.garden.item", conformingTo: .data)
 }

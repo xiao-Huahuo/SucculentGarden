@@ -140,9 +140,9 @@ struct SucculentTests {
         #expect(previous.money == 160)
         let cases: [(SucculentStage, Int, Int)] = [(.juvenile, 3, 2), (.adult, 10, 5), (.prime, 20, 10), (.oldStem, 50, 20), (.cluster, 100, 50)]
         for (stage, buy, sell) in cases {
-            let bought = try await store.buy(stage: stage, in: 0, at: matureDate)
+            let bought = try await store.buy(stage: stage, at: matureDate)
             #expect(bought.money == previous.money - buy)
-            let plant = try #require(bought.plant(in: 0))
+            let plant = try #require(bought.plants.last)
             #expect(plant.stage(at: matureDate, rate: 1) == stage)
             let sold = try await store.sell(plantID: plant.id, at: matureDate)
             #expect(sold.money == bought.money + sell)
@@ -168,7 +168,8 @@ struct SucculentTests {
         let returned = try await store.clear(slot: 1)
         #expect(returned.slots == [nil, nil, nil])
         #expect(returned.unplacedPlants == planted.plants)
-        let replaced = try await store.buy(stage: .juvenile, in: 0, at: start)
+        let purchase = try await store.buy(stage: .juvenile, at: start)
+        let replaced = try await store.assign(plantID: try #require(purchase.plants.last).id, to: 0)
         let assigned = try await store.assign(plantID: id, to: 0)
         #expect(assigned.unplacedPlants == replaced.plants.filter { $0.id != id })
     }
@@ -226,16 +227,18 @@ struct SucculentTests {
         defer { try? FileManager.default.removeItem(at: directory) }
         let url = directory.appendingPathComponent("garden.json")
         let store = SucculentStore(fileURL: url)
-        _ = try await store.buy(stage: .juvenile, in: 0, at: start)
-        _ = try await store.buy(stage: .juvenile, in: 0, at: start)
+        let first = try await store.buy(stage: .juvenile, at: start)
+        _ = try await store.assign(plantID: try #require(first.plants.last).id, to: 0)
+        let second = try await store.buy(stage: .juvenile, at: start)
+        _ = try await store.assign(plantID: try #require(second.plants.last).id, to: 0)
         let cleared = try await store.clear(slot: 0)
         #expect(cleared.plants.count == 2 && cleared.money == 4 && cleared.plant(in: 0) == nil)
         let before = try Data(contentsOf: url)
         var insufficient = false
-        do { _ = try await store.buy(stage: .cluster, in: 0) } catch { insufficient = true }
+        do { _ = try await store.buy(stage: .cluster) } catch { insufficient = true }
         #expect(insufficient)
         var leafPurchase = false
-        do { _ = try await store.buy(stage: .sprout, in: 0) } catch { leafPurchase = true }
+        do { _ = try await store.buy(stage: .sprout) } catch { leafPurchase = true }
         #expect(leafPurchase)
         #expect(try Data(contentsOf: url) == before)
         let damaged = Data("invalid-garden-json".utf8)

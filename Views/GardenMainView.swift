@@ -39,12 +39,12 @@ struct GardenMainView: View {
                                     .frame(maxWidth: .infinity, alignment: .topLeading)
                                     .padding(24)
                                     // 浮层不占整行；末尾内容仍可滚到花盆上方完整查看。
-                                    .padding(.bottom, GardenPlantingTray.scrollClearance)
+                                    .padding(.bottom, GardenPlantingLayout.scrollClearance)
                             }
                         }
                         .overlay(alignment: .bottomTrailing) {
                             GardenPlantingTray(model: model, garden: garden, date: context.date)
-                                .frame(width: min(GardenPlantingTray.width, geometry.size.width - 40))
+                                .frame(width: min(GardenPlantingLayout.width, geometry.size.width - 40))
                                 .padding(20)
                         }
                     }
@@ -87,14 +87,10 @@ struct GardenMainView: View {
         }
         .frame(minWidth: 760, minHeight: 600)
         .task { if model.garden == nil { await model.load() } }
-        .alert("操作未完成", isPresented: Binding(
-            get: { model.errorMessage != nil },
-            set: { if !$0 { model.errorMessage = nil } }
-        )) {
-            Button("好", role: .cancel) { model.errorMessage = nil }
-        } message: {
-            Text(model.errorMessage ?? "")
+        .overlay(alignment: .topTrailing) {
+            GardenNoticeBanner(model: model).padding(12)
         }
+        .animation(.easeInOut(duration: 0.18), value: model.notice?.id)
     }
 
     private var morphologySidebar: some View {

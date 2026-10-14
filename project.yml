@@ -8,7 +8,7 @@ settings:
   base:
     SWIFT_VERSION: "6.0"
     MARKETING_VERSION: "1.9"
-    CURRENT_PROJECT_VERSION: "40"
+    CURRENT_PROJECT_VERSION: "42"
     DEVELOPMENT_LANGUAGE: zh-Hans
     CODE_SIGN_STYLE: Manual
     CODE_SIGN_IDENTITY: "Apple Development"
@@ -72,7 +72,8 @@ targets:
     platform: macOS
     sources:
       - Widgets
-      - Components
+      - path: Components
+        excludes: [GardenNoticeBanner.swift]
       - Models
       - Services
       - path: Resources
@@ -107,6 +108,7 @@ targets:
     sources:
       - Tests
       - App/GardenModel.swift
+      - Components/GardenPlantingLayout.swift
       - Components/WidgetArtworkCache.swift
       - Components/ArtworkImageCache.swift
       - Components/ArtworkImageDecoder.swift

@@ -30,6 +30,7 @@ struct SucculentGardenApp: App {
         Settings {
             ScrollView { GardenSettingsView(model: gardenModel).padding(20) }
                 .frame(width: 560, height: 460)
+                .overlay(alignment: .topTrailing) { GardenNoticeBanner(model: gardenModel).padding(12) }
         }
     }
 }

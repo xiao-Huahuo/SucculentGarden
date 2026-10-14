@@ -39,6 +39,20 @@ actor SucculentStore {
         }
     }
 
+    func discardLeaf(leafID: UUID) throws -> SucculentGarden {
+        try mutate { state in
+            guard let index = state.leaves.firstIndex(where: { $0.id == leafID }) else { throw GardenError.leafMissing }
+            state.leaves.remove(at: index)
+        }
+    }
+
+    func discardLeaves(species: SucculentSpecies) throws -> SucculentGarden {
+        try mutate { state in
+            guard state.leaves.contains(where: { $0.species == species }) else { throw GardenError.leafMissing }
+            state.leaves.removeAll { $0.species == species }
+        }
+    }
+
     func sow(leafID: UUID, in slot: Int, at date: Date = .now) throws -> SucculentGarden {
         try mutate { state in
             guard state.slots.indices.contains(slot) else { throw GardenError.invalidSlot }
@@ -52,9 +66,8 @@ actor SucculentStore {
     }
 
     func buy(stage: SucculentStage, species: SucculentSpecies = .huangli,
-             in slot: Int, at date: Date = .now, calendar: Calendar = .autoupdatingCurrent) throws -> SucculentGarden {
+             at date: Date = .now, calendar: Calendar = .autoupdatingCurrent) throws -> SucculentGarden {
         try mutate { state in
-            guard state.slots.indices.contains(slot) else { throw GardenError.invalidSlot }
             guard species.stages.contains(stage) else { throw GardenError.invalidStage }
             guard let price = species.purchasePrice(for: stage) else { throw GardenError.cannotBuyLeafCutting }
             guard state.money >= price else { throw GardenError.insufficientFunds }
@@ -63,8 +76,7 @@ actor SucculentStore {
                                        growthSeconds: species.startSeconds(for: stage), growthUpdatedAt: date, species: species)
             state.money -= price
             state.plants.append(plant)
-            // 免费领取先进入收藏，不能占用或替换用户已经摆好的花盆。
-            if price > 0 { state.slots[slot] = plant.id }
+            // 购买和免费领取均先进入收藏，盆位由用户另行摆放。
         }
     }
 

@@ -1,4 +1,4 @@
-// 一个品种一个商店框；收藏仅显示待摆放植株，放入花盆后从收藏移出。
+// 一个品种一个商店框；收藏包括盆内植株，盆位标识与排序来自同一份花园。
 import SwiftUI
 
 struct GardenShopView: View {
@@ -51,7 +51,7 @@ struct GardenShopView: View {
                 Button(price == 0 ? "领取小草" : "购买 · $\(price)") { Task { await model.buy(stage, species: species) } }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.small)
-                    .help(price == 0 ? "领取后保存到“我的多肉”，可拖入花盆。" : "购买并放入当前花盆。")
+                    .help(price == 0 ? "领取后保存到“我的多肉”，可拖入花盆。" : "购买后保存到“我的多肉”，可拖入花盆。")
                     .disabled(model.isBusy || garden.money < price || (price == 0 && garden.remainingClaims(at: date) == 0))
                 if price == 0 {
                     Text("今日剩余 \(garden.remainingClaims(at: date)) / 5")
@@ -87,16 +87,12 @@ struct GardenCollectionView: View {
                 ContentUnavailableView("收藏里还没有多肉", systemImage: "leaf",
                                        description: Text("购买一株多肉，或把繁殖材料拖到右下角花盆开始种植。"))
                     .frame(maxWidth: .infinity, minHeight: availableHeight)
-            } else if garden.unplacedPlants.isEmpty {
-                ContentUnavailableView("多肉已放入花盆", systemImage: "leaf",
-                                       description: Text("可拖动右下角多肉换盆，或在花盆菜单中移回收藏。"))
-                    .frame(maxWidth: .infinity, minHeight: availableHeight)
             } else if matches.isEmpty {
                 if model.search.isEmpty, model.collectionStageIndex != nil {
-                    ContentUnavailableView("该阶段暂无待摆放多肉", systemImage: "leaf")
+                    ContentUnavailableView("该阶段暂无多肉", systemImage: "leaf")
                         .frame(maxWidth: .infinity, minHeight: availableHeight)
                 } else if model.search.isEmpty, let morphology = model.collectionMorphology {
-                    ContentUnavailableView("\(morphology.title)暂无待摆放多肉", systemImage: "leaf")
+                    ContentUnavailableView("\(morphology.title)暂无多肉", systemImage: "leaf")
                         .frame(maxWidth: .infinity, minHeight: availableHeight)
                 } else {
                     ContentUnavailableView.search(text: model.search)
@@ -121,7 +117,6 @@ struct GardenCollectionView: View {
                              pointsPerCentimeter: GardenInventoryLayout.pointsPerCentimeter)
                 .frame(width: GardenInventoryLayout.imageWidth,
                        height: GardenInventoryLayout.imageHeight(species: plant.species, stage: stage, isMaterial: false))
-                .draggable(GardenDragItem(kind: .plant, id: plant.id))
             Text("\(plant.species.title) \(index)").font(.headline).lineLimit(1).minimumScaleFactor(0.85)
             Text(plant.species.stageTitle(for: stage)).font(.caption).foregroundStyle(.secondary)
             if let next = plant.transitionDates(after: date, rate: garden.effectiveRate(for: plant.species)).first {
@@ -129,6 +124,9 @@ struct GardenCollectionView: View {
                     .font(.caption2).foregroundStyle(.secondary)
             } else {
                 Text("已长成\(plant.species.stageTitle(for: plant.species.matureStage))").font(.caption2).foregroundStyle(.secondary)
+            }
+            if let slot = garden.slot(containing: plant.id) {
+                Text("盆栽\(slot + 1)").font(.caption).foregroundStyle(Color.accentColor)
             }
         }
         .overlay(alignment: .topTrailing) {
@@ -145,6 +143,8 @@ struct GardenCollectionView: View {
             .accessibilityLabel("操作\(plant.species.title)")
         }
         .contextMenu { plantActions(plant) }
+        .contentShape(Rectangle())
+        .draggable(GardenDragItem(kind: .plant, id: plant.id))
         .disabled(model.isBusy)
         .accessibilityElement(children: .contain)
         .accessibilityLabel("\(plant.species.title) \(index)，\(plant.species.stageTitle(for: stage))")
@@ -179,6 +179,7 @@ struct GardenLeavesView: View {
     let garden: SucculentGarden
     let date: Date
     let availableHeight: CGFloat
+    @State private var discardSpecies: SucculentSpecies?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
@@ -202,11 +203,37 @@ struct GardenLeavesView: View {
                         }
                         .contentShape(Rectangle())
                         .draggable(GardenDragItem(kind: .leaf, id: stack.firstLeafID))
+                        .contextMenu {
+                            ForEach(0..<3, id: \.self) { slot in
+                                Button("种入花盆 \(slot + 1)") {
+                                    model.selectedSlot = slot
+                                    Task { await model.sow(stack.firstLeafID, in: slot) }
+                                }
+                            }
+                            Divider()
+                            Button("丢弃一份", role: .destructive) {
+                                Task { await model.discardLeaf(stack.firstLeafID) }
+                            }
+                            Button("全部丢弃本品种（\(stack.species.propagationQuantity(count: stack.count))）", role: .destructive) {
+                                discardSpecies = stack.species
+                            }
+                        }
                         .accessibilityLabel("拖动\(stack.species.title)\(stack.species.propagationTitle)，共\(stack.species.propagationQuantity(count: stack.count))；拖动一份到花盆")
                     }
                 }
                 .disabled(model.isBusy)
             }
+        }
+        .confirmationDialog("丢弃这一品种的全部材料？", isPresented: Binding(
+            get: { discardSpecies != nil }, set: { if !$0 { discardSpecies = nil } }
+        ), presenting: discardSpecies) { species in
+            Button("全部丢弃\(species.title)\(species.propagationTitle)", role: .destructive) {
+                Task { await model.discardLeaves(species) }
+                discardSpecies = nil
+            }
+            Button("取消", role: .cancel) { discardSpecies = nil }
+        } message: { species in
+            Text("将丢弃这一叠\(species.title)\(species.propagationTitle)，不返还今日领取额度。")
         }
     }
 }
