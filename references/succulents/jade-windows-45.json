@@ -1,0 +1,127 @@
+{
+  "revision": 45,
+  "goal": "清透叶窗，取消乳白磨砂高光；保留各品种颜色、阶段、单头与叶形差异。",
+  "pipeline": "built-in imagegen edit; raw generated RGBA copied byte-identically; no programmatic pixel changes.",
+  "userDirection": "外形由AI自行判断；小苗至少5叶，采用紧凑七叶姬玉露；白莲花与樱水晶保留细毛，两寿保留三角窗。",
+  "promptsAndAssets": [
+    {
+      "sourceName": "JadeWindows45AAtlas",
+      "path": "Resources/Assets.xcassets/JadeWindows45AAtlas.imageset/atlas.png",
+      "sha256": "b02addc911aecadc6e8e1c25c192b04ab07c7f8fd595058ada0f8c6c577d7172",
+      "keys": [
+        "GrassJadeStage1",
+        "GrassJadeStage2",
+        "GrassJadeStage3",
+        "GrassJadeStage4",
+        "GoldenJadeStage1",
+        "GoldenJadeStage2",
+        "GoldenJadeStage3",
+        "GoldenJadeStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 target transparent sprite atlas: top5 GRASS JADE Haworthia, pointed grass-green leaves; bottom5 GOLDEN JADE, rounder golden yellow leaves. Image2 correct first two seedlings each with SIX small leaves, use those seedling leaf counts. Image3 is clarity/material reference, not a color reference. Edit only opaque/foggy material to clear living succulent windows with visible inner tissue and crisp fine veins seen through the unclouded skin. Top leaves keep narrow pointed green forms, NOT round ice-lantern forms. Lower leaves retain bright golden amber/yellow BASES and rims, window clear pale honey rather than opaque white/yellow ceramic. The upper half of every leaf reads as optical water-clear translucent glassy living skin, not a painted milky cap. Show distinct inner colored structure, a few small sharp specular reflections and rim refraction. Preserve leaf shape, outlines, five increasing ages, compact one head no pups. Firstphase at least6 small leaves, later leaf size and count grow. Thin hand-drawn outlines, restrained clean botanical game illustration. EXACT2 rows5 columns ten separated complete plants and generous transparent gutters, single rosette each. Truly transparent RGBA background, no pots, labels, roots, text, exterior shadows. Avoid any haze, fog, frost, milk, powder, cloudy pale overlay, matte plastic, water droplets, glitter or jewelry."
+    },
+    {
+      "sourceName": "JadeWindows45BAtlas",
+      "path": "Resources/Assets.xcassets/JadeWindows45BAtlas.imageset/atlas.png",
+      "sha256": "70f39aa2286394dd546d7181a2bf0362b4524a1799866810f47d65e46237ecf6",
+      "keys": [
+        "RedLineJadeStage0",
+        "RedLineJadeStage1",
+        "RedLineJadeStage2",
+        "RedLineJadeStage3",
+        "RedLineJadeStage4",
+        "BlueMirrorJadeStage0",
+        "BlueMirrorJadeStage1",
+        "BlueMirrorJadeStage2",
+        "BlueMirrorJadeStage3",
+        "BlueMirrorJadeStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target: image 1 is an existing transparent succulent game sprite atlas, top row RED LINE Haworthia (rose-red/burgundy bases and red veins), bottom row BLUE MIRROR Haworthia (cool blue/teal bases). Image 2 is a real plant optical-window reference ONLY: follow its clear succulent windows, do not copy pot, gravel or photographic background. Primary request: correct the foggy opaque milky surface on ALL TEN plant sprites. Retain these exact two cultivars, silhouettes, fleshy rounded leaves, five progressive ages per row, natural leaf layering, thin dark hand-drawn outlines. Replace only surface material with unmistakably CLEAR OPTICAL succulent windows: broad glassy water-clear leaf top interior, crisp fine red or blue-green vein lines seen THROUGH the clear window, deep visible green/red/blue leaf tissue beneath the skin, sharp small specular reflections and delicate rim refraction. Translucent colored living leaf tissue, not painted white caps. The top 55-65% of each leaf must read as a clear window with depth. NO haze, NO white veil, NO frosted glass, NO chalky powder, NO cloudy gradient over all leaves. No water droplets, jewelry, stars or glitter. Keep the leaves themselves as plants, not glass marbles. Retain cultivar saturation and distinct red-versus-blue body color. Five phases each: seedling with at least SIX small leaves; juvenile about8; adult12; prime16; old mature20+ leaves, ONE rosette per sprite, never offsets. Keep compact seedling then increasing leaf count and size. Arrange 2 rows x 5 columns, ten completely separate plant sprites, evenly spaced generous transparent gutters so no leaves touch adjacent sprites, full plant contour uncropped. Leaf surface detail stays clean and readable at 150px. Background true RGBA transparent; no pots, roots, text, labels, shadows outside plant. Same clean illustrated botanical game-art style, with the corrected high clarity material prominent even at thumbnail scale."
+    },
+    {
+      "sourceName": "JadeWindows45CAtlas",
+      "path": "Resources/Assets.xcassets/JadeWindows45CAtlas.imageset/atlas.png",
+      "sha256": "84ef57f2efa2a1639197d7b2ae2ffe605ddf1910bd4b71782194c30573f23be3",
+      "keys": [
+        "WhiteLotusJadeStage0",
+        "WhiteLotusJadeStage1",
+        "WhiteLotusJadeStage2",
+        "WhiteLotusJadeStage3",
+        "WhiteLotusJadeStage4",
+        "SakuraCrystalStage0",
+        "SakuraCrystalStage1",
+        "SakuraCrystalStage2",
+        "SakuraCrystalStage3",
+        "SakuraCrystalStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target: transparent game sprites of WHITE LOTUS JADE (top row, ivory/cream white-green bases) and SAKURA CRYSTAL JADE (bottom row, blush pink rims and pale green centers), each five ages from seedling to one mature single head. Image 2 shows the intended newly corrected clear WINDOW material, use its optical clarity only, not its red/blue colors. Image 3 real Haworthia windows is optical reference only. Change only leaf surface material to crisp HIGH TRANSPARENCY succulent windows. The CURRENT WHITE/PINK LEAVES LOOK OPAQUE MILKY AND MATTE: REMOVE that milk/fog. Leaf tops must be water-clear, with sharp underlying green/ivory or pink structural veins visible THROUGH the unclouded window, clear inner depth and refracted colored lower leaf tissue, small sharp specular reflection rather than broad white painted caps. The window is transparent skin over real succulent flesh, not an opaque jellybean; maintain natural thick leaves and thin dark outlines. Retain distinct cream-white versus pale pink COLOR IN LEAF BASES AND RIMS, NOT A MILKY COATING ON WINDOWS. Retain a few very fine short white marginal hairs on both cultivars; hairs only on edges, never a veil over the glass windows. Keep EXACT plant contour, five phase age progression, leaf shape and layering; seedling at least SIX leaves, later sizes and leaf counts grow, old plant single large head NO pups NO offsets. 2 rows x5 entirely separated full plants on genuinely transparent RGBA background. Generous clear gutters. Preserve clean illustrated line botanical game art style. No text, pots, soil, external shadows, white haze, matte frost, powder, opaque ceramic, water droplets, glitter, stars, jewelry, or changes to other species."
+    },
+    {
+      "sourceName": "ClearJades45Atlas",
+      "path": "Resources/Assets.xcassets/ClearJades45Atlas.imageset/atlas.png",
+      "sha256": "27c31b0d32d964a363c74d4078088d0a7cecfb367d180fd123f07ef3a06a6b73",
+      "keys": [
+        "IceLanternStage0",
+        "IceLanternStage1",
+        "IceLanternStage2",
+        "IceLanternStage3",
+        "IceLanternStage4",
+        "BlackSkinJadeStage0",
+        "BlackSkinJadeStage1",
+        "BlackSkinJadeStage2",
+        "BlackSkinJadeStage3",
+        "BlackSkinJadeStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 edit target existing 2x5 transparent atlas: ICE LANTERN Haworthia upper row five growth phases, BLACK SKIN JADE lower row five phases. Image2 real ice-lantern is botanical reference only. Remove milky fog and the painted pale-grey frosting from the tops. Make these TWO varieties the CLEAREST, brightest of all Haworthias: optically water-clear plump leaf windows, very crisp dark green vein lines continuing internally through clear rounded domes, green/amber internal tissue seen below the transparent skin, small controlled sharp white highlight, subtle rim refraction. Retain TOP amber-brown lower leaf bases and green hearts; BOTTOM smoky charcoal-purple lower bases and green hearts. Clear tissue, not grey/white opal caps. The upper60percent of leaf should show visible inner DEPTH with lower colored leaf clearly readable THROUGH window. Preserve exact overall plant silhouette, small seedlings with SIX or more leaves, progressive leaf count/size across5ages, mature single head with NO sideheads. No stem/root showing. Two rows five separated full plants, transparent margins, clean thin outlined botanical game icon style. Truly transparent RGBA background. Do not add pot, soil, text, white haze, blur, frost, milk, matte coating, noise, glitter, jewelry, dew drops. This is a living succulent with highly transparent leaf windows, not a glass object sculpture."
+    },
+    {
+      "sourceName": "Retusas45Atlas",
+      "path": "Resources/Assets.xcassets/Retusas45Atlas.imageset/atlas.png",
+      "sha256": "7af86b214698d3ac1bfb97bf97a4222bffee14a3b4269d81cf2141844e0ff16a",
+      "keys": [
+        "CrystalRetusaStage0",
+        "CrystalRetusaStage1",
+        "CrystalRetusaStage2",
+        "CrystalRetusaStage3",
+        "CrystalRetusaStage4",
+        "MoonRetusaStage0",
+        "MoonRetusaStage1",
+        "MoonRetusaStage2",
+        "MoonRetusaStage3",
+        "MoonRetusaStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Image1 target existing2x5 atlas of Crystal Retusa (top, bright green) and Moon Retusa (bottom, blue-grey/lilac). Correct foggy frosted flat triangular leaf windows ONLY. Image2 is the desired clear optical material reference; do not copy its rounded leaf shapes or brown/purple colors. The retusa leaf tips MUST KEEP broad flat TRIANGULAR window facets with three definite corners and fine vein networks, thick green or blue-grey leaf sides. Make all triangular facets extremely CLEAR, show dark inner leaf tissue at depth through tinted glass-like living skin, crisp fine vein lines, small sharply reflected light points on window edge, internal depth rather than pale opaque triangle paint. Preserve original silhouette, rosette layers, leaf shapes, exact two cultivar colors, single head in every phase, five ages increasing size and count, at least5 leaves in first small seedling. 2rows5columns ten separated complete sprites, generous RGBA transparent gutters, no leaf cutoffs or contact between sprites. Retain thin dark outlined illustrated botanical game art. NO frosted panels, mist, milk, white painted triangles, matte powder, blur, water drops, glitter, pots, ground, roots, labels, background or pups."
+    },
+    {
+      "sourceName": "HimeJade45Atlas",
+      "path": "Resources/Assets.xcassets/HimeJade45Atlas.imageset/atlas.png",
+      "sha256": "48fff29412eaa57c4b0a416b4dea1e6df00ed90d9c1c1fc423067470eba7b748",
+      "keys": [
+        "HimeJadeStage1",
+        "HimeJadeStage2",
+        "HimeJadeStage3",
+        "HimeJadeStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. First input target is a two-row Haworthia atlas: use ONLY the TOP ROW cultivar HIME JADE and OMIT the lower zebra plant completely. Second input third plant is its correct SIX-LEAF seedling reference; replace the old four-leaf seedling with this six-leaf initial form. Third input is a clear optical leaf-window material reference. Output exactly ONE ROW of FIVE Hime jade sprites, not two rows. Cultivar: small compact rounded green jade leaves with spring green lower tissue. Main correction: upper half of all leaves must be CLEAR optical glass-like succulent windows with visible darker green inner tissue and fine green vascular lines seen THROUGH clear skin. Keep small crisp highlights, rim refraction, and deep internal colored tissue; eliminate grey-white milky caps and any frosted fog. Not opaque jade stones or green jellybeans. Five increasing ages: tiny SIX small leaves, juvenile9, adult12, prime16, final20+ leaves in ONE single compact head, NO side pups. Preserve clean thin dark outlined botanical game illustration. Five completely separate uncropped plants with generous transparent gutters. Background genuinely transparent RGBA. NO zebra species, no second row, no opaque white veils, chalk, frosted matte glass, mist, pots, soil, text, drops, jewelry, glitter."
+    },
+    {
+      "sourceName": "JadeSeedlings45Atlas",
+      "path": "Resources/Assets.xcassets/JadeSeedlings45Atlas.imageset/atlas.png",
+      "sha256": "317f94e462852655cef66727c87de322ba018815432c9372dd44f89011e5c764",
+      "keys": [
+        "GrassJadeStage0",
+        "GoldenJadeStage0"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit first input original material atlas, using ONLY its first TWO plants, omit everything else. Output exactly TWO separate tiny Haworthia seedlings in a single horizontal row: left GRASS JADE (pointed green leaves), right GOLDEN JADE (rounded golden-yellow leaves). Each seedling must have SIX distinct visible leaves, keep the six-leaf form of the input plants, arranged three at back, one small heart and two at front. Tiny immature leaves, NO stem or roots, no offsets. Correct the opaque milky material ONLY: upper part of each leaf is a CLEAR optical succulent window, transparent living skin revealing green/amber inner tissue and fine vein lines, crisp specular tiny highlights, refraction at rim. The second input is the clarity reference only; do not copy its plant species or dark colors. Keep green and yellow cultivar color at bases/rims, clean thin dark outlined botanical game icon style. No milk or frosting or opaque whitish caps on windows. Preserve true transparent RGBA background. Exactly TWO complete separated 6-leaf seedlings with wide transparent gutter, no cropping, no extra plant, no jade-tree cutting, text, pot, soil, shadow, water droplets, glitter or stars."
+    },
+    {
+      "sourceName": "HimeSeedling45Atlas",
+      "path": "Resources/Assets.xcassets/HimeSeedling45Atlas.imageset/atlas.png",
+      "sha256": "57a77ef89376c1e20feaf4a564fe7075547f82097ff6a41064470e8d74666f08",
+      "keys": [
+        "HimeJadeStage0"
+      ],
+      "prompt": "Use case: precise-object-edit. The input is a transparent sprite atlas of clear-window Haworthia. Use ONLY the tiny FIRST seedling in the TOP LEFT as shape and clear-window reference, and render a SINGLE HIME JADE seedling alone. Change its amber bases to natural spring-green; keep the truly clear windows. This is a tiny compact young living rosette of SEVEN SMALL rounded blunt-tipped fleshy leaves, overlapping closely at varied angles, slightly off-center natural arrangement. NO giant central waterdrop leaf, NO pointed spear tips, NO perfect geometric fan. At least SIX leaves must remain clearly countable: two back leaves, two side leaves, two front leaves, plus one tiny emerging center leaf. Maintain rounded thin dark outlines and the existing restrained botanical game art style. Upper leaf windows must be water-clear skin with crisp tiny specular lights, fine green veins and deeper green tissue visible THROUGH them, no milky fog or white coating. Lower leaf bases leafy green, NOT luminous neon. No stem, roots or pups. Exactly ONE full small plant, no pot, no soil, no text, NO EXTERNAL GLOW, no green halo, no bloom, no aura, NO cast shadow or colored haze anywhere outside the actual plant contour. Every pixel outside the plant outline must be fully transparent RGBA alpha0, including ALL margins and gaps; do not put the plant on black. Leave generous transparent margin."
+    }
+  ]
+}
