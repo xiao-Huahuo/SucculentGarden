@@ -1,0 +1,121 @@
+{
+  "revision": 44,
+  "researchedOn": "2026-10-15",
+  "scope": "43个新增品种、6个既有品种复用，以及千佛手、奶酪、条纹十二卷和软玉露的外观修订。商用品名以用户确认的品相为准，不声称所有名称都有唯一学名。",
+  "userDecisions": {
+    "bearPawColors": "四种游戏配色，名称按用户给定",
+    "coloredLithops": "红大内玉、绿紫勋、日轮玉、荒玉；沿用五期与种子",
+    "newHaworthias": "五期、共享免费小苗、全期不可拆分",
+    "buddha44": "长指叶不变，密集叶层、缓慢纵向增高；成年起四帧已重新生成并接入",
+    "creamPuff": "超奶/Cream Puff，粉白反卷叶",
+    "amethystCrystal": "粉霜灰紫、较短厚叶"
+  },
+  "cancelledByUser": [
+    "欢喜颂歌"
+  ],
+  "references": [
+    {
+      "subject": "千佛手",
+      "url": "https://www.lvzhimi.com/zaipei/45031.html",
+      "usedFor": "实物长指状叶与纵向茎层；用户进一步指定层间紧密、缓慢长高，避免玉坠状长垂链。"
+    },
+    {
+      "subject": "水晶寿／月影寿",
+      "url": "https://www.rhs.org.uk/plants/8284/haworthia-retusa/details",
+      "usedFor": "三角叶端及较平的透明窗面。"
+    },
+    {
+      "subject": "寿类三角窗",
+      "url": "https://pza.sanbi.org/haworthia-retusa-var-turgida",
+      "usedFor": "三角透明叶端与放射状叶列。"
+    },
+    {
+      "subject": "冰灯玉露",
+      "url": "https://bkimg.cdn.bcebos.com/smart/024f78f0f736afc39fbd0230b919ebc4b7451235-bkimg-process,v_1,rw_900,rh_675,maxl_378?x-bce-process=image/format,f_auto",
+      "usedFor": "用户提供的实物参考，圆钝饱满窗面、透明银光与棕绿叶基；冰灯和黑肌窗最透亮。"
+    },
+    {
+      "subject": "露娜莲",
+      "url": "https://www.rhs.org.uk/plants/517287/echeveria-lola/details",
+      "usedFor": "粉霜灰白偏粉的莲座外观与相对慢生参考。"
+    },
+    {
+      "subject": "佛甲草",
+      "url": "https://www.rhs.org.uk/plants/64283/sedum-lineare/details",
+      "usedFor": "细长线形叶、轮生叶序和铺地分枝。"
+    },
+    {
+      "subject": "佛珠",
+      "url": "https://www.rhs.org.uk/plants/string-of-beads",
+      "usedFor": "圆珠叶、透明细窗及自然垂生细茎。"
+    },
+    {
+      "subject": "金枝玉叶",
+      "url": "https://www.rhs.org.uk/plants/13534/portulacaria-afra/details",
+      "usedFor": "细红枝与小型对生圆叶；与大叶玉树区别。"
+    },
+    {
+      "subject": "玉树",
+      "url": "https://plants.ces.ncsu.edu/plants/crassula-ovata/common-name/money-plant/",
+      "usedFor": "厚卵形对生叶、粗枝与木质化；材料绘成枝条。"
+    },
+    {
+      "subject": "弹簧草",
+      "url": "https://www.rhs.org.uk/plants/350715/albuca-spiralis-frizzle-sizzle/details",
+      "usedFor": "基部球茎与螺旋卷曲的细带状叶。"
+    },
+    {
+      "subject": "方塔",
+      "url": "https://jnsucculents.com.au/products/crassula-buddahs-temple",
+      "usedFor": "紧密相叠且交替方向的四方叶塔，避免松散叶串。"
+    },
+    {
+      "subject": "纯爱",
+      "url": "https://rntsucculents.com/products/echeveria-pure-love-changhee",
+      "usedFor": "粉紫短匙形叶与紧凑莲座。"
+    },
+    {
+      "subject": "虎鲸",
+      "url": "https://rntsucculents.com/collections/all-product/products/echeveria-agavoides-crest",
+      "usedFor": "金黄绿带红尖叶、波浪扇状缀化生长线。"
+    },
+    {
+      "subject": "晚霞之舞",
+      "url": "https://www.justsuccit.com/products/e-neon-breakers",
+      "usedFor": "紫粉宽薄叶和明显的粉红褶皱叶缘。"
+    },
+    {
+      "subject": "蝴蝶不死鸟",
+      "url": "https://www.succulentsdepot.com/products/kalanchoe-pink-butterflies",
+      "usedFor": "深灰绿斑叶和叶缘粉色小芽；游戏机制按不死鸟型继承。"
+    },
+    {
+      "subject": "红大内玉",
+      "url": "https://pza.sanbi.org/lithops-optica",
+      "usedFor": "红粉变种、双瓣裂隙和小种子。全部生石花末期单头为用户指定的游戏外观。"
+    },
+    {
+      "subject": "荒玉",
+      "url": "https://www.tanikutoha.net/subLI24.html",
+      "usedFor": "Lithops gracilidelineata 的灰白体色和细线窗纹。"
+    },
+    {
+      "subject": "滇石莲",
+      "url": "https://sgplants.com/products/sinocrassula-yunnanensis",
+      "usedFor": "深灰绿至紫黑、细密尖叶和小型紧凑叶座。"
+    },
+    {
+      "subject": "泡芙",
+      "url": "https://www.drlmeng.com/chaonai.html",
+      "usedFor": "超奶／Cream Puff 的商用品相参考；最终采用用户确认的粉白、叶尖向下反卷。"
+    },
+    {
+      "subject": "紫水晶",
+      "url": "https://tawawa.life/products/echeveria-amethyst-2",
+      "usedFor": "商用品相参考；最终采用用户确认的粉霜灰紫短厚叶。"
+    }
+  ],
+  "growthMultipliers": "新品种 y 以既有同形态品种为基准，参考相对快慢选取可调整的游戏等待时间；不是自然成熟天数的实测值。固定价格、全局每日额度和原形态机制不变。",
+  "artPipeline": "所有新增及修订位图由原生图像工具生成，原始透明 PNG 原字节入库；仅以运行时 CGRect 划分帧，没有程序改色、重采样或形变。各期叶片大小和数量有成长区别。",
+  "gamePalettes": "紫／黄／粉／蓝色熊童子是用户确认的四种游戏配色，不宣称为稳定自然园艺品种。"
+}

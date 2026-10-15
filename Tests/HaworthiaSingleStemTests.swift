@@ -14,7 +14,7 @@ struct HaworthiaSingleStemTests {
         let species = SucculentSpecies.allCases.filter {
             $0.morphology == .haworthiaType && ![.jadeFan, .zebraHaworthia].contains($0)
         }
-        #expect(species.count == 11)
+        #expect(species.count == 13)
         for kind in species {
             for stage in kind.stages {
                 #expect(kind.disassemblyCount(for: stage) == nil)

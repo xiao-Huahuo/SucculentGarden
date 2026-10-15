@@ -17,6 +17,15 @@ enum SucculentSpecies: String, Codable, CaseIterable, Identifiable, Sendable {
     case deerAntler, bearPaw, broadMother, tubeMother, narrowMother
     case cheese, topsyTurvy, tangyuan
     case fenestraria
+    case flowerMoonNight, snowField, robin, wheatStraw, lunaLotus, swordNova, creamPuff
+    case pureLove, blueSurprise, amethystCrystal, whitePeony, quietNight
+    case swiftConstellation, flapjack, anacampseros, anacampserosRainbow, springMoe
+    case orca, fiona, sunsetDance, iceSoul, luoshen
+    case purpleBearPaw, yellowBearPaw, pinkBearPaw, blueBearPaw
+    case elephantBush, elephantBushRainbow, jadeTree, spiralGrass, squarePagoda
+    case pearlString, needleStonecrop, himeJade, eagleClaw, yunnanRosette, tileRosette
+    case redOptica, greenLesliei, orangeAucampiae, greyGracilidelineata, bunnyMonilaria
+    case butterflyMother
 
     var id: String { rawValue }
     var morphology: SucculentMorphology {

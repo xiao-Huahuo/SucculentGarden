@@ -62,6 +62,7 @@ private struct GardenArtworkImage: View {
                 let placement = layout.placement(in: geometry.size, planted: planted, maximumSize: maximumSize)
                 if let image {
                     Image(nsImage: image)
+                        .renderingMode(.original)
                         .resizable()
                         .interpolation(.high)
                         .widgetAccentedRenderingMode(.fullColor)

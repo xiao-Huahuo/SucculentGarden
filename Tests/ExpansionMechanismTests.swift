@@ -8,13 +8,13 @@ struct ExpansionMechanismTests {
 
     @Test
     func catalogContainsAllAdditionsAndKeepsExistingVarietiesUnique() {
-        #expect(SucculentExpansionCatalog.entries.count == 57)
-        #expect(SucculentSpecies.allCases.count == 72)
+        #expect(SucculentExpansionCatalog.entries.count == 100)
+        #expect(SucculentSpecies.allCases.count == 115)
         #expect(SucculentSpecies.allCases.filter { $0.title == "白月影" }.count == 1)
         #expect(SucculentSpecies.allCases.filter { $0.title == "千佛手" }.count == 1)
         #expect(SucculentSpecies.jadeFan.title == "玉扇")
         #expect(SucculentSpecies.cobwebHouseleek.title == "蛛丝卷绢")
-        #expect(SucculentSpecies.allCases.filter { $0.morphology == .haworthiaType }.count == 13)
+        #expect(SucculentSpecies.allCases.filter { $0.morphology == .haworthiaType }.count == 15)
         #expect(SucculentSpecies.allCases.filter { $0.morphology == .cactusType }.count == 6)
         #expect(SucculentSpecies.fireFestival.morphology == .yuzhuiType)
         #expect(SucculentSpecies.gollumJade.morphology == .yuzhuiType)

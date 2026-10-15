@@ -15,7 +15,9 @@ struct Variety37Tests {
             #expect(Set(names).count == 7)
             for name in names {
                 let frame = SucculentAtlasLayout.frames[name]
-                let source = name.hasSuffix("Stage5") ? "RosetteClusters40Atlas" : species.assetPrefix + "Atlas"
+                let source = species == .cheese
+                    ? (name.hasSuffix("Stage5") ? "CheeseCluster44Atlas" : "Cheese44Atlas")
+                    : (name.hasSuffix("Stage5") ? "RosetteClusters40Atlas" : species.assetPrefix + "Atlas")
                 #expect(frame?.sourceName == source)
                 #expect((frame?.layout.bounds.width ?? 0) > 0)
             }

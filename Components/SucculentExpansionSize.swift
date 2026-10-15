@@ -11,12 +11,29 @@ enum SucculentExpansionSize {
             return CGSize(width: size.0, height: size.1)
         }
         if species == .zebraHaworthia {
-            let sizes: [(CGFloat, CGFloat)] = [(0.6, 0.9), (1.3, 1.8), (2.8, 3.6), (3.6, 4.8), (3.8, 5.2)]
+            let sizes: [(CGFloat, CGFloat)] = [(0.6, 0.9), (1.3, 1.8), (4, 5.2), (6, 6.5), (6.2, 7)]
             let size = sizes[isMaterial ? 0 : species.stages.firstIndex(of: stage)!]
             return CGSize(width: size.0, height: size.1)
         }
         if species == .thousandBuddha && !isMaterial {
-            let sizes: [(CGFloat, CGFloat)] = [(1.5, 1.5), (2.2, 3), (2.6, 5), (3, 7.4), (6, 9), (7, 10)]
+            // 长指叶保持展开幅度；叶层紧密，靠温和增加茎高表现后续成长。
+            let sizes: [(CGFloat, CGFloat)] = [(1.5, 1.5), (2.2, 3), (4.2, 4.8), (4.5, 5.4), (4.8, 6.2), (6.4, 6.4)]
+            let size = sizes[species.stages.firstIndex(of: stage)!]
+            return CGSize(width: size.0, height: size.1)
+        }
+        if species == .bunnyMonilaria {
+            if isMaterial { return CGSize(width: 0.2, height: 0.2) }
+            let sizes: [(CGFloat, CGFloat)] = [(0.05, 0.05), (0.6, 1), (0.8, 2), (2.6, 3.6), (4.2, 4.5)]
+            let size = sizes[species.stages.firstIndex(of: stage)!]
+            return CGSize(width: size.0, height: size.1)
+        }
+        if [.anacampseros, .anacampserosRainbow, .needleStonecrop].contains(species) {
+            if isMaterial {
+                return species == .needleStonecrop ? CGSize(width: 1, height: 2) : CGSize(width: 0.8, height: 0.8)
+            }
+            let sizes: [(CGFloat, CGFloat)] = species == .needleStonecrop
+                ? [(0.9, 1.2), (2.4, 2.1), (4, 2.8), (6, 3.4)]
+                : [(1, 1), (1.8, 2), (2.8, 3.2), (4.4, 4.2), (4.8, 5), (6, 5.4)]
             let size = sizes[species.stages.firstIndex(of: stage)!]
             return CGSize(width: size.0, height: size.1)
         }

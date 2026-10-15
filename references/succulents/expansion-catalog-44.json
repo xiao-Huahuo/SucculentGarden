@@ -1,0 +1,327 @@
+{
+  "revision": 44,
+  "baseSpeciesCount": 72,
+  "expectedSpeciesCount": 115,
+  "reusedExisting": [
+    "paleSnow",
+    "waterPeach",
+    "iceJade",
+    "blueJilian",
+    "blueStoneLotus",
+    "blueApple"
+  ],
+  "confirmed": {
+    "bearPawColors": "四种游戏配色，名称按用户给定",
+    "coloredLithops": "红大内玉、绿紫勋、日轮玉、荒玉；沿用五期与种子",
+    "newHaworthias": "五期、共享免费小苗、全期不可拆分",
+    "buddha44": "长指叶不变，密集叶层、缓慢纵向增高；成年起四帧已重新生成并接入",
+    "creamPuff": "超奶/Cream Puff，粉白反卷叶",
+    "amethystCrystal": "粉霜灰紫、较短厚叶"
+  },
+  "species": [
+    {
+      "id": "flowerMoonNight",
+      "title": "花月夜",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Pale grey-green thick spoon leaves, sharply defined thin cherry-red leaf margins and tiny tips, neat low rosette."
+    },
+    {
+      "id": "snowField",
+      "title": "雪域",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Echeveria Deresina appearance: icy white-blue short broad spoon leaves, compact layered crown, small soft pink tips."
+    },
+    {
+      "id": "robin",
+      "title": "罗宾",
+      "morphology": "crassulaceaeType",
+      "y": 1.5,
+      "appearance": "Echeveria agavoides Rubin appearance: deep crimson wine-red thick long triangular lance leaves with sharp dark red tips, no pale blue frost."
+    },
+    {
+      "id": "wheatStraw",
+      "title": "麦秆",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Very thick oval pointed leaves, compact cupped rosette, warm creamy ivory/yellow-green with peach pink tips and thin red margins."
+    },
+    {
+      "id": "lunaLotus",
+      "title": "露娜莲",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Echeveria Lola appearance: powdery pale lavender grey-green thick spoon leaves ending in a fine raised point, pink blush, rose-like layered crown."
+    },
+    {
+      "id": "swordNova",
+      "title": "剑司诺娃",
+      "morphology": "crassulaceaeType",
+      "y": 1.5,
+      "appearance": "Strictiflora Nova appearance: long broad arrowhead/spatulate blue-grey leaves with narrow bases, slightly curling edges outlined dark burgundy-red, strong arrow tip."
+    },
+    {
+      "id": "creamPuff",
+      "title": "泡芙",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "User confirmed Cream Puff / Choux Cream: powdery ivory-pink thick short leaves with tips visibly curling DOWNWARD/BACKWARD, strongly recurved spoon leaves, no yellow fat eggs."
+    },
+    {
+      "id": "pureLove",
+      "title": "纯爱",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Compact thick cupped lilac-pink/blue-pink leaves, small pointed tips, translucent pink central sugar-heart, subtle darker fine geometric veins."
+    },
+    {
+      "id": "blueSurprise",
+      "title": "蓝色惊喜",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Short broad obovate spoon leaves, powdery silver-blue to pale lavender crown, pink/fuchsia tips and upper margins, densely layered."
+    },
+    {
+      "id": "amethystCrystal",
+      "title": "紫水晶",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "User confirmed powdery grey-purple form: short thick oval/spoon leaves with a tiny point, heavy matte pale grey-violet bloom, muted lilac-purple rose-shaped rosette, not red agavoides lance leaves."
+    },
+    {
+      "id": "whitePeony",
+      "title": "白牡丹",
+      "morphology": "crassulaceaeType",
+      "y": 1,
+      "appearance": "Graptoveria Titubans appearance: white-frosted pearl grey-green pointed spatulate leaves, restrained pale pink tips, full symmetrical crown."
+    },
+    {
+      "id": "quietNight",
+      "title": "静夜",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Echeveria derenbergii: miniature apple-green thick short spoon leaves with tiny bright red tips, very compact spherical low rosette."
+    },
+    {
+      "id": "swiftConstellation",
+      "title": "雨燕座",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Echeveria Apus appearance: pale blue-grey broad thick spatulate pointed leaves with delicate continuous pink/red outline, layered open crown."
+    },
+    {
+      "id": "flapjack",
+      "title": "唐印",
+      "morphology": "crassulaceaeType",
+      "y": 1,
+      "appearance": "Kalanchoe luciae: large FLAT broad rounded paddle leaves in opposite pairs stacked upright, muted green center and rich wine-red broad margins, never a pointed lotus."
+    },
+    {
+      "id": "anacampseros",
+      "title": "吹雪之松",
+      "morphology": "crassulaceaeType",
+      "y": 1,
+      "appearance": "Anacampseros rufescens: tiny thick oval-lance succulent leaves along short branching stems, green tops/dark rose-purple lower sides, delicate white axillary threads."
+    },
+    {
+      "id": "anacampserosRainbow",
+      "title": "吹雪之松锦",
+      "morphology": "crassulaceaeType",
+      "y": 1,
+      "appearance": "Anacampseros Sunrise: small thick oval leaves along short stems, cream-white/green longitudinal variegation with hot pink blush, fine white axillary threads, no petals."
+    },
+    {
+      "id": "springMoe",
+      "title": "春萌",
+      "morphology": "crassulaceaeType",
+      "y": 1,
+      "appearance": "Sedum Alice Evans: butter yellow-green thick elongated oval/finger leaves with subtle tip, stacked around slowly upright short stem, fleshy and plump, fresh bright green."
+    },
+    {
+      "id": "orca",
+      "title": "虎鲸",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Golden Maria crested appearance: lime/yellow-green pointed agavoides leaves with red tips along a wavy fan-shaped CREST growth line, no animal imagery."
+    },
+    {
+      "id": "fiona",
+      "title": "菲欧娜",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Echeveria Fiona appearance: pale powdery lilac-pink broad spoon leaves with short points and deeper pink margins, graceful layered rosy rosette."
+    },
+    {
+      "id": "sunsetDance",
+      "title": "晚霞之舞",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Neon Breakers / shaviana type: broad thin mauve-purple spoon leaves with crisp strongly frilled/ruffled pink-red edges, leafy rosette not solid lumps."
+    },
+    {
+      "id": "iceSoul",
+      "title": "冰魄",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Very thick faceted short spoon leaves with raised triangular backs, powdery icy grey-white/ivory with blush pink tips and translucent pale pink center."
+    },
+    {
+      "id": "luoshen",
+      "title": "洛神",
+      "morphology": "crassulaceaeType",
+      "y": 1.25,
+      "appearance": "Small very plump oval to short club leaves, creamy peach-pink with muted mint center and tiny red point, powdery rounded clustered rosette."
+    },
+    {
+      "id": "purpleBearPaw",
+      "title": "紫色熊童子",
+      "morphology": "moneyStackType",
+      "y": 2,
+      "appearance": "GAME COLOR: lavender-purple fuzzy fat bear paw leaves with 3-5 tiny dark purple claw teeth, branching shrub."
+    },
+    {
+      "id": "yellowBearPaw",
+      "title": "黄色熊童子",
+      "morphology": "moneyStackType",
+      "y": 2,
+      "appearance": "GAME COLOR: buttery yellow fuzzy fat bear paw leaves with small warm brown claw teeth, branching shrub."
+    },
+    {
+      "id": "pinkBearPaw",
+      "title": "粉色熊童子",
+      "morphology": "moneyStackType",
+      "y": 2,
+      "appearance": "GAME COLOR: pale candy pink fuzzy fat bear paw leaves with dark rose claw teeth, branching shrub."
+    },
+    {
+      "id": "blueBearPaw",
+      "title": "蓝色熊童子",
+      "morphology": "moneyStackType",
+      "y": 2,
+      "appearance": "GAME COLOR: soft sky-blue fuzzy fat bear paw leaves with dark teal claw teeth, branching shrub."
+    },
+    {
+      "id": "elephantBush",
+      "title": "金枝玉叶",
+      "morphology": "moneyStackType",
+      "y": 1,
+      "appearance": "Portulacaria afra: many SMALL round flattened emerald-green opposite leaves on fine red-maroon branching twigs, woody short trunk in old age, bonsai silhouette."
+    },
+    {
+      "id": "elephantBushRainbow",
+      "title": "金枝玉叶锦",
+      "morphology": "moneyStackType",
+      "y": 1,
+      "appearance": "Portulacaria afra Variegata: SMALL round opposite leaves with cream-white margins and green centers, pink-red slender twigs, cream/pink variegation, woody old trunk."
+    },
+    {
+      "id": "jadeTree",
+      "title": "玉树",
+      "morphology": "moneyStackType",
+      "y": 1.5,
+      "appearance": "Crassula ovata: thick LARGE glossy oval jade-green opposite leaves, light red leaf rims, stout branching stems, short woody old trunk; clearly larger leaves than elephant bush."
+    },
+    {
+      "id": "spiralGrass",
+      "title": "弹簧草",
+      "morphology": "moneyStackType",
+      "y": 1,
+      "appearance": "Albuca spiralis: small round bulb at base, narrow fresh green ribbon leaves standing then curling into corkscrew spirals at their tips, thin line drawing, not succulent rosettes."
+    },
+    {
+      "id": "squarePagoda",
+      "title": "方塔",
+      "morphology": "moneyStackType",
+      "y": 1.5,
+      "appearance": "Crassula Buddha Temple: opposite thick flat square-triangle grey-green leaves tightly stacked in alternating 90-degree pairs, four-sided pagoda tower, slight red tips, no long strings."
+    },
+    {
+      "id": "pearlString",
+      "title": "佛珠",
+      "morphology": "stonecropType",
+      "y": 1,
+      "appearance": "Curio rowleyanus: thin green trailing stems with small round green bead leaves spaced naturally, each bead has a fine translucent slit window, draping strings."
+    },
+    {
+      "id": "needleStonecrop",
+      "title": "佛甲草",
+      "morphology": "stonecropType",
+      "y": 0.75,
+      "appearance": "Sedum lineare: very small narrow linear-lance bright green leaves in whorls of three on numerous fine pale green stems, dense groundcover, no big lotus heads."
+    },
+    {
+      "id": "himeJade",
+      "title": "姬玉露",
+      "morphology": "haworthiaType",
+      "y": 2,
+      "appearance": "Miniature compact green Haworthia obtusa/truncata appearance: tiny rounded translucent-tipped leaves, saturated spring-green bases and sage-green windows, moderately clear, not as glassy as ice/black."
+    },
+    {
+      "id": "eagleClaw",
+      "title": "鹰爪",
+      "morphology": "haworthiaType",
+      "y": 2,
+      "appearance": "User-selected appearance: zebra Haworthia with much SHORTER, BROADER, FATTER dark green triangular claw leaves, raised fine white zebra bumps, tight crown, no transparent jade windows."
+    },
+    {
+      "id": "yunnanRosette",
+      "title": "滇石莲",
+      "morphology": "guanyinType",
+      "y": 1,
+      "appearance": "Sinocrassula yunnanensis: tiny very densely packed narrow pointed dark charcoal-green to deep plum triangular fleshy leaves, fine velvet texture, small upright compact cone-rosette."
+    },
+    {
+      "id": "tileRosette",
+      "title": "瓦松",
+      "morphology": "guanyinType",
+      "y": 1,
+      "appearance": "Orostachys fimbriata: grey-green narrow pointed succulent leaves in layered low rosette, white-fine fringed leaf margins and tiny terminal bristle, subtle burgundy tips."
+    },
+    {
+      "id": "redOptica",
+      "title": "红大内玉",
+      "morphology": "conophytumType",
+      "y": 3,
+      "appearance": "Lithops optica Rubra: ONE body consisting of two rounded fused lobes divided by deep fissure, ruby milky pink sides and dark reddish-purple translucent smooth windows, no multiple heads even final."
+    },
+    {
+      "id": "greenLesliei",
+      "title": "绿紫勋",
+      "morphology": "conophytumType",
+      "y": 3,
+      "appearance": "Lithops lesliei Albinica: ONE paired-lobe stone body, fresh yellow-green/olive green skin, darker green branching island/network markings on flat rounded top faces, central fissure."
+    },
+    {
+      "id": "orangeAucampiae",
+      "title": "日轮玉",
+      "morphology": "conophytumType",
+      "y": 3,
+      "appearance": "Lithops aucampiae: ONE broad paired-lobe body, warm orange/terracotta brown sides and orange-brown rounded top windows with dark reddish brown island reticulation, central fissure."
+    },
+    {
+      "id": "greyGracilidelineata",
+      "title": "荒玉",
+      "morphology": "conophytumType",
+      "y": 3,
+      "appearance": "Lithops gracilidelineata: ONE broad paired-lobe stone body, ivory pale grey-white skin, delicate fine reddish-brown engraved branching lines on slightly rough top, narrow central fissure."
+    },
+    {
+      "id": "bunnyMonilaria",
+      "title": "碧光环",
+      "morphology": "conophytumType",
+      "y": 2,
+      "appearance": "Monilaria moniliformis: short plump green base and TWO long upright thin green rabbit-ear succulent leaves, tiny pale translucent papillae; adult and older have MULTIPLE paired-ear heads on short jointed stems."
+    },
+    {
+      "id": "butterflyMother",
+      "title": "蝴蝶不死鸟",
+      "morphology": "motherOfThousandsType",
+      "y": 1,
+      "appearance": "Kalanchoe Pink Butterflies: dark grey-green narrow long slightly boat-shaped leaves on upright branched stems, irregular purple markings; adult and older have many tiny bright PINK butterfly-like plantlets along serrated leaf edges."
+    }
+  ],
+  "cancelledByUser": [
+    "欢喜颂歌"
+  ]
+}
