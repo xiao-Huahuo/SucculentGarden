@@ -1,4 +1,4 @@
-// PNG 画布与取景范围；由透明通道检查得到，仅裁剪视图，不改动资源像素。
+// PNG画布、透明轮廓与代表叶长；仅控制取景和显示尺度，不改动资源像素。
 import Foundation
 
 struct SucculentArtworkLayout: Sendable {
@@ -7,13 +7,15 @@ struct SucculentArtworkLayout: Sendable {
     let plantingAnchorY: CGFloat?
     let rootMinX: CGFloat?
     let rootMaxX: CGFloat?
+    let referenceLeafLength: CGFloat?
 
-    init(width: CGFloat = 1254, height: CGFloat = 1254, x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat, anchorY: CGFloat? = nil, rootMinX: CGFloat? = nil, rootMaxX: CGFloat? = nil) {
+    init(width: CGFloat = 1254, height: CGFloat = 1254, x: CGFloat, y: CGFloat, w: CGFloat, h: CGFloat, anchorY: CGFloat? = nil, rootMinX: CGFloat? = nil, rootMaxX: CGFloat? = nil, leafLength: CGFloat? = nil) {
         canvas = CGSize(width: width, height: height)
         bounds = CGRect(x: x, y: y, width: w, height: h)
         plantingAnchorY = anchorY
         self.rootMinX = rootMinX
         self.rootMaxX = rootMaxX
+        referenceLeafLength = leafLength
     }
 
     // 草叶可垂过盆沿：把种植点对准盆口，同时让整个轮廓留在槽位内。
@@ -34,8 +36,8 @@ struct SucculentArtworkLayout: Sendable {
             scale = min(scale, size.width / 2 / (rootCenter - bounds.minX),
                         size.width / 2 / (bounds.maxX - rootCenter))
             if let rootMinX, let rootMaxX, rootMaxX > rootMinX {
-                // 花盆绘制高度固定32pt，盆土内径约34pt；根点必须留在盆土内。
-                scale = min(scale, 34 / (rootMaxX - rootMinX))
+                // 花盆绘制高度固定32pt，新陶盆盆土内可用约26pt；根点必须留在盆土内。
+                scale = min(scale, 26 / (rootMaxX - rootMinX))
             }
             y = soilY - anchor * scale
             x = size.width / 2 - rootCenter * scale

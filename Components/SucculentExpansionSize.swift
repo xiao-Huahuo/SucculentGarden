@@ -4,6 +4,14 @@ import Foundation
 enum SucculentExpansionSize {
     static func centimeters(species: SucculentSpecies, stage: SucculentStage, isMaterial: Bool) -> CGSize {
         let type = species.morphology
+        // 图集标注代表叶长；不同阶段的绘画DPI不同，按同一叶长显示以增叶体现成长。
+        if !isMaterial, [.elephantBush, .elephantBushRainbow, .jadeTree, .spiralGrass].contains(species),
+           let layout = SucculentArtworkLayout.assets[species.assetName(stage: stage)],
+           let reference = layout.referenceLeafLength {
+            let leafCentimeters: CGFloat = species == .spiralGrass ? 6 : species == .jadeTree ? 0.55 : 0.3
+            let scale = leafCentimeters / reference
+            return CGSize(width: layout.bounds.width * scale, height: layout.bounds.height * scale)
+        }
         if species == .fenestraria {
             // 叶片约3cm高；随成长增加叶量与丛宽，不套用大型莲座的高度。
             let sizes: [(CGFloat, CGFloat)] = [(0.9, 0.9), (1.8, 1.6), (2.8, 2.5), (4, 3), (4.8, 3.2)]

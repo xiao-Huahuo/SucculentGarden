@@ -1,0 +1,79 @@
+{
+  "revision": 46,
+  "mode": "built-in imagegen edit",
+  "requirements": "三种树形叶长相近、增叶增枝且树冠高低错落；弹簧草细叶空间螺旋与增叶；经典红土陶盆，提高俯视开口。",
+  "leafRuler": "图集代表成熟叶长测量用于显示DPI归一化，保留朝向及透视的自然大小差异；游戏长度不是物种最大自然尺寸。",
+  "potSoil": "新土面椭圆约x255..995、y306..599；32pt盆高下土面中心距底约23pt，可用根部宽26pt，沿用原种植高度。",
+  "references": [
+    "https://www.rhs.org.uk/plants/13534/portulacaria-afra/details",
+    "https://plants.ces.ncsu.edu/plants/crassula-ovata/common-name/money-plant/",
+    "https://www.rhs.org.uk/plants/350715/albuca-spiralis-frizzle-sizzle/details"
+  ],
+  "assets": [
+    {
+      "sourceName": "ElephantBush46Atlas",
+      "path": "Resources/Assets.xcassets/ElephantBush46Atlas.imageset/atlas.png",
+      "sha256": "ef725526cc3100e6e89639c2ac72a2c2d3e10f2099c399dfac663859d153e191",
+      "keys": [
+        "ElephantBushCutting",
+        "ElephantBushStage0",
+        "ElephantBushStage1",
+        "ElephantBushStage2",
+        "ElephantBushStage3",
+        "ElephantBushStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Input1 is a real Portulacaria branch STRUCTURE and varied leaf orientation reference only, not a photo background. Input2 is the old game atlas that needs tree structure replacement, keep its emerald green small oval leaf species and red twigs only. The previous tree forms are TOO SYMMETRICAL and look like clipped round lollipops. COMPLETELY REDESIGN the branch architecture. Real naturally grown succulent TREE: off-center gently bending trunk, dominant leader off to one side, several unequal-length primary branches emerging at DIFFERENT heights and angles, smaller secondary twigs with variable internode spacing, low side branch reaching sideways, some branches forward and others partly hidden behind. Crown has an irregular jagged multi-level outline, one tall leading shoot, lower sideways shoots and small gaps revealing wood; abundant foliage on many twigs, but NOT a solid circular leafball, triangle or repeated three identical pompons. Leaves face varied directions, some broad faces and some edge-on, light front leaves overlapping darker smaller-appearing rear leaves creates depth. Keep thin clean dark illustrated botanical outlines and restrained game-art layer shading. NO mirror symmetry, straight vertical trunk with round canopy, identical Y forks, rows of leaves like wallpaper, bonsai wires, flowers, roots, pots, backgrounds, external shadows, labels or text. Individual mature leaf size is CONSTANT across the atlas, aging adds many leaves and branches, not enlarged leaves. Every sprite at the SAME drawing scale. Output one horizontal row SIX separate complete sprites:3-leaf twig,6-leaf seedling,20-leaf juvenile,70-leaf adult,150-leaf woody old tree,220-leaf final multi-stem tree. First material/young icons small, old/final much larger due to extra same-size SMALL leaves. A few vivid green new tips, mature leaf length around20pixels, same throughout. Old has short woody main trunk, final has several uneven woody stems. Mature trees should be airy irregular branching with dense leafy shoots at varied heights, not clipped spherical bushes. Exactly6 nonoverlapping plants with wide true-transparent RGBA gutters and full leaf contours."
+    },
+    {
+      "sourceName": "ElephantBushRainbow46Atlas",
+      "path": "Resources/Assets.xcassets/ElephantBushRainbow46Atlas.imageset/atlas.png",
+      "sha256": "088d110e02457ca12faf9bd3dc599820952c46f2d1f1b1e7ace13a164745746f",
+      "keys": [
+        "ElephantBushRainbowCutting",
+        "ElephantBushRainbowStage0",
+        "ElephantBushRainbowStage1",
+        "ElephantBushRainbowStage2",
+        "ElephantBushRainbowStage3",
+        "ElephantBushRainbowStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Input1 real Portulacaria branch is natural STRUCTURE/leaf orientation reference; input2 target is VARIEGATED golden branch jade atlas, preserve its green-centered cream-white/pink-rim small oval leaves and red twigs only, replace its regular round crown. The previous tree forms are TOO SYMMETRICAL and look like clipped round lollipops. COMPLETELY REDESIGN the branch architecture. Real naturally grown succulent TREE: off-center gently bending trunk, dominant leader off to one side, several unequal-length primary branches emerging at DIFFERENT heights and angles, smaller secondary twigs with variable internode spacing, low side branch reaching sideways, some branches forward and others partly hidden behind. Crown has an irregular jagged multi-level outline, one tall leading shoot, lower sideways shoots and small gaps revealing wood; abundant foliage on many twigs, but NOT a solid circular leafball, triangle or repeated three identical pompons. Leaves face varied directions, some broad faces and some edge-on, light front leaves overlapping darker smaller-appearing rear leaves creates depth. Keep thin clean dark illustrated botanical outlines and restrained game-art layer shading. NO mirror symmetry, straight vertical trunk with round canopy, identical Y forks, rows of leaves like wallpaper, bonsai wires, flowers, roots, pots, backgrounds, external shadows, labels or text. Individual mature leaf size is CONSTANT across the atlas, aging adds many leaves and branches, not enlarged leaves. Every sprite at the SAME drawing scale. ONE ROW SIX sprites:3-leaf twig,6-leaf seedling,20-leaf juvenile,70-leaf adult,150-leaf woody old tree,220-leaf final woody multi-stem tree. Older form has a slightly leaning leader on the RIGHT and a lower branch extending LEFT, separate irregular leafy shoots, unequal branch lengths and clearly layered front/back. Keep SAME small individual leaf size across all ages, most cream variegated leaves tiny, old tree very leafy but with intermittent spaces showing bent branches. Young stems reddish-green, old/final woody. True transparent RGBA, six uncropped isolated sprites, generous gutters, not photographed, not topiary."
+    },
+    {
+      "sourceName": "JadeTree46Atlas",
+      "path": "Resources/Assets.xcassets/JadeTree46Atlas.imageset/atlas.png",
+      "sha256": "a053c474b9b36768bb6d6d5fff1f7fc204e938ed08118a22755d465ff8a311cf",
+      "keys": [
+        "JadeTreeCutting",
+        "JadeTreeStage0",
+        "JadeTreeStage1",
+        "JadeTreeStage2",
+        "JadeTreeStage3",
+        "JadeTreeStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Input1 REAL old Crassula ovata TREE is the critical branch architecture reference: study its irregular tall side shoots, uneven foliage, branch hierarchy, and varied leaf angles. Do not copy pot, room or photo style. Input2 is the game atlas whose regular ball crowns need to be replaced, retain its thick green oval red-edged leaf identity and clean thin illustrated outline style only. The previous tree forms are TOO SYMMETRICAL and look like clipped round lollipops. COMPLETELY REDESIGN the branch architecture. Real naturally grown succulent TREE: off-center gently bending trunk, dominant leader off to one side, several unequal-length primary branches emerging at DIFFERENT heights and angles, smaller secondary twigs with variable internode spacing, low side branch reaching sideways, some branches forward and others partly hidden behind. Crown has an irregular jagged multi-level outline, one tall leading shoot, lower sideways shoots and small gaps revealing wood; abundant foliage on many twigs, but NOT a solid circular leafball, triangle or repeated three identical pompons. Leaves face varied directions, some broad faces and some edge-on, light front leaves overlapping darker smaller-appearing rear leaves creates depth. Keep thin clean dark illustrated botanical outlines and restrained game-art layer shading. NO mirror symmetry, straight vertical trunk with round canopy, identical Y forks, rows of leaves like wallpaper, bonsai wires, flowers, roots, pots, backgrounds, external shadows, labels or text. Individual mature leaf size is CONSTANT across the atlas, aging adds many leaves and branches, not enlarged leaves. Every sprite at the SAME drawing scale. ONE horizontal row SIX complete separated sprites: short3-leaf stem cutting (not single detached leaf),6-leaf seedling,18-leaf juvenile,60-leaf adult tree,120-leaf old woody tree,180-leaf final multiple woody stems. EXACT same individual mature oval-leaf size in every icon, about30pixels at this drawing scale. Let the uppermost shoot stand taller and off-center, a few lower branches extend at different angles, multiple irregular leafy tiers with real spaces and branch overlap. Keep abundant leaves concentrated along twig tips and pairs along stems, older trees much more leafy, NOT empty bonsai sticks and NOT symmetric round bushes. True transparent RGBA gutters, no clipping. Preserve the clean restrained botanical game illustration rather than photorealism."
+    },
+    {
+      "sourceName": "SpiralGrass46Atlas",
+      "path": "Resources/Assets.xcassets/SpiralGrass46Atlas.imageset/atlas.png",
+      "sha256": "6489a528a5da346c17c4672f473a3cf8c7ec7d3bf003ff25821bf5e19a0cbb7e",
+      "keys": [
+        "SpiralGrassCutting",
+        "SpiralGrassStage0",
+        "SpiralGrassStage1",
+        "SpiralGrassStage2",
+        "SpiralGrassStage3",
+        "SpiralGrassStage4"
+      ],
+      "prompt": "Use case: precise-object-edit. Keep the first FIVE sprites in this six-sprite Albuca spiralis atlas unchanged. Edit ONLY the LAST rightmost plant: it is the final MULTIHEAD stage and must have THREE separate small basal bulbs, not one large bulb. Put the bulbs in a natural compact triangular cluster, one slightly in front and two behind; keep each bulb the same individual size as the earlier bulbs, attach its own group of narrow helical leaves to each bulb. Keep the existing abundant thin leaves, natural THREE-DIMENSIONAL loose corkscrews, varying axes, holes/foreshortening, and keep individual leaf length/width the same as earlier phases. Plant height stays about the same as all other sprites, width may increase a little but never touch neighboring sprite or crop at canvas edge. Preserve clean thin outlined botanical game illustration, true transparent RGBA background and generous margins, no added labels, shadows, flowers, pot, soil, roots, glow or opaque background."
+    },
+    {
+      "sourceName": "TerracottaPot46Atlas",
+      "path": "Resources/Assets.xcassets/TerracottaPot46Atlas.imageset/atlas.png",
+      "sha256": "d1694b963c9231b525790521d89aa8cbfca2b15b0f655504690d72fcc9f01501",
+      "keys": [
+        "SucculentPot"
+      ],
+      "prompt": "Use case: precise-object-edit. Redraw the input game's plain cream flowerpot as a CLASSIC RED TERRACOTTA CLAY POT. One empty planted pot with dark brown soil, no plant. Classic flowerpot silhouette: thick simple rolled terracotta rim, straight gently tapered trapezoid sides, narrow flat base, warm brick-red/orange unglazed clay, a little darker under rim, clean thin dark outline and restrained flat illustrated game shading. Main change CAMERA is distinctly HIGHER, looking DOWN about45degrees above horizontal: the opening is a BROAD DEEP horizontal ellipse, its front-to-back diameter about0.55 to0.65 of its left-to-right diameter. Much more soil surface is visible; soil has a few tiny subtle flecks, not noisy gravel. Preserve an easily readable red-clay front wall below the open ellipse. No handles, saucer, decorations or text. The soil ellipse center should lie about28percent down the overall visible pot height, for a centered planting point. Complete uncropped pot centered with generous genuinely transparent RGBA margins. No plant, label, floor, surrounding shadow, glow, photoreal texture, glossy glaze, water, white background or black backdrop. Crisp smooth edges readable at40pixels."
+    }
+  ]
+}

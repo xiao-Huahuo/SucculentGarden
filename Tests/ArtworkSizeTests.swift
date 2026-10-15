@@ -22,8 +22,9 @@ struct ArtworkSizeTests {
     func miniatureShootsAreAboutOneThirdOfPreviousWidgetSizeAndStayRooted() {
         for species in [SucculentSpecies.goldenStonecrop, .snowStonecrop, .jixingMeiren] {
             let layout = SucculentArtworkLayout.assets[species.assetName(stage: .grassSprout)]!
-            let previous = layout.placement(in: CGSize(width: 78 * 0.45, height: 93), planted: true)
             let unit = SucculentArtworkSize.plantedPointsPerCentimeter(artSize: 78)
+            // 旧参考株冠约为盆口九成；换俯视陶盆后仍按盆径比较，避免把相机缩放当植株变小。
+            let previous = layout.placement(in: CGSize(width: unit * SucculentArtworkSize.potDiameter * 0.9, height: 93), planted: true)
             let size = SucculentArtworkSize.centimeters(species: species, stage: .grassSprout, isLeaf: false)
             let placement = layout.placement(in: CGSize(width: 78, height: 93), planted: true,
                                              maximumSize: CGSize(width: size.width * unit, height: size.height * unit))
@@ -75,7 +76,7 @@ struct ArtworkSizeTests {
                     let anchor = layout.plantingAnchorY ?? layout.bounds.maxY
                     #expect(abs(anchor * position.scale + position.offset.height - (frame.height - 23)) < 0.001)
                     if let left = layout.rootMinX, let right = layout.rootMaxX {
-                        #expect((right - left) * position.scale <= 34.001)
+                        #expect((right - left) * position.scale <= 26.001)
                     }
                     // 用户指定单头老桩，轮廓可更紧凑；不以叶冠外接面积代表成长。
                     if ![.oldStem, .motherOldStem, species.matureStage].contains(stage) {
