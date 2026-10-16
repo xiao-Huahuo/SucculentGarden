@@ -29,7 +29,7 @@ struct YuzhuiTests {
         #expect(free.money == 10 && free.claimedToday == 2)
         let received = try #require(free.unplacedPlants.last)
         #expect(free.slots == planted.slots && received.stage(at: date, rate: 1) == .grassSprout)
-        #expect(received.transitionDates(after: date, rate: 1).first == date.addingTimeInterval(day))
+        #expect(!received.isGrowing && received.transitionDates(after: date, rate: 1).isEmpty)
         #expect(try await SucculentStore(fileURL: url).read() == free)
     }
 
@@ -91,13 +91,13 @@ struct YuzhuiTests {
         let store = SucculentStore(fileURL: url)
         let migrated = try await store.read()
         #expect(try Data(contentsOf: url) == original)
-        #expect(migrated.version == 7 && migrated.money == old.money && migrated.leaves == old.leaves)
+        #expect(migrated.version == 8 && migrated.money == old.money && migrated.leaves == old.leaves)
         #expect(migrated.claimDate == old.claimDate && migrated.claimedToday == 4 && migrated.slots == old.slots)
         for (before, after) in zip(old.plants, migrated.plants) {
             #expect(after.id == before.id && after.growthUpdatedAt == before.growthUpdatedAt)
             #expect(after.growthSeconds == before.growthSeconds + day)
             for elapsed in [0.0, 0.4, 2, 30] {
-                let age = min(9 * day, before.growthSeconds + elapsed * day)
+                let age = min(9 * day, before.growthSeconds + (after.isGrowing ? elapsed * day : 0))
                 let stage = SucculentStage.at(growthSeconds: age, stages: SucculentStage.stonecropStages)
                 #expect(after.stage(at: date.addingTimeInterval(elapsed * day), rate: 1) == stage)
             }

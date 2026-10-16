@@ -93,7 +93,7 @@ struct GrowthMultiplierTests {
         let store = SucculentStore(fileURL: url)
         let preview = try await store.read(at: upgradeDate)
         #expect(try Data(contentsOf: url) == bytes)
-        #expect(preview.version == 7 && preview.slots == old.slots && preview.money == 37 && preview.claimedToday == 5)
+        #expect(preview.version == 8 && preview.slots == old.slots && preview.money == 37 && preview.claimedToday == 5)
         for (previous, migrated) in zip(old.plants, preview.plants) {
             #expect(previous.id == migrated.id && migrated.growthUpdatedAt == upgradeDate)
             #expect(migrated.growthSeconds == day / 2)

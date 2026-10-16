@@ -52,7 +52,7 @@ struct StonecropTests {
         _ = try await store.sow(leafID: inventory.leaves[2].id, in: 1, at: plantingDate)
         let snowID = try #require((try await store.read()).plant(in: 1)).id
         let moved = try await store.assign(plantID: snowID, to: 0)
-        #expect(moved.slots == [snowID, nil, nil] && moved.unplacedPlants == [plant])
+        #expect(moved.slots == [snowID, nil, nil] && moved.unplacedPlants.map(\.id) == [plant.id] && moved.unplacedPlants.allSatisfy { !$0.isGrowing })
         #expect(try await SucculentStore(fileURL: url).read() == moved)
     }
 

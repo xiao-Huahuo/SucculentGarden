@@ -5,7 +5,7 @@ enum GardenPlantingLayout {
     static let width: CGFloat = 360
     static let padding: CGFloat = 12
     static let spacing: CGFloat = 10
-    static let scrollClearance: CGFloat = 240
+    static let scrollClearance: CGFloat = 310
 
     static func slot(at x: CGFloat, width: CGFloat) -> Int? {
         guard x.isFinite, width.isFinite, width > 2 * padding + 2 * spacing,

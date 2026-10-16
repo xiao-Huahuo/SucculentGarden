@@ -3,6 +3,7 @@ import SwiftUI
 
 struct GardenMainView: View {
     @Bindable var model: GardenModel
+    @Environment(\.scenePhase) private var scenePhase
 
     private var selection: Binding<GardenSection?> {
         Binding(get: { model.section }, set: { if let value = $0 { model.section = value } })
@@ -44,7 +45,7 @@ struct GardenMainView: View {
                         }
                         .overlay(alignment: .bottomTrailing) {
                             GardenPlantingTray(model: model, garden: garden, date: context.date)
-                                .frame(width: min(GardenPlantingLayout.width, geometry.size.width - 40))
+                                .frame(width: min(model.currentLayout?.size == .small ? 190 : GardenPlantingLayout.width, geometry.size.width - 40))
                                 .padding(20)
                         }
                     }
@@ -86,7 +87,13 @@ struct GardenMainView: View {
             }
         }
         .frame(minWidth: 760, minHeight: 600)
-        .task { if model.garden == nil { await model.load() } }
+        .task {
+            if model.garden == nil { await model.load() }
+            await model.refreshWidgets()
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { Task { await model.refreshWidgets() } }
+        }
         .overlay(alignment: .topTrailing) {
             GardenNoticeBanner(model: model).padding(12)
         }
@@ -138,6 +145,7 @@ struct GardenMainView: View {
         case .shop: GardenShopView(model: model, garden: garden, date: date, availableHeight: availableHeight)
         case .collection: GardenCollectionView(model: model, garden: garden, date: date, availableHeight: availableHeight)
         case .leaves: GardenLeavesView(model: model, garden: garden, date: date, availableHeight: availableHeight)
+        case .pots: GardenPotsView(model: model, garden: garden)
         case .settings: GardenSettingsView(model: model)
         }
     }

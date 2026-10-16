@@ -100,6 +100,7 @@ struct DisassemblyTests {
         let plant = plant(.snowStonecrop, .grassCluster)
         var state = SucculentGarden()
         state.plants = [plant]
+        state.plants[0].isGrowing = false
         try JSONEncoder().encode(state).write(to: url)
         let store = SucculentStore(fileURL: url)
         let successes = await withTaskGroup(of: Bool.self) { group in

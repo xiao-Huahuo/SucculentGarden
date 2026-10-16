@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 import Foundation
 
 struct GardenDragItem: Codable, Transferable {
-    enum Kind: String, Codable { case leaf, plant }
+    enum Kind: String, Codable { case leaf, plant, pot }
     let kind: Kind
     let id: UUID
 

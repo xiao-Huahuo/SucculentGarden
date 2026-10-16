@@ -21,4 +21,14 @@ enum GardenGrowthTime {
         }
         return parts.isEmpty ? "0秒" : parts.joined()
     }
+
+    static func compact(_ seconds: TimeInterval) -> String {
+        let value = max(0, Int(seconds.rounded(.up)))
+        let days = value / 86_400
+        let hours = value % 86_400 / 3_600
+        let minutes = value % 3_600 / 60
+        let rest = value % 60
+        return days == 0 ? String(format: "%02d:%02d:%02d", hours, minutes, rest)
+            : String(format: "%d天%02d:%02d:%02d", days, hours, minutes, rest)
+    }
 }

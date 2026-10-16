@@ -23,7 +23,7 @@ actor SucculentStore {
         decoder.userInfo[SucculentSpecies.legacyDecodingKey] = version < 3
         var state = try decoder.decode(SucculentGarden.self, from: data)
         try state.validate()
-        if state.version < 7 {
+        if state.version < 8 {
             state.migrateLegacyState(at: date)
             try state.validate()
             if createIfMissing { try save(state, to: url) }
@@ -33,7 +33,7 @@ actor SucculentStore {
 
     func claimLeaf(species: SucculentSpecies = .huangli, at date: Date = .now,
                    calendar: Calendar = .autoupdatingCurrent) throws -> SucculentGarden {
-        try mutate { state in
+        try mutate(at: date) { state in
             try Self.recordClaim(in: &state, at: date, calendar: calendar)
             state.leaves.append(SucculentLeaf(id: UUID(), claimedAt: date, species: species))
         }
@@ -54,60 +54,50 @@ actor SucculentStore {
     }
 
     func sow(leafID: UUID, in slot: Int, at date: Date = .now) throws -> SucculentGarden {
-        try mutate { state in
-            guard state.slots.indices.contains(slot) else { throw GardenError.invalidSlot }
-            guard let index = state.leaves.firstIndex(where: { $0.id == leafID }) else { throw GardenError.leafMissing }
-            let plant = SucculentPlant(id: UUID(), acquiredAt: date, growthSeconds: 0,
-                                       growthUpdatedAt: date, species: state.leaves[index].species)
-            state.leaves.remove(at: index)
-            state.plants.append(plant)
-            state.slots[slot] = plant.id
-        }
+        guard GardenPot.originalIDs.indices.contains(slot) else { throw GardenError.invalidSlot }
+        return try sow(leafID: leafID, inPot: GardenPot.originalIDs[slot], position: 0, at: date)
     }
 
     func buy(stage: SucculentStage, species: SucculentSpecies = .huangli,
              at date: Date = .now, calendar: Calendar = .autoupdatingCurrent) throws -> SucculentGarden {
-        try mutate { state in
+        try mutate(at: date) { state in
             guard species.stages.contains(stage) else { throw GardenError.invalidStage }
             guard let price = species.purchasePrice(for: stage) else { throw GardenError.cannotBuyLeafCutting }
             guard state.money >= price else { throw GardenError.insufficientFunds }
             if price == 0 { try Self.recordClaim(in: &state, at: date, calendar: calendar) }
             let plant = SucculentPlant(id: UUID(), acquiredAt: date,
-                                       growthSeconds: species.startSeconds(for: stage), growthUpdatedAt: date, species: species)
+                                       growthSeconds: species.startSeconds(for: stage), growthUpdatedAt: date, species: species, isGrowing: false)
             state.money -= price
             state.plants.append(plant)
             // 购买和免费领取均先进入收藏，盆位由用户另行摆放。
         }
     }
 
-    func assign(plantID: UUID, to slot: Int) throws -> SucculentGarden {
-        try mutate { state in
-            guard state.slots.indices.contains(slot) else { throw GardenError.invalidSlot }
-            guard state.plants.contains(where: { $0.id == plantID }) else { throw GardenError.plantMissing }
-            state.slots = state.slots.map { $0 == plantID ? nil : $0 }
-            state.slots[slot] = plantID
-        }
+    func assign(plantID: UUID, to slot: Int, at date: Date = .now) throws -> SucculentGarden {
+        guard GardenPot.originalIDs.indices.contains(slot) else { throw GardenError.invalidSlot }
+        return try assign(plantID: plantID, toPot: GardenPot.originalIDs[slot], position: 0, at: date)
     }
 
-    func clear(slot: Int) throws -> SucculentGarden {
-        try mutate { state in
-            guard state.slots.indices.contains(slot) else { throw GardenError.invalidSlot }
-            state.slots[slot] = nil
+    func clear(slot: Int, at date: Date = .now) throws -> SucculentGarden {
+        guard GardenPot.originalIDs.indices.contains(slot) else { throw GardenError.invalidSlot }
+        return try mutate(at: date) { state in
+            guard let pot = state.pot(id: GardenPot.originalIDs[slot]) else { throw GardenError.potMissing }
+            for id in pot.plants.compactMap({ $0 }) { state.removePlant(id, at: date) }
         }
     }
 
     func sell(plantID: UUID, at date: Date = .now) throws -> SucculentGarden {
-        try mutate { state in
+        try mutate(at: date) { state in
             guard let index = state.plants.firstIndex(where: { $0.id == plantID }) else { throw GardenError.plantMissing }
             let price = state.plants[index].stage(at: date, rate: state.effectiveRate(for: state.plants[index].species)).salePrice
             state.money += price
+            state.removePlant(plantID, at: date)
             state.plants.remove(at: index)
-            state.slots = state.slots.map { $0 == plantID ? nil : $0 }
         }
     }
 
     func disassemble(plantID: UUID, at date: Date = .now) throws -> SucculentGarden {
-        try mutate { state in
+        try mutate(at: date) { state in
             guard let index = state.plants.firstIndex(where: { $0.id == plantID }) else { throw GardenError.plantMissing }
             let plant = state.plants[index]
             let stage = plant.stage(at: date, rate: state.effectiveRate(for: plant.species))
@@ -115,13 +105,13 @@ actor SucculentStore {
             state.leaves.append(contentsOf: (0..<count).map { _ in
                 SucculentLeaf(id: UUID(), claimedAt: date, species: plant.species)
             })
+            state.removePlant(plantID, at: date)
             state.plants.remove(at: index)
-            state.slots = state.slots.map { $0 == plantID ? nil : $0 }
         }
     }
 
     func harvest(plantID: UUID, at date: Date = .now) throws -> SucculentGarden {
-        try mutate { state in
+        try mutate(at: date) { state in
             guard let index = state.plants.firstIndex(where: { $0.id == plantID }) else { throw GardenError.plantMissing }
             let plant = state.plants[index]
             let stage = plant.stage(at: date, rate: state.effectiveRate(for: plant.species))
@@ -136,7 +126,7 @@ actor SucculentStore {
 
     func changeRate(to rate: Double, at date: Date = .now) throws -> SucculentGarden {
         guard rate.isFinite, (0.25...1_000).contains(rate) else { throw GardenError.invalidRate }
-        return try mutate { state in
+        return try mutate(at: date) { state in
             state.settleGrowth(at: date)
             state.growthRate = rate
         }
@@ -144,15 +134,15 @@ actor SucculentStore {
 
     func changeMultipliers(to multipliers: GardenGrowthMultipliers, at date: Date = .now) throws -> SucculentGarden {
         try multipliers.validate()
-        return try mutate { state in
+        return try mutate(at: date) { state in
             state.settleGrowth(at: date)
             state.growthMultipliers = multipliers
         }
     }
 
-    private func mutate(_ action: (inout SucculentGarden) throws -> Void) throws -> SucculentGarden {
+    func mutate(at date: Date = .now, _ action: (inout SucculentGarden) throws -> Void) throws -> SucculentGarden {
         do {
-            var state = try read(createIfMissing: true)
+            var state = try read(createIfMissing: true, at: date)
             try action(&state)
             try state.validate()
             try save(state, to: storageURL())

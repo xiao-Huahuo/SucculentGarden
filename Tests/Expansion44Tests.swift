@@ -51,6 +51,7 @@ struct Expansion44Tests {
             for stage in species.stages {
                 var state = SucculentGarden()
                 state.plants = [plant(species, stage)]
+                state.plants[0].isGrowing = false
                 let bytes = try JSONEncoder().encode(state)
                 try bytes.write(to: url)
                 await #expect(throws: GardenError.cannotDisassemble) {

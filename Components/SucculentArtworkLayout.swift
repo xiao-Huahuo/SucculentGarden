@@ -19,33 +19,37 @@ struct SucculentArtworkLayout: Sendable {
     }
 
     // 草叶可垂过盆沿：把种植点对准盆口，同时让整个轮廓留在槽位内。
-    func placement(in size: CGSize, planted: Bool, maximumSize: CGSize? = nil) -> (scale: CGFloat, offset: CGSize) {
+    func placement(in size: CGSize, planted: Bool, maximumSize: CGSize? = nil, plantingPoint: CGPoint? = nil, rootWidth: CGFloat? = nil) -> (scale: CGFloat, offset: CGSize) {
         let sizeLimit = maximumSize.map { min($0.width / bounds.width, $0.height / bounds.height) } ?? .infinity
         var scale = min(size.width / bounds.width, size.height / bounds.height, sizeLimit)
         var y = size.height - bounds.height * scale - bounds.minY * scale
         var x = (size.width - bounds.width * scale) / 2 - bounds.minX * scale
         if planted {
-            let soilY = size.height - 23
+            let soilY = plantingPoint?.y ?? size.height - 23
+            let soilX = plantingPoint?.x ?? size.width / 2
+            let below = size.height - soilY
             let anchor = plantingAnchorY ?? bounds.maxY
             let upper = anchor - bounds.minY
             let lower = bounds.maxY - anchor
             scale = min(size.width / bounds.width,
                         upper > 0 ? soilY / upper : .infinity,
-                        lower > 0 ? 23 / lower : .infinity, sizeLimit)
+                        lower > 0 ? below / lower : .infinity, sizeLimit)
             let rootCenter = rootMinX.flatMap { left in rootMaxX.map { (left + $0) / 2 } } ?? bounds.midX
-            scale = min(scale, size.width / 2 / (rootCenter - bounds.minX),
-                        size.width / 2 / (bounds.maxX - rootCenter))
+            scale = min(scale, soilX / (rootCenter - bounds.minX),
+                        (size.width - soilX) / (bounds.maxX - rootCenter))
             if let rootMinX, let rootMaxX, rootMaxX > rootMinX {
                 // 花盆绘制高度固定32pt，新陶盆盆土内可用约26pt；根点必须留在盆土内。
-                scale = min(scale, 26 / (rootMaxX - rootMinX))
+                scale = min(scale, (rootWidth ?? 26) / (rootMaxX - rootMinX))
             }
             y = soilY - anchor * scale
-            x = size.width / 2 - rootCenter * scale
+            x = soilX - rootCenter * scale
         }
         return (scale, CGSize(width: x, height: y))
     }
 
     static let assets: [String: Self] = [
+        "WidePot47": .init(width: 1774, height: 887, x: 75, y: 164, w: 1624, h: 608),
+        "LongPot47": .init(width: 1774, height: 887, x: 79, y: 208, w: 1616, h: 504),
         "GuanyinStage0": .init(width: 1254, height: 1254, x: 235, y: 165, w: 815, h: 928),
         "GuanyinStage1": .init(width: 1254, height: 1254, x: 52, y: 126, w: 1148, h: 954),
         "GuanyinStage2": .init(width: 1254, height: 1254, x: 41, y: 88, w: 1175, h: 1097),

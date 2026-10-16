@@ -9,20 +9,23 @@ struct SucculentArtwork: View {
     var isWidget = false
     var isPlanted = false
     var pointsPerCentimeter: CGFloat?
+    var plantingPoint: CGPoint?
+    var rootWidth: CGFloat?
 
     var body: some View {
         GardenArtworkImage(name: species.assetName(stage: stage ?? species.initialStage, isLeaf: isLeaf),
                            isWidget: isWidget, planted: isPlanted,
                            centimeters: SucculentArtworkSize.centimeters(species: species, stage: stage ?? species.initialStage, isLeaf: isLeaf),
-                           pointsPerCentimeter: pointsPerCentimeter)
+                           pointsPerCentimeter: pointsPerCentimeter, plantingPoint: plantingPoint, rootWidth: rootWidth)
             .accessibilityLabel(isLeaf ? "\(species.title)\(species.propagationTitle)" : "\(species.title)，\(species.stageTitle(for: stage ?? species.initialStage))")
     }
 }
 
 struct FlowerpotArtwork: View {
+    var kind: GardenPotKind = .ordinary
     var isWidget = false
     var body: some View {
-        GardenArtworkImage(name: "SucculentPot", isWidget: isWidget)
+        GardenArtworkImage(name: kind.assetName, isWidget: isWidget)
             .accessibilityHidden(true)
     }
 }
@@ -33,6 +36,8 @@ private struct GardenArtworkImage: View {
     var planted = false
     var centimeters: CGSize?
     var pointsPerCentimeter: CGFloat?
+    var plantingPoint: CGPoint?
+    var rootWidth: CGFloat?
     @State private var loaded: LoadedArtwork?
 
     private struct LoadedArtwork {
@@ -59,7 +64,7 @@ private struct GardenArtworkImage: View {
             GeometryReader { geometry in
                 let unit = pointsPerCentimeter ?? SucculentArtworkSize.previewPointsPerCentimeter(in: geometry.size)
                 let maximumSize = centimeters.map { CGSize(width: $0.width * unit, height: $0.height * unit) }
-                let placement = layout.placement(in: geometry.size, planted: planted, maximumSize: maximumSize)
+                let placement = layout.placement(in: geometry.size, planted: planted, maximumSize: maximumSize, plantingPoint: plantingPoint, rootWidth: rootWidth)
                 if let image {
                     Image(nsImage: image)
                         .renderingMode(.original)

@@ -58,7 +58,7 @@ struct LifecycleRevisionTests {
         try bytes.write(to: url)
         let store = SucculentStore(fileURL: url)
         let migrated = try await store.read(at: date)
-        #expect(migrated.version == 7)
+        #expect(migrated.version == 8)
         #expect(migrated.money == 47 && migrated.claimedToday == 3 && migrated.claimDate == old.claimDate)
         #expect(migrated.slots == old.slots && migrated.leaves == old.leaves)
         #expect(migrated.plants.map(\.id) == old.plants.map(\.id))
@@ -66,7 +66,11 @@ struct LifecycleRevisionTests {
             #expect(plant.growthSeconds == 19 * 86_400)
             #expect(plant.species.stageTitle(for: plant.stage(at: date, rate: 0)) == "多头")
         }
-        #expect(Array(migrated.plants.suffix(2)) == Array(old.plants.suffix(2)))
+        for (before, after) in zip(old.plants.suffix(2), migrated.plants.suffix(2)) {
+            #expect(after.id == before.id && after.species == before.species)
+            #expect(after.age(at: date, rate: migrated.effectiveRate(for: after.species)) == before.age(at: date, rate: old.effectiveRate(for: before.species)))
+            #expect(after.isGrowing == (migrated.pot(containing: after.id) != nil))
+        }
         #expect(try Data(contentsOf: url) == bytes)
         let saved = try await store.read(createIfMissing: true, at: date)
         #expect(try await SucculentStore(fileURL: url).read(at: date) == saved)

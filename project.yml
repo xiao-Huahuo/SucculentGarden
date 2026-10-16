@@ -8,7 +8,7 @@ settings:
   base:
     SWIFT_VERSION: "6.0"
     MARKETING_VERSION: "1.9"
-    CURRENT_PROJECT_VERSION: "46"
+    CURRENT_PROJECT_VERSION: "47"
     DEVELOPMENT_LANGUAGE: zh-Hans
     CODE_SIGN_STYLE: Manual
     CODE_SIGN_IDENTITY: "Apple Development"
@@ -25,6 +25,7 @@ targets:
       - Components
       - Models
       - Services/SucculentStore.swift
+      - Services/SucculentPotStore.swift
       - Services/MuyuStore.swift
       - Widgets/MuyuTapIntent.swift
       - path: Resources/Assets.xcassets
@@ -108,7 +109,10 @@ targets:
     sources:
       - Tests
       - App/GardenModel.swift
+      - App/GardenPotModel.swift
+      - App/GardenDragItem.swift
       - Components/GardenPlantingLayout.swift
+      - Components/GardenPotGeometry.swift
       - Components/WidgetArtworkCache.swift
       - Components/ArtworkImageCache.swift
       - Components/ArtworkImageDecoder.swift

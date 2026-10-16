@@ -71,7 +71,7 @@ struct SucculentSpeciesTests {
         }
         let saved = try await SucculentStore(fileURL: url).read()
         #expect(saved.plants.map(\.species) == SucculentSpecies.allCases)
-        #expect(saved.version == 7 && saved.money == 10)
+        #expect(saved.version == 8 && saved.money == 10)
     }
 
     @Test
@@ -93,7 +93,7 @@ struct SucculentSpeciesTests {
         try original.write(to: url)
         let restored = try await store.read()
         #expect(try Data(contentsOf: url) == original)
-        previous.version = 7
+        previous.version = 8
         #expect(restored == previous)
         #expect(restored.leaves.allSatisfy { $0.species == .huangli })
         #expect(restored.plants.allSatisfy { $0.species == .huangli })

@@ -119,14 +119,16 @@ struct GardenCollectionView: View {
                        height: GardenInventoryLayout.imageHeight(species: plant.species, stage: stage, isMaterial: false))
             Text("\(plant.species.title) \(index)").font(.headline).lineLimit(1).minimumScaleFactor(0.85)
             Text(plant.species.stageTitle(for: stage)).font(.caption).foregroundStyle(.secondary)
-            if let next = plant.transitionDates(after: date, rate: garden.effectiveRate(for: plant.species)).first {
+            if !plant.isGrowing {
+                Text("未入盆 · 成长已暂停").font(.caption2).foregroundStyle(.secondary)
+            } else if let next = plant.transitionDates(after: date, rate: garden.effectiveRate(for: plant.species)).first {
                 Text("下阶段：\(next, style: .relative)")
                     .font(.caption2).foregroundStyle(.secondary)
             } else {
                 Text("已长成\(plant.species.stageTitle(for: plant.species.matureStage))").font(.caption2).foregroundStyle(.secondary)
             }
-            if let slot = garden.slot(containing: plant.id) {
-                Text("盆栽\(slot + 1)").font(.caption).foregroundStyle(Color.accentColor)
+            if let pot = garden.pot(containing: plant.id) {
+                Text(pot.title).font(.caption).foregroundStyle(Color.accentColor)
             }
         }
         .overlay(alignment: .topTrailing) {
@@ -151,11 +153,9 @@ struct GardenCollectionView: View {
     }
 
     @ViewBuilder private func plantActions(_ plant: SucculentPlant) -> some View {
-        ForEach(0..<3, id: \.self) { slot in
-            Button("放入花盆 \(slot + 1)") {
-                model.selectedSlot = slot
-                Task { await model.assign(plant.id, to: slot) }
-            }
+        GardenPlantDestinationMenu(model: model, garden: garden, item: GardenDragItem(kind: .plant, id: plant.id))
+        if garden.pot(containing: plant.id) != nil {
+            Button("移回收藏") { Task { await model.removePlant(plant.id) } }
         }
         Divider()
         let stage = plant.stage(at: date, rate: garden.effectiveRate(for: plant.species))
@@ -204,12 +204,8 @@ struct GardenLeavesView: View {
                         .contentShape(Rectangle())
                         .draggable(GardenDragItem(kind: .leaf, id: stack.firstLeafID))
                         .contextMenu {
-                            ForEach(0..<3, id: \.self) { slot in
-                                Button("种入花盆 \(slot + 1)") {
-                                    model.selectedSlot = slot
-                                    Task { await model.sow(stack.firstLeafID, in: slot) }
-                                }
-                            }
+                            GardenPlantDestinationMenu(model: model, garden: garden,
+                                                       item: GardenDragItem(kind: .leaf, id: stack.firstLeafID))
                             Divider()
                             Button("丢弃一份", role: .destructive) {
                                 Task { await model.discardLeaf(stack.firstLeafID) }
@@ -235,5 +231,40 @@ struct GardenLeavesView: View {
         } message: { species in
             Text("将丢弃这一叠\(species.title)\(species.propagationTitle)，不返还今日领取额度。")
         }
+    }
+}
+
+// 所有库存入口都指向当前独立花园的真实盆内位置；占用位置明确标出会替换的植株。
+struct GardenPlantDestinationMenu: View {
+    let model: GardenModel
+    let garden: SucculentGarden
+    let item: GardenDragItem
+
+    var body: some View {
+        Group {
+            if model.currentPots.isEmpty {
+                Button("先放置花盆") { model.section = .pots }
+            } else {
+                ForEach(model.currentPots) { pot in
+                    if pot.kind == .ordinary {
+                        Button("\(verb)\(pot.title)") { Task { await model.plant(item, in: pot.id, position: 0) } }
+                    } else {
+                        Menu("\(verb)\(pot.title)") {
+                            ForEach(pot.plants.indices, id: \.self) { position in
+                                Button(positionTitle(position, pot: pot)) {
+                                    Task { await model.plant(item, in: pot.id, position: position) }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }.disabled(model.layoutIsAmbiguous)
+    }
+
+    private var verb: String { item.kind == .leaf ? "种入" : "放入" }
+    private func positionTitle(_ position: Int, pot: GardenPot) -> String {
+        let occupant = garden.plant(id: pot.plants[position])
+        return "位置\(position + 1) · " + (occupant.map { "替换\($0.species.title)" } ?? "空位")
     }
 }

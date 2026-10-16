@@ -11,6 +11,13 @@ final class GardenModel {
     var notice: GardenNotice?
     var isBusy = false
     var selectedSlot = 0
+    var selectedLayoutID = GardenLayout.originalID
+    var selectedPotID: UUID? = GardenPot.originalIDs[0]
+    var configuredWidgets: [GardenWidgetBinding] = []
+    var widgetReadError: String?
+    var currentLayout: GardenLayout? { garden?.layout(id: selectedLayoutID) ?? garden?.layouts.first }
+    var currentPots: [GardenPot] { currentLayout?.pots.compactMap { garden?.pot(id: $0) } ?? [] }
+    var layoutIsAmbiguous: Bool { configuredWidgets.filter { $0.layoutID == currentLayout?.id }.count > 1 }
     var section: GardenSection = .shop
     var search = ""
     var shopStage: SucculentStage = .juvenile
@@ -27,7 +34,7 @@ final class GardenModel {
             if let index = collectionStageIndex, let type = collectionMorphology, index >= type.stages.count { collectionStageIndex = nil }
         }
     }
-    private let store: SucculentStore
+    let store: SucculentStore
 
     init(store: SucculentStore = .shared) { self.store = store }
 
@@ -128,6 +135,8 @@ final class GardenModel {
     func openSlot(_ slot: Int) {
         guard (0..<3).contains(slot) else { return }
         selectedSlot = slot
+        selectedPotID = GardenPot.originalIDs[slot]
+        if let layout = garden?.layout(containing: GardenPot.originalIDs[slot]) { selectedLayoutID = layout.id }
         section = .collection
         search = ""
         collectionMorphology = nil
@@ -183,13 +192,22 @@ final class GardenModel {
     }
 
     func handle(_ url: URL) {
+        if let destination = GardenRoute.destination(from: url) {
+            selectedLayoutID = destination.layoutID
+            selectedPotID = destination.potID
+            section = .collection
+            search = ""
+            collectionMorphology = nil
+            collectionStageIndex = nil
+            return
+        }
         guard let slot = GardenRoute.slot(from: url) else { return }
         openSlot(slot)
         Logger(subsystem: "local.littlecomponent.app", category: "GardenNavigation")
             .info("组件链接已选择花盆 \(slot + 1)")
     }
 
-    private func perform(success: ((SucculentGarden?, SucculentGarden) -> String)? = nil,
+    func perform(success: ((SucculentGarden?, SucculentGarden) -> String)? = nil,
                          _ action: () async throws -> SucculentGarden) async {
         guard !isBusy else { return }
         isBusy = true
@@ -210,13 +228,14 @@ final class GardenModel {
 }
 
 enum GardenSection: String, CaseIterable, Identifiable {
-    case shop = "商店", collection = "我的多肉", leaves = "我的叶片", settings = "设置"
+    case shop = "商店", collection = "我的多肉", leaves = "我的叶片", pots = "花盆", settings = "设置"
     var id: String { rawValue }
     var symbol: String {
         switch self {
         case .shop: "storefront"
         case .collection: "leaf"
         case .leaves: "tray"
+        case .pots: "archivebox"
         case .settings: "slider.horizontal.3"
         }
     }

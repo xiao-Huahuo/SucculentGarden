@@ -1,0 +1,21 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-16",
+  "reference": "Resources/Assets.xcassets/TerracottaPot46Atlas.imageset/atlas.png",
+  "assets": [
+    {
+      "kind": "wide",
+      "path": "Resources/Assets.xcassets/WidePot47.imageset/pot.png",
+      "source": "/Users/slumpyfufu/.codex/generated_images/01a12a0d-24a9-7cf1-9590-0b46903145dc/exec-2170aa0d-051c-46cf-b6e8-d5b88aae26a1.png",
+      "sha256": "e98c4b912cb1f75a0f1ff7e794311d6042cc21343e4e9f52ce59230871ce465c",
+      "prompt": "Use case: style-transfer. Asset type: transparent-background 2D SwiftUI succulent gardening game pot sprite. Input image is a STYLE reference for an existing terracotta pot. Create ONE new WIDE SHALLOW OVAL TERRACOTTA PLANTER for three succulent plants (no plants drawn). It must be roughly twice the horizontal space of that ordinary reference pot, lower and wider, footprint an elongated oval, pot rim width about 2.25 times total pot silhouette height. Match reference warm red-orange clay, dark brown thin clean outline, restrained cel shading, lightly speckled brown soil. Camera viewed from ABOVE at about 45 degrees, generous visible oval soil plane occupying upper half of silhouette, thick continuous elliptical rolled rim and tapered shallow body. Symmetrical empty planter, centered, entire silhouette inside margins. ONE planter only, no decorations, feet, saucer, labels, plants, shadows outside the object or ground. True transparent background with clean antialiased contour. Do not include the ordinary reference pot in output."
+    },
+    {
+      "kind": "long",
+      "path": "Resources/Assets.xcassets/LongPot47.imageset/pot.png",
+      "source": "/Users/slumpyfufu/.codex/generated_images/01a12a0d-24a9-7cf1-9590-0b46903145dc/exec-322bce66-8d44-4a2a-b421-cf3f9ff7165a.png",
+      "sha256": "cda60e30d766265a9b03b6c64fb5dd99b86fc35d5ca72f6038adfd7cc62f1091",
+      "prompt": "Use case: style-transfer. Asset type: transparent-background 2D SwiftUI succulent gardening game pot sprite. Input image is a STYLE reference for an existing terracotta pot. Create ONE new LONG LOW TERRACOTTA TROUGH PLANTER for five succulent plants (no plants drawn). It must occupy three horizontal space units, LONGER and slightly shallower than the reference ordinary pot; elongated rounded-rectangle capsule soil opening with subtly curved short ends; pot rim width about 3.5 times total pot silhouette height. Match reference warm red-orange clay, dark brown thin clean outline, restrained cel shading and lightly speckled dark brown soil. Camera viewed from ABOVE at about 45 degrees, generous visible soil plane occupying upper half of silhouette, thick continuous raised rolled rim and tapered low body. Centered, entire silhouette inside clear margins. ONE planter only, no decorations, feet, saucer, labels, plants, shadows outside the object or ground. True transparent background with clean antialiased contour. Do not include the ordinary reference pot in output."
+    }
+  ]
+}

@@ -165,13 +165,13 @@ struct SucculentTests {
         #expect(moved.plants == planted.plants)
         #expect(moved.unplacedPlants.isEmpty)
         #expect(try await store.assign(plantID: id, to: 1) == moved)
-        let returned = try await store.clear(slot: 1)
+        let returned = try await store.clear(slot: 1, at: start)
         #expect(returned.slots == [nil, nil, nil])
-        #expect(returned.unplacedPlants == planted.plants)
+        #expect(returned.unplacedPlants.map(\.id) == planted.plants.map(\.id) && returned.unplacedPlants.allSatisfy { !$0.isGrowing && $0.growthSeconds == 0 })
         let purchase = try await store.buy(stage: .juvenile, at: start)
         let replaced = try await store.assign(plantID: try #require(purchase.plants.last).id, to: 0)
         let assigned = try await store.assign(plantID: id, to: 0)
-        #expect(assigned.unplacedPlants == replaced.plants.filter { $0.id != id })
+        #expect(assigned.unplacedPlants.map(\.id) == replaced.plants.filter { $0.id != id }.map(\.id) && assigned.unplacedPlants.allSatisfy { !$0.isGrowing })
     }
 
     @Test
@@ -210,7 +210,7 @@ struct SucculentTests {
         try original.write(to: url)
         let readOnly = try await store.read(at: start)
         #expect(try Data(contentsOf: url) == original)
-        #expect(readOnly.version == 7 && readOnly.slots == [nil, nil, id])
+        #expect(readOnly.version == 8 && readOnly.slots == [nil, nil, id])
         #expect(readOnly.plants == old.plants && readOnly.money == old.money)
         #expect(readOnly.leaves == old.leaves && readOnly.claimDate == old.claimDate)
         #expect(readOnly.claimedToday == old.claimedToday && readOnly.growthRate == old.growthRate)

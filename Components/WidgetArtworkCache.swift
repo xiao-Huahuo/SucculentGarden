@@ -5,8 +5,10 @@ import AppKit
 @MainActor
 enum WidgetArtworkCache {
     private static let cache = ArtworkImageCache(maximumDimension: 256, memoryLimit: 8 * 1_024 * 1_024)
+    // 横向两/三格的盆在Retina组件里需要更多像素；植物仍沿用原256px预算。
+    private static let largePots = ArtworkImageCache(maximumDimension: 512, memoryLimit: 2 * 1_024 * 1_024)
 
     static func image(named name: String) -> NSImage? {
-        cache.imageSynchronously(named: name)
+        (name == "WidePot47" || name == "LongPot47" ? largePots : cache).imageSynchronously(named: name)
     }
 }

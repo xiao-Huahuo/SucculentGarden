@@ -103,17 +103,18 @@ struct SucculentPlant: Codable, Identifiable, Equatable, Sendable {
     var growthUpdatedAt: Date
     var species: SucculentSpecies = .huangli
     var lastHarvestedAt: Date?
+    var isGrowing = true
     static let harvestCooldown: TimeInterval = 86_400
 
     func nextHarvestDate() -> Date? { lastHarvestedAt?.addingTimeInterval(Self.harvestCooldown) }
 
     private enum CodingKeys: String, CodingKey {
-        case id, acquiredAt, growthSeconds, growthUpdatedAt, species, lastHarvestedAt
+        case id, acquiredAt, growthSeconds, growthUpdatedAt, species, lastHarvestedAt, isGrowing
     }
 
     func age(at date: Date, rate: Double) -> TimeInterval {
         min(species.startSeconds(for: species.matureStage),
-            growthSeconds + max(0, date.timeIntervalSince(growthUpdatedAt)) * rate)
+            growthSeconds + (isGrowing ? max(0, date.timeIntervalSince(growthUpdatedAt)) * rate : 0))
     }
 
     func stage(at date: Date, rate: Double) -> SucculentStage {
@@ -122,6 +123,7 @@ struct SucculentPlant: Codable, Identifiable, Equatable, Sendable {
     }
 
     func transitionDates(after date: Date, rate: Double) -> [Date] {
+        guard isGrowing, rate > 0 else { return [] }
         let currentAge = age(at: date, rate: rate)
         return species.stages.compactMap { stage in
             let start = species.startSeconds(for: stage)
@@ -153,16 +155,18 @@ extension SucculentPlant {
                   growthSeconds: try values.decode(TimeInterval.self, forKey: .growthSeconds),
                   growthUpdatedAt: try values.decode(Date.self, forKey: .growthUpdatedAt),
                   species: try SucculentSpecies.decode(from: values, key: .species, decoder: decoder),
-                  lastHarvestedAt: try values.decodeIfPresent(Date.self, forKey: .lastHarvestedAt))
+                  lastHarvestedAt: try values.decodeIfPresent(Date.self, forKey: .lastHarvestedAt),
+                  isGrowing: try values.decodeIfPresent(Bool.self, forKey: .isGrowing) ?? true)
     }
 }
 
 struct SucculentGarden: Codable, Equatable, Sendable {
-    var version = 7
+    var version = 8
     var money = 10
     var leaves: [SucculentLeaf] = []
     var plants: [SucculentPlant] = []
-    var slots: [UUID?] = [nil, nil, nil]
+    var pots = GardenPot.originalIDs.enumerated().map { GardenPot(id: $0.element, number: $0.offset + 1, kind: .ordinary) }
+    var layouts: [GardenLayout] = [.original]
     var growthRate = 1.0
     var growthMultipliers = GardenGrowthMultipliers()
 
@@ -194,12 +198,11 @@ struct SucculentGarden: Codable, Equatable, Sendable {
     }
 
     var unplacedPlants: [SucculentPlant] {
-        let placed = Set(slots.compactMap { $0 })
-        return plants.filter { !placed.contains($0.id) }
+        return plants.filter { pot(containing: $0.id) == nil }
     }
 
     var collectionPlants: [SucculentPlant] {
-        slots.indices.compactMap { plant(in: $0) } + unplacedPlants
+        layouts.flatMap { $0.pots }.compactMap { pot(id: $0) }.flatMap { $0.plants }.compactMap { plant(id: $0) } + unplacedPlants
     }
 
     func slot(containing plantID: UUID) -> Int? {
@@ -220,7 +223,8 @@ struct SucculentGarden: Codable, Equatable, Sendable {
         let plantIDs = Set(plants.map(\.id))
         let placedIDs = slots.compactMap { $0 }
         try growthMultipliers.validate()
-        guard (1...7).contains(version), money >= 0, slots.count == 3,
+        if version >= 8 { try validatePots() }
+        guard (1...8).contains(version), money >= 0, slots.count == 3,
               version == 1 || Set(placedIDs).count == placedIDs.count,
               growthRate.isFinite, (0.25...1_000).contains(growthRate),
               (0...5).contains(claimedToday),
@@ -235,7 +239,8 @@ struct SucculentGarden: Codable, Equatable, Sendable {
 
     // 旧版允许重复摆放；升级保留最后一个槽位，植株与成长记录不变。
     mutating func migrateLegacyState(at date: Date = .now) {
-        guard version < 7 else { return }
+        guard version < 8 else { return }
+        let needsVersionSeven = version < 7
         if version < 5 {
             if version == 1 {
                 var seen = Set<UUID>()
@@ -251,23 +256,35 @@ struct SucculentGarden: Codable, Equatable, Sendable {
             for index in plants.indices { plants[index].settle(at: date, rate: growthRate) }
         }
         // 旧钱串到第9天已长成多头；新增老桩不能把已长成的植株退回中间时期。
-        for index in plants.indices where plants[index].species.morphology == .moneyStackType {
+        for index in plants.indices where needsVersionSeven && plants[index].species.morphology == .moneyStackType {
             let oldMaximum = 9.0 * 86_400
             let rate = effectiveRate(for: plants[index].species)
             let age = min(oldMaximum, plants[index].growthSeconds + max(0, date.timeIntervalSince(plants[index].growthUpdatedAt)) * rate)
             plants[index].growthSeconds = age >= oldMaximum ? age + 10 * 86_400 : age
             plants[index].growthUpdatedAt = max(date, plants[index].growthUpdatedAt)
         }
-        version = 7
+        for index in plants.indices {
+            if pot(containing: plants[index].id) == nil {
+                plants[index].settle(at: date, rate: effectiveRate(for: plants[index].species))
+                plants[index].isGrowing = false
+            } else { plants[index].isGrowing = true }
+        }
+        version = 8
     }
 }
 
 enum GardenError: LocalizedError {
     case invalidData, sharedContainerUnavailable, dailyLimit, leafMissing
+    case potMissing, layoutMissing, insufficientSpace, potFull, invalidPotPosition
     case plantMissing, insufficientFunds, cannotBuyLeafCutting, invalidSlot, invalidRate, invalidStage, cannotDisassemble, invalidMultiplier, cannotHarvest, harvestCoolingDown
 
     var errorDescription: String? {
         switch self {
+        case .potMissing: "这只花盆不在库存中。"
+        case .layoutMissing: "这个独立花园不存在，请重新选择。"
+        case .insufficientSpace: "组件空间不足，请先撤下其他花盆；小号只能使用普通盆。"
+        case .potFull: "花盆已满，请先选择要替换的植株位置。"
+        case .invalidPotPosition: "盆内位置不存在。"
         case .invalidData: "保存的花园数据无法读取，原文件已保留。"
         case .sharedContainerUnavailable: "无法访问共享花园，请检查应用签名与共享组权限。"
         case .dailyLimit: "今天的 5 次免费领取已经用完，明天再来。"
@@ -286,10 +303,10 @@ enum GardenError: LocalizedError {
     }
 }
 
-// schema 5 新增乘数覆盖；旧文件缺少该字段时使用默认值，其他业务字段仍严格解码。
+// schema 8 将旧三槽迁入拥有独立身份的花盆和花园；旧格式仅在迁移时读写。
 extension SucculentGarden {
     private enum CodingKeys: String, CodingKey {
-        case version, money, leaves, plants, slots, growthRate, growthMultipliers, claimDate, claimedToday
+        case version, money, leaves, plants, slots, pots, layouts, growthRate, growthMultipliers, claimDate, claimedToday
     }
 
     init(from decoder: Decoder) throws {
@@ -298,10 +315,37 @@ extension SucculentGarden {
         money = try values.decode(Int.self, forKey: .money)
         leaves = try values.decode([SucculentLeaf].self, forKey: .leaves)
         plants = try values.decode([SucculentPlant].self, forKey: .plants)
-        slots = try values.decode([UUID?].self, forKey: .slots)
+        if version < 8 {
+            for index in plants.indices { plants[index].isGrowing = true }
+            let oldSlots = try values.decode([UUID?].self, forKey: .slots)
+            guard oldSlots.count == 3 else { throw GardenError.invalidData }
+            for index in oldSlots.indices { pots[index].plants[0] = oldSlots[index] }
+        } else {
+            pots = try values.decode([GardenPot].self, forKey: .pots)
+            layouts = try values.decode([GardenLayout].self, forKey: .layouts)
+        }
         growthRate = try values.decode(Double.self, forKey: .growthRate)
         growthMultipliers = try values.decodeIfPresent(GardenGrowthMultipliers.self, forKey: .growthMultipliers) ?? .init()
         claimDate = try values.decodeIfPresent(Date.self, forKey: .claimDate)
         claimedToday = try values.decode(Int.self, forKey: .claimedToday)
+    }
+}
+
+extension SucculentGarden {
+    func encode(to encoder: Encoder) throws {
+        var values = encoder.container(keyedBy: CodingKeys.self)
+        try values.encode(version, forKey: .version)
+        try values.encode(money, forKey: .money)
+        try values.encode(leaves, forKey: .leaves)
+        try values.encode(plants, forKey: .plants)
+        if version < 8 { try values.encode(slots, forKey: .slots) }
+        else {
+            try values.encode(pots, forKey: .pots)
+            try values.encode(layouts, forKey: .layouts)
+        }
+        try values.encode(growthRate, forKey: .growthRate)
+        try values.encode(growthMultipliers, forKey: .growthMultipliers)
+        try values.encodeIfPresent(claimDate, forKey: .claimDate)
+        try values.encode(claimedToday, forKey: .claimedToday)
     }
 }
