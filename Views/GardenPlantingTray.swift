@@ -1,4 +1,4 @@
-// 整个玻璃浮层接收拖放，再以当前独立花园及盆面根点定位；不依赖系统桌面拖放。
+// 整个玻璃浮层接收拖放，按唯一桌面花园的盆面根点定位。
 import SwiftUI
 import OSLog
 
@@ -8,7 +8,7 @@ struct GardenPlantingTray: View {
     let date: Date
     @State private var targetedPot: UUID?
 
-    private var layout: GardenLayout { model.currentLayout ?? garden.layouts[0] }
+    private var layout: GardenLayout { garden.layout(id: GardenLayout.originalID) ?? GardenLayout.original }
     private var pots: [GardenPot] { layout.pots.compactMap { garden.pot(id: $0) } }
     private var bodyHeight: CGFloat {
         104 + (pots.map { $0.kind == .ordinary ? 44 : CGFloat(max(1, $0.plants.compactMap { $0 }.count)) * 26 }.max() ?? 30)
@@ -17,23 +17,12 @@ struct GardenPlantingTray: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 8) {
-                layoutPicker
+                Text("桌面花盆").fontWeight(.medium)
                 Spacer(minLength: 0)
-                Menu {
-                    Button("新建小号花园") { Task { await model.createLayout(.small) } }
-                    Button("新建中号花园") { Task { await model.createLayout(.medium) } }
-                } label: { Image(systemName: "plus") }.menuStyle(.borderlessButton).fixedSize()
-                    .accessibilityLabel("新建独立花园")
-                Button { Task { await model.refreshWidgets() } } label: { Image(systemName: "arrow.clockwise") }
-                    .buttonStyle(.plain).accessibilityLabel("刷新桌面组件清单")
+                Text("多肉组件只放一块").foregroundStyle(.secondary)
             }
             .font(.caption)
-            if let error = model.widgetReadError { Text(error).font(.caption2).foregroundStyle(.secondary) }
-            if model.layoutIsAmbiguous {
-                Text("此花园绑定了多个组件。请编辑桌面组件，为每块选择不同花园。")
-                    .font(.caption).foregroundStyle(.secondary)
-            } else {
-                GeometryReader { geometry in
+            GeometryReader { geometry in
                     HStack(alignment: .top, spacing: 0) {
                         ForEach(pots) { pot in
                             GardenPotContent(pot: pot, garden: garden, date: date, showsCountdown: true)
@@ -68,12 +57,11 @@ struct GardenPlantingTray: View {
                             }.buttonStyle(.plain).accessibilityLabel("前往花盆商店和库存")
                         }
                     }
-                }.frame(height: bodyHeight)
-            }
+            }.frame(height: bodyHeight)
         }
         .padding(GardenPlantingLayout.padding)
         .glassEffect(.regular, in: .rect(cornerRadius: 24))
-        .dropDestination(for: GardenDragItem.self, isEnabled: !model.isBusy && !model.layoutIsAmbiguous) { items, session in
+        .dropDestination(for: GardenDragItem.self, isEnabled: !model.isBusy) { items, session in
             guard let item = items.first, let current = model.garden else { return }
             let width = session.size.width - GardenPlantingLayout.padding * 2
             let point = CGPoint(x: session.location.x - GardenPlantingLayout.padding,
@@ -86,7 +74,7 @@ struct GardenPlantingTray: View {
                     let local = CGPoint(x: point.x - hit.rect.minX, y: point.y)
                     let position = GardenPotGeometry.nearestPosition(kind: hit.pot.kind, point: local, width: hit.rect.width, height: 100)
                     await model.plant(item, in: hit.pot.id, position: position)
-                } else { model.notice = GardenNotice(message: "请先在这个花园放置花盆，再种入多肉。", isError: true) }
+                } else { model.notice = GardenNotice(message: "请先在桌面花园放置花盆，再种入多肉。", isError: true) }
             }
         }
         .onDropSessionUpdated { session in
@@ -98,26 +86,4 @@ struct GardenPlantingTray: View {
         .disabled(model.isBusy)
     }
 
-    private var layoutPicker: some View {
-        Menu {
-            if !model.configuredWidgets.isEmpty {
-                Section("桌面上的组件") {
-                    ForEach(model.configuredWidgets) { binding in
-                        if let id = binding.layoutID, let layout = garden.layout(id: id) {
-                            Button("\(layout.name) · 组件\(Int(binding.id).map { $0 + 1 } ?? 1)") { model.selectLayout(id) }
-                        } else {
-                            Button("未配置的\(binding.size.title)组件：创建花园") { Task { await model.createLayout(binding.size) } }
-                        }
-                    }
-                }
-            }
-            Section("全部花园") {
-                ForEach(garden.layouts) { layout in
-                    Button(layout.name) { model.selectLayout(layout.id) }
-                }
-            }
-        } label: { Text(layout.name).fontWeight(.medium).lineLimit(1) }
-        .menuStyle(.borderlessButton).fixedSize(horizontal: false, vertical: true)
-        .accessibilityLabel("切换独立花园，当前\(layout.name)")
-    }
 }

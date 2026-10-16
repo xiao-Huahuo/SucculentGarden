@@ -11,13 +11,9 @@ final class GardenModel {
     var notice: GardenNotice?
     var isBusy = false
     var selectedSlot = 0
-    var selectedLayoutID = GardenLayout.originalID
     var selectedPotID: UUID? = GardenPot.originalIDs[0]
-    var configuredWidgets: [GardenWidgetBinding] = []
-    var widgetReadError: String?
-    var currentLayout: GardenLayout? { garden?.layout(id: selectedLayoutID) ?? garden?.layouts.first }
+    var currentLayout: GardenLayout? { garden?.layout(id: GardenLayout.originalID) }
     var currentPots: [GardenPot] { currentLayout?.pots.compactMap { garden?.pot(id: $0) } ?? [] }
-    var layoutIsAmbiguous: Bool { configuredWidgets.filter { $0.layoutID == currentLayout?.id }.count > 1 }
     var section: GardenSection = .shop
     var search = ""
     var shopStage: SucculentStage = .juvenile
@@ -136,7 +132,6 @@ final class GardenModel {
         guard (0..<3).contains(slot) else { return }
         selectedSlot = slot
         selectedPotID = GardenPot.originalIDs[slot]
-        if let layout = garden?.layout(containing: GardenPot.originalIDs[slot]) { selectedLayoutID = layout.id }
         section = .collection
         search = ""
         collectionMorphology = nil
@@ -193,7 +188,7 @@ final class GardenModel {
 
     func handle(_ url: URL) {
         if let destination = GardenRoute.destination(from: url) {
-            selectedLayoutID = destination.layoutID
+            guard destination.layoutID == GardenLayout.originalID else { return }
             selectedPotID = destination.potID
             section = .collection
             search = ""

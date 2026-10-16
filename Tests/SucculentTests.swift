@@ -210,7 +210,7 @@ struct SucculentTests {
         try original.write(to: url)
         let readOnly = try await store.read(at: start)
         #expect(try Data(contentsOf: url) == original)
-        #expect(readOnly.version == 8 && readOnly.slots == [nil, nil, id])
+        #expect(readOnly.version == 9 && readOnly.slots == [nil, nil, id])
         #expect(readOnly.plants == old.plants && readOnly.money == old.money)
         #expect(readOnly.leaves == old.leaves && readOnly.claimDate == old.claimDate)
         #expect(readOnly.claimedToday == old.claimedToday && readOnly.growthRate == old.growthRate)

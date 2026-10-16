@@ -1,0 +1,10 @@
+{
+  "purpose": "橙梦露壮年阶段的植物形态参考",
+  "method": "sips rectangle crop, no generation or repainting",
+  "sourceAttachment": "codex-clipboard-d6e34bb1-49b4-4805-a11c-c226d925a077.png",
+  "sourcePixels": [640, 588],
+  "cropRectXYWH": [25, 20, 590, 548],
+  "savedPath": "references/succulents/orange-monroe-reference-crop-48.png",
+  "cropPixelsMatchSourceExactly": true,
+  "sha256": "5fe110f26d8463d3fbfd35b06bc942a3f5179b45f67fa94b8a4f935ceda28274"
+}

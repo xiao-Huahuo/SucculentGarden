@@ -1,33 +1,8 @@
-// 右下当前花园控制所有摆盆/种植入口；系统实际组件清单在前台刷新，不依赖固定三个槽。
+// 右下唯一桌面花园控制摆盆与种植入口。
 import Foundation
 
 extension GardenModel {
-    func refreshWidgets() async {
-        do {
-            configuredWidgets = try await GardenWidgetBinding.configured()
-            widgetReadError = nil
-        } catch { widgetReadError = "暂时无法读取桌面组件，请点击刷新。" }
-    }
-
-    func createLayout(_ size: GardenLayoutSize) async {
-        await perform(success: { _, _ in "已创建独立花园，请在桌面组件的编辑菜单中选择它" }) {
-            let state = try await self.store.createLayout(size: size)
-            if let layout = state.layouts.last {
-                self.selectedLayoutID = layout.id
-                self.selectedPotID = nil
-            }
-            return state
-        }
-    }
-
-    func selectLayout(_ id: UUID) {
-        guard let layout = garden?.layout(id: id) else { return }
-        selectedLayoutID = id
-        selectedPotID = layout.pots.first
-    }
-
     func openPot(_ id: UUID) {
-        if let layout = garden?.layout(containing: id) { selectedLayoutID = layout.id }
         selectedPotID = id
         section = .collection
         search = ""
@@ -40,9 +15,8 @@ extension GardenModel {
     }
 
     func placePot(_ id: UUID, before otherID: UUID? = nil) async {
-        guard let layout = currentLayout, !layoutIsAmbiguous else { return }
-        await perform(success: { _, _ in "花盆已放入\(layout.name)" }) {
-            let state = try await self.store.placePot(id: id, in: layout.id, before: otherID)
+        await perform(success: { _, _ in "花盆已放入桌面花园" }) {
+            let state = try await self.store.placePot(id: id, in: GardenLayout.originalID, before: otherID)
             self.selectedPotID = id
             return state
         }
@@ -60,7 +34,6 @@ extension GardenModel {
     }
 
     func plant(_ item: GardenDragItem, in potID: UUID, position: Int? = nil) async {
-        guard !layoutIsAmbiguous else { return }
         await perform(success: { _, _ in "多肉已放入花盆，开始继续成长" }) {
             switch item.kind {
             case .leaf: try await self.store.sow(leafID: item.id, inPot: potID, position: position)

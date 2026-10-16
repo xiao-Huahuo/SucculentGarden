@@ -6,6 +6,10 @@ enum SucculentArtworkSize {
     static let previewSpan: CGFloat = 8
 
     static func centimeters(species: SucculentSpecies, stage: SucculentStage, isLeaf: Bool) -> CGSize {
+        if !isLeaf, species == .orangeMonroe, stage == .oldStem {
+            let prime = centimeters(species: species, stage: .prime, isLeaf: false)
+            return CGSize(width: prime.width * 1.18, height: prime.height * 1.18)
+        }
         if SucculentExpansionCatalog.entries[species] != nil {
             return SucculentExpansionSize.centimeters(species: species, stage: stage, isMaterial: isLeaf)
         }

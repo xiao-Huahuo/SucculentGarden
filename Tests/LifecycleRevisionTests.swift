@@ -58,7 +58,7 @@ struct LifecycleRevisionTests {
         try bytes.write(to: url)
         let store = SucculentStore(fileURL: url)
         let migrated = try await store.read(at: date)
-        #expect(migrated.version == 8)
+        #expect(migrated.version == 9)
         #expect(migrated.money == 47 && migrated.claimedToday == 3 && migrated.claimDate == old.claimDate)
         #expect(migrated.slots == old.slots && migrated.leaves == old.leaves)
         #expect(migrated.plants.map(\.id) == old.plants.map(\.id))

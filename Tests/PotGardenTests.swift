@@ -1,4 +1,4 @@
-// 独立文件覆盖多组件、空间容量、暂停续长和旧存档迁移，不操作用户真实花园。
+// 隔离覆盖唯一三格花园、空间容量、暂停续长和旧存档迁移，不操作真实存档。
 import Foundation
 import Testing
 
@@ -15,27 +15,44 @@ struct PotGardenTests {
         return (url, SucculentStore(fileURL: url))
     }
 
-    @Test func potSpaceAndOwnershipStayIndependentAcrossSeveralWidgets() async throws {
+    @Test func wideAndLongPotsUseOnlyTheSharedThreeSpaces() async throws {
         let (url, store) = try fixture()
         defer { try? FileManager.default.removeItem(at: url) }
-        _ = try await store.createLayout(size: .small)
-        let state = try await store.createLayout(size: .medium)
-        let small = state.layouts[1], second = state.layouts[2]
+        let state = try await store.read()
+        #expect(state.layouts.count == 1 && state.layouts[0].pots == GardenPot.originalIDs)
         let bought = try await store.buyPot(kind: .wide)
         let wide = try #require(bought.pots.last)
         #expect(bought.money == 1_800 && wide.plants.count == 3)
-        await #expect(throws: GardenError.self) { try await store.placePot(id: wide.id, in: small.id) }
-        let placed = try await store.placePot(id: wide.id, in: second.id)
-        #expect(placed.layouts[0] == state.layouts[0] && placed.layouts[1] == small)
-        #expect(placed.layout(containing: wide.id)?.id == second.id)
+        await #expect(throws: GardenError.self) { try await store.placePot(id: wide.id, in: UUID()) }
+        await #expect(throws: GardenError.self) { try await store.placePot(id: wide.id, in: GardenLayout.originalID) }
+        _ = try await store.withdrawPot(id: GardenPot.originalIDs[1])
+        _ = try await store.withdrawPot(id: GardenPot.originalIDs[2])
+        let placed = try await store.placePot(id: wide.id, in: GardenLayout.originalID)
+        #expect(placed.layouts[0].pots == [GardenPot.originalIDs[0], wide.id])
         let longState = try await store.buyPot(kind: .long)
         let long = try #require(longState.pots.last)
-        await #expect(throws: GardenError.self) { try await store.placePot(id: long.id, in: second.id) }
+        await #expect(throws: GardenError.self) { try await store.placePot(id: long.id, in: GardenLayout.originalID) }
         #expect(try await store.read() == longState)
         _ = try await store.withdrawPot(id: wide.id)
-        let final = try await store.placePot(id: long.id, in: second.id)
-        #expect(final.layout(id: second.id)?.pots == [long.id] && long.plants.count == 5)
-        #expect(final.layouts[0].pots == GardenPot.originalIDs && final.layouts[1].pots.isEmpty)
+        _ = try await store.withdrawPot(id: GardenPot.originalIDs[0])
+        let final = try await store.placePot(id: long.id, in: GardenLayout.originalID)
+        #expect(final.layouts[0].pots == [long.id] && long.plants.count == 5 && final.layouts.count == 1)
+    }
+
+    @Test func smallWidgetChoosesAnOrdinaryPotByItsDisplayedSpace() {
+        var state = SucculentGarden()
+        #expect(state.smallWidgetPot(choice: .second)?.id == GardenPot.originalIDs[1])
+        let replacement = GardenPot(number: 4, kind: .ordinary)
+        state.pots.append(replacement)
+        state.layouts[0].pots = [GardenPot.originalIDs[0], replacement.id, GardenPot.originalIDs[2]]
+        #expect(state.smallWidgetPot(choice: .second)?.id == replacement.id)
+        let wide = GardenPot(number: 5, kind: .wide)
+        state.pots.append(wide)
+        state.layouts[0].pots = [wide.id, replacement.id]
+        #expect(state.smallWidgetPot(choice: .third)?.id == replacement.id)
+        #expect(state.smallWidgetPot(choice: .first)?.id == replacement.id)
+        state.layouts[0].pots = [wide.id]
+        #expect(state.smallWidgetPot(choice: .first) == nil)
     }
 
     @Test func twoStepWithdrawalKeepsPotThenReturnsItAndPausesGrowth() async throws {
@@ -61,12 +78,13 @@ struct PotGardenTests {
         #expect(try await SucculentStore(fileURL: url).read() == resumed)
     }
 
-    @Test func widePotSowingReplacementAndCrossWidgetMovementDoNotDuplicate() async throws {
+    @Test func widePotSowingReplacementAndMovementDoNotDuplicate() async throws {
         let (url, store) = try fixture()
         defer { try? FileManager.default.removeItem(at: url) }
-        let layout = try #require((try await store.createLayout(size: .medium)).layouts.last)
+        _ = try await store.withdrawPot(id: GardenPot.originalIDs[1])
+        _ = try await store.withdrawPot(id: GardenPot.originalIDs[2])
         let pot = try #require((try await store.buyPot(kind: .wide)).pots.last)
-        _ = try await store.placePot(id: pot.id, in: layout.id)
+        _ = try await store.placePot(id: pot.id, in: GardenLayout.originalID)
         for _ in 0..<3 {
             let leaf = try #require((try await store.claimLeaf(at: date)).leaves.last)
             _ = try await store.sow(leafID: leaf.id, inPot: pot.id, at: date)
@@ -108,7 +126,7 @@ struct PotGardenTests {
         try data.write(to: url)
         let at = date.addingTimeInterval(100)
         let read = try await store.read(at: at)
-        #expect(read.version == 8 && read.slots == old.slots && read.money == old.money)
+        #expect(read.version == 9 && read.slots == old.slots && read.money == old.money)
         #expect(read.pots.count == 3 && read.layouts.count == 1)
         #expect(read.plants.allSatisfy { $0.age(at: at, rate: 1) == 110 })
         #expect(read.plants.prefix(3).allSatisfy(\.isGrowing) && !read.plants[3].isGrowing)
@@ -116,25 +134,55 @@ struct PotGardenTests {
         let saved = try await store.read(createIfMissing: true, at: at)
         #expect(try await store.read(at: at.addingTimeInterval(day)) == saved)
     }
-    @Test func actualWidgetBindingsRequireUniqueGardensAndMatchingSizes() {
-        var state = SucculentGarden()
-        let small = GardenLayout(id: UUID(), name: "小号花园 1", size: .small, pots: [])
-        let medium = GardenLayout(id: UUID(), name: "中号花园 2", size: .medium, pots: [])
-        state.layouts += [small, medium]
-        let bindings = [GardenWidgetBinding(id: "0", layoutID: state.layouts[0].id, size: .medium, isLegacy: true),
-                        GardenWidgetBinding(id: "1", layoutID: small.id, size: .small, isLegacy: false),
-                        GardenWidgetBinding(id: "2", layoutID: medium.id, size: .medium, isLegacy: false)]
-        for binding in bindings {
-            #expect(GardenWidgetBinding.problem(layoutID: binding.layoutID, size: binding.size, garden: state, bindings: bindings) == nil)
-        }
-        let duplicate = bindings + [GardenWidgetBinding(id: "3", layoutID: small.id, size: .small, isLegacy: false)]
-        #expect(GardenWidgetBinding.problem(layoutID: small.id, size: .small, garden: state, bindings: duplicate) != nil)
-        #expect(GardenWidgetBinding.problem(layoutID: small.id, size: .medium, garden: state, bindings: bindings) != nil)
-        #expect(GardenWidgetBinding.problem(layoutID: nil, size: .small, garden: state, bindings: bindings) != nil)
-        #expect(GardenWidgetBinding.problem(layoutID: medium.id, size: .medium, garden: state, bindings: duplicate) == nil)
+    @Test func schemaEightRemovesOnlyEmptyExtraGardensWithoutChangingInventory() async throws {
+        let (url, store) = try fixture()
+        defer { try? FileManager.default.removeItem(at: url) }
+        var old = try await store.read()
+        old.version = 8
+        old.layouts += [GardenLayout(id: UUID(), name: "中号花园 2", size: .medium, pots: []),
+                        GardenLayout(id: UUID(), name: "中号花园 3", size: .medium, pots: [])]
+        let bytes = try JSONEncoder().encode(old)
+        try bytes.write(to: url)
+        let preview = try await store.read()
+        #expect(preview.version == 9 && preview.layouts == [old.layouts[0]])
+        #expect(preview.pots == old.pots && preview.plants == old.plants && preview.leaves == old.leaves && preview.money == old.money)
+        #expect(try Data(contentsOf: url) == bytes)
+        let saved = try await store.read(createIfMissing: true)
+        let reopened = try await store.read()
+        #expect(saved == preview && reopened == saved)
     }
 
-    @Test func potSurfaceGeometryAndLinksStayAlignedWithIndependentLayouts() throws {
+    @Test func schemaEightReturnsOverflowPotsAndPausesTheirPlantsWithoutLoss() async throws {
+        let (url, store) = try fixture()
+        defer { try? FileManager.default.removeItem(at: url) }
+        var old = try await store.read()
+        old.version = 8
+        let leafID = try #require((try await store.claimLeaf(at: date)).leaves.last?.id)
+        old = try await store.sow(leafID: leafID, in: 0, at: date)
+        old.version = 8
+        let plantID = try #require(old.pots[0].plants[0])
+        let moved = old.layouts[0].pots.removeFirst()
+        var wide = GardenPot(number: 4, kind: .wide)
+        let overflowPlant = SucculentPlant(id: UUID(), acquiredAt: date, growthSeconds: 0, growthUpdatedAt: date)
+        old.plants.append(overflowPlant)
+        wide.plants[0] = overflowPlant.id
+        old.pots.append(wide)
+        old.layouts.append(GardenLayout(id: UUID(), name: "中号花园 2", size: .medium, pots: [wide.id, moved]))
+        // 共用花园已有2格，只能再容纳原普通盆；宽盆及植株会留在库存/收藏。
+        let bytes = try JSONEncoder().encode(old)
+        try bytes.write(to: url)
+        let migrated = try await store.read(at: date.addingTimeInterval(day))
+        #expect(migrated.version == 9 && migrated.layouts.count == 1)
+        #expect(migrated.layouts[0].pots == [GardenPot.originalIDs[1], GardenPot.originalIDs[2], moved])
+        #expect(migrated.unplacedPots.map(\.id) == [wide.id])
+        #expect(migrated.plant(id: plantID)?.isGrowing == true)
+        #expect(migrated.plant(id: overflowPlant.id)?.isGrowing == false)
+        #expect(migrated.plant(id: overflowPlant.id)?.growthSeconds == day)
+        #expect(migrated.unplacedPlants.map(\.id).contains(overflowPlant.id))
+        #expect(try Data(contentsOf: url) == bytes)
+    }
+
+    @Test func potSurfaceGeometryAndLinksStayAlignedWithSharedLayout() throws {
         var state = SucculentGarden()
         let wide = GardenPot(number: 4, kind: .wide)
         let layout = GardenLayout(id: UUID(), name: "组合", size: .medium, pots: [wide.id, state.pots[0].id])

@@ -91,7 +91,7 @@ struct YuzhuiTests {
         let store = SucculentStore(fileURL: url)
         let migrated = try await store.read()
         #expect(try Data(contentsOf: url) == original)
-        #expect(migrated.version == 8 && migrated.money == old.money && migrated.leaves == old.leaves)
+        #expect(migrated.version == 9 && migrated.money == old.money && migrated.leaves == old.leaves)
         #expect(migrated.claimDate == old.claimDate && migrated.claimedToday == 4 && migrated.slots == old.slots)
         for (before, after) in zip(old.plants, migrated.plants) {
             #expect(after.id == before.id && after.growthUpdatedAt == before.growthUpdatedAt)

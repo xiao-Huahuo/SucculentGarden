@@ -234,7 +234,7 @@ struct GardenLeavesView: View {
     }
 }
 
-// 所有库存入口都指向当前独立花园的真实盆内位置；占用位置明确标出会替换的植株。
+// 所有库存入口都指向桌面花园的真实盆内位置；占用位置明确标出会替换的植株。
 struct GardenPlantDestinationMenu: View {
     let model: GardenModel
     let garden: SucculentGarden
@@ -259,7 +259,7 @@ struct GardenPlantDestinationMenu: View {
                     }
                 }
             }
-        }.disabled(model.layoutIsAmbiguous)
+        }
     }
 
     private var verb: String { item.kind == .leaf ? "种入" : "放入" }

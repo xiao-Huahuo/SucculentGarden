@@ -1,4 +1,4 @@
-// 盆内位置与组件归属是唯一摆放来源；旧槽位只保留为兼容旧链接和存档的计算属性。
+// 盆内位置与唯一桌面花园是摆放来源；旧槽位只保留为兼容旧链接和存档的计算属性。
 import Foundation
 
 extension SucculentGarden {
@@ -18,6 +18,15 @@ extension SucculentGarden {
     func pot(id: UUID) -> GardenPot? { pots.first { $0.id == id } }
     func layout(id: UUID) -> GardenLayout? { layouts.first { $0.id == id } }
     func layout(containing potID: UUID) -> GardenLayout? { layouts.first { $0.pots.contains(potID) } }
+    func smallWidgetPot(choice: GardenPotChoice) -> GardenPot? {
+        let displayed = layout(id: GardenLayout.originalID)?.pots.compactMap { pot(id: $0) } ?? []
+        var space = 0
+        for pot in displayed {
+            if space == choice.rawValue, pot.kind == .ordinary { return pot }
+            space += pot.kind.space
+        }
+        return displayed.first { $0.kind == .ordinary }
+    }
     func pot(containing plantID: UUID) -> GardenPot? {
         pots.first { $0.plants.contains(plantID) && layout(containing: $0.id) != nil }
     }
@@ -28,6 +37,7 @@ extension SucculentGarden {
         let placedPots = layouts.flatMap(\.pots)
         let pottedPlants = pots.flatMap(\.plants).compactMap { $0 }
         guard !layouts.isEmpty, Set(layouts.map(\.id)).count == layouts.count,
+              (version < 9 || (layouts.count == 1 && layouts[0].id == GardenLayout.originalID && layouts[0].size == .medium)),
               potIDs.count == pots.count, Set(pots.map(\.number)).count == pots.count,
               pots.allSatisfy({ $0.number > 0 && $0.plants.count == $0.kind.capacity }),
               Set(placedPots).count == placedPots.count, placedPots.allSatisfy({ potIDs.contains($0) }),

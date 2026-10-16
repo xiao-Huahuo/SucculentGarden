@@ -23,8 +23,8 @@ actor SucculentStore {
         decoder.userInfo[SucculentSpecies.legacyDecodingKey] = version < 3
         var state = try decoder.decode(SucculentGarden.self, from: data)
         try state.validate()
-        if state.version < 8 {
-            state.migrateLegacyState(at: date)
+        if state.version < 9 {
+            try state.migrateToSharedGarden(at: date)
             try state.validate()
             if createIfMissing { try save(state, to: url) }
         }

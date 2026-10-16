@@ -41,5 +41,5 @@ struct GardenLayout: Codable, Identifiable, Equatable, Sendable {
     let size: GardenLayoutSize
     var pots: [UUID]
     static let originalID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
-    static let original = GardenLayout(id: originalID, name: "中号花园 1", size: .medium, pots: GardenPot.originalIDs)
+    static let original = GardenLayout(id: originalID, name: "桌面花盆", size: .medium, pots: GardenPot.originalIDs)
 }

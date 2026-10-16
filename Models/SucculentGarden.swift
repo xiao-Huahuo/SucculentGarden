@@ -161,7 +161,7 @@ extension SucculentPlant {
 }
 
 struct SucculentGarden: Codable, Equatable, Sendable {
-    var version = 8
+    var version = 9
     var money = 10
     var leaves: [SucculentLeaf] = []
     var plants: [SucculentPlant] = []
@@ -224,7 +224,7 @@ struct SucculentGarden: Codable, Equatable, Sendable {
         let placedIDs = slots.compactMap { $0 }
         try growthMultipliers.validate()
         if version >= 8 { try validatePots() }
-        guard (1...8).contains(version), money >= 0, slots.count == 3,
+        guard (1...9).contains(version), money >= 0, slots.count == 3,
               version == 1 || Set(placedIDs).count == placedIDs.count,
               growthRate.isFinite, (0.25...1_000).contains(growthRate),
               (0...5).contains(claimedToday),
@@ -271,6 +271,24 @@ struct SucculentGarden: Codable, Equatable, Sendable {
         }
         version = 8
     }
+
+    // 8版允许多座花园；能放入共用花园的盆继续摆放，超出的盆退回库存、植株暂停成长。
+    mutating func migrateToSharedGarden(at date: Date = .now) throws {
+        if version < 8 { migrateLegacyState(at: date) }
+        guard version == 8 else { return }
+        guard var shared = layout(id: GardenLayout.originalID), shared.size == .medium else { throw GardenError.invalidData }
+        for potID in layouts.filter({ $0.id != GardenLayout.originalID }).flatMap(\.pots) {
+            guard let pot = pot(id: potID) else { throw GardenError.invalidData }
+            let used = shared.pots.compactMap { self.pot(id: $0) }.reduce(0) { $0 + $1.kind.space }
+            if used + pot.kind.space <= shared.size.space {
+                shared.pots.append(potID)
+            } else {
+                for plantID in pot.plants.compactMap({ $0 }) { removePlant(plantID, at: date) }
+            }
+        }
+        layouts = [shared]
+        version = 9
+    }
 }
 
 enum GardenError: LocalizedError {
@@ -281,8 +299,8 @@ enum GardenError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .potMissing: "这只花盆不在库存中。"
-        case .layoutMissing: "这个独立花园不存在，请重新选择。"
-        case .insufficientSpace: "组件空间不足，请先撤下其他花盆；小号只能使用普通盆。"
+        case .layoutMissing: "桌面花园不存在。"
+        case .insufficientSpace: "桌面花园空间不足，请先撤下其他花盆。"
         case .potFull: "花盆已满，请先选择要替换的植株位置。"
         case .invalidPotPosition: "盆内位置不存在。"
         case .invalidData: "保存的花园数据无法读取，原文件已保留。"
@@ -303,7 +321,7 @@ enum GardenError: LocalizedError {
     }
 }
 
-// schema 8 将旧三槽迁入拥有独立身份的花盆和花园；旧格式仅在迁移时读写。
+// schema 8 引入花盆，schema 9 收回为唯一桌面花园；旧格式仅在迁移时读写。
 extension SucculentGarden {
     private enum CodingKeys: String, CodingKey {
         case version, money, leaves, plants, slots, pots, layouts, growthRate, growthMultipliers, claimDate, claimedToday

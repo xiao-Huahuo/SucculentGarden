@@ -193,6 +193,10 @@ enum SucculentSpecies: String, Codable, CaseIterable, Identifiable, Sendable {
     }
 
     func assetName(stage: SucculentStage, isLeaf: Bool = false) -> String {
+        // 当前仅橙梦露的老桩视觉改为更大的单头；其他景天品种沿用现有素材。
+        if !isLeaf, self == .orangeMonroe, stage == .oldStem {
+            return assetName(stage: .prime)
+        }
         if SucculentExpansionCatalog.entries[self] != nil {
             if isLeaf {
                 switch morphology {

@@ -146,7 +146,7 @@ struct ExpansionMechanismTests {
         try bytes.write(to: url)
         let store = SucculentStore(fileURL: url)
         let migrated = try await store.read(at: date.addingTimeInterval(100 * 86_400))
-        #expect(migrated.version == 8 && migrated.plants == old.plants && migrated.money == old.money)
+        #expect(migrated.version == 9 && migrated.plants == old.plants && migrated.money == old.money)
         #expect(migrated.slots == old.slots && migrated.claimedToday == old.claimedToday)
         #expect(try Data(contentsOf: url) == bytes)
         #expect(try await store.read(createIfMissing: true) == migrated)
